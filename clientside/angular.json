@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "smartgrid": {
+    "clientside": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/smartgrid",
+            "outputPath": "dist/clientside",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "smartgrid:build"
+            "browserTarget": "clientside:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "smartgrid:build:production"
+              "browserTarget": "clientside:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "smartgrid:build"
+            "browserTarget": "clientside:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "smartgrid:serve"
+            "devServerTarget": "clientside:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "smartgrid:serve:production"
+              "devServerTarget": "clientside:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "smartgrid"
+  "defaultProject": "clientside"
 }
