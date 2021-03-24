@@ -1,0 +1,10 @@
+<p>home works!</p>
+
+
+<form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
+    <input type="email" name="email" placeholder="email" ngModel>
+    <br />
+    <input type="password" name="password" placeholder="password" ngModel>
+    <br />
+    <input type="submit" [disabled]="!f.form.valid" value="login">
+  </form>
