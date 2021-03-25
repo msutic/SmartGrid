@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   onClickSubmit(form: NgForm){
-    alert('Your data. Email: ' + form.value.email + 'Password: ' + form.value.password);
+    alert('Email: ' + form.value.email + '\nPassword: ' + form.value.password);
   }
 
 }
