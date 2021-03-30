@@ -1,0 +1,22 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" ngModel>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" ngModel>
+      <button mat-raised-button color="primary" type="submit" class="mb-3 mt-2 fadeIn fourth" [disabled]="!f.form.valid">
+      Login
+      </button>
+      </form>
+
+    <div id="formFooter">
+      <a class="mr-5 underlineHover" href="#">Forgot Password?</a>
+      <a class="ml-5 underlineHover" href="#">Create Account</a>
+    </div>
+    
+  </div>
+  <div>
+    <button mat-raised-button color="warn" class="mt-4 fadeIn fourth" [disabled]="!f.form.valid">
+      Report Outage
+      </button>
+  </div>
+</div>
