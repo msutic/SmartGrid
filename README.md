@@ -8,6 +8,6 @@ Web aplikacija koja omogućava nadgledanje radova nad distributivnom mrežom.
 - [.NET Core](https://dotnet.microsoft.com/download)  
 
 ### Uputstvo za korišćenje
-- Preuzeti repozitorijum, koristeći komandnu liniju uz `git clone "repo link"`  
-- Iz root-a (`clientisde`) pozvati `npm install` za instalaciju neophodnih referenca  
+- Preuzeti repozitorijum, koristeći komandnu liniju uz `git clone https://github.com/msutic/SmartGrid.git`  
+- Iz root-a (`clientside`) pozvati `npm install` za instalaciju neophodnih referenca  
 - Podići server sa `ng serve`
