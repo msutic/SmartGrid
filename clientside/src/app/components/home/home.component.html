@@ -4,12 +4,12 @@
       <h2>GSS DISTRIBUTION</h2>
     </div>
     <div id="formContent">
-      <span class="authentication-login">Log in</span>
+      <span class="authentication-login">Login</span>
       <form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
         <input type="text" id="email" class="fadeIn second" name="email" placeholder="Enter your Email" ngModel>
         <input type="password" id="password" class="fadeIn third" name="password" placeholder="Enter your password" ngModel>
         <span><a class="recover-password underlineHover" href="#">Forgot Password?</a></span> <br/>
-        <button mat-raised-button type="submit" class="login fadeIn fourth" [disabled]="!f.form.valid">
+        <button mat-raised-button type="submit" class="login fadeIn third" [disabled]="!f.form.valid">
         Login
         </button>
       </form>
@@ -24,7 +24,7 @@
       
     </div>
     <div>
-      <button mat-raised-button color="warn" class="mt-4 warn fadeIn fourth" [disabled]="!f.form.valid">
+      <button mat-raised-button color="warn" class="mt-4 warn fadeIn third" [disabled]="!f.form.valid">
         Report Outage
       </button>
     </div>

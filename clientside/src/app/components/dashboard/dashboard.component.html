@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <p class="h6">GSS DISTRIBUTION</p>
+    <button class="mt-3" mat-button>HOME</button> <br/>
+    <button class="mt-3" mat-button>SEARCH</button><br/>
+    <button class="mt-3" mat-button>NOTIFICATIONS</button><br/>
+    <button class="mt-3" mat-button>SETTINGS</button><br/>
+    <button class="mt-3" mat-button>MAPS</button><br/>
+    <button class="mt-3" mat-button>DOCUMENTS</button><br/>
+    <button class="mt-3" mat-button>ADD ELEMENTS</button><br/>
+    <button class="mt-3" mat-button>ADD A CREW</button><br/>
+    <button class="mt-3" mat-button>ADD A CONSUMER</button><br/>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+
+</mat-drawer-container>
