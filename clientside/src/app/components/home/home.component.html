@@ -1,33 +1,32 @@
-<div class="backgroundImg">
-  <div class="wrapper fadeInDown">
-    <div id="formHeader">
-      <h2>GSS DISTRIBUTION</h2>
-    </div>
-    <div id="formContent">
-      <span class="authentication-login">Login</span>
-      <form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
-        <input type="text" id="email" class="fadeIn second" name="email" placeholder="Enter your Email" ngModel>
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Enter your password" ngModel>
-        <span><a class="recover-password underlineHover" href="#">Forgot Password?</a></span> <br/>
-        <button mat-raised-button type="submit" class="login fadeIn third" [disabled]="!f.form.valid">
-        Login
-        </button>
-      </form>
-      
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Create an Account</a>
-        <span class="continueWith">Continue with</span>
-        <a class="ml-2"><img class="socialImg" src="/assets/images/fb.png"></a>
-        <a class="ml-2"><img class="socialImg" src="/assets/images/tw.png"></a>
-        <a class="ml-2"><img class="socialImg" src="/assets/images/google.png"></a>
-      </div>
-      
-    </div>
-    <div>
-      <button mat-raised-button color="warn" class="mt-4 warn fadeIn third" [disabled]="!f.form.valid">
-        Report Outage
+<div class="wrapper fadeInDown">
+  <div id="formHeader">
+    <h2>GSS DISTRIBUTION</h2>
+  </div>
+  <div id="formContent">
+    <span class="authentication-login">Login</span>
+    <form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="Enter your Email" ngModel>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Enter your password" ngModel>
+      <span><a class="recover-password underlineHover" href="#">Forgot Password?</a></span> <br/>
+      <button mat-raised-button type="submit" class="login fadeIn third" [disabled]="!f.form.valid">
+      Login
       </button>
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Create an Account</a>
+      <span class="continueWith">Continue with</span>
+      <a class="ml-2"><img class="socialImg" src="/assets/images/fb.png"></a>
+      <a class="ml-2"><img class="socialImg" src="/assets/images/tw.png"></a>
+      <a class="ml-2"><img class="socialImg" src="/assets/images/google.png"></a>
     </div>
   </div>
-  
+  <div>
+    <button mat-raised-button color="warn" class="mt-4 warn fadeIn third" [disabled]="!f.form.valid">
+      Report Outage
+    </button>
+  </div>
 </div>
+    
+  
+
+
