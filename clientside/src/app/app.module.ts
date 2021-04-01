@@ -9,7 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {MatSidenavModule} from '@angular/material/sidenav'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatSidenavModule} from '@angular/material/sidenav'
     NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
