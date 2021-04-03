@@ -112,7 +112,7 @@ body {
   align-items: center;
 }
 
-.navbar__right > a {
+.navbar__right > a, button {
   margin-left: 20px;
   text-decoration: none;
   font-size: 15px;
