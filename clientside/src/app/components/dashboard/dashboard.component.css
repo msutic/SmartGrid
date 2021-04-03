@@ -2,10 +2,10 @@
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: rgb(230, 229, 229);
-  margin-top: 2%;
+  margin-top: 17%;
+  margin-bottom: 5%;
   height: 90vh;
   width: 80vw;
-  position: relative;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
