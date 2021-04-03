@@ -10,13 +10,16 @@
   }
 
   .sidenav{
-      border-radius: 0 25px 25px 0;
-      top: 15%;
-      bottom: 15%;
+      border-radius: 0 10px 10px 0;
+      width: 220px;
+      margin-top: 5%;
       text-align: left;
       vertical-align: middle;
-      background: black;
-      height:58%
+      background: rgba(46, 71, 126, 0.753);
+      height:90%;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.548);
+      border:rgba(0, 0, 0, 0.548);
   }
 
   .content {
@@ -36,14 +39,18 @@
   }
 
   .toggle-sidenav {
-      
       margin-top: 5%;
       background-color: transparent;
       border: none;
   }
 
   .nav-top {
-    background: linear-gradient(180deg, rgb(114, 113, 113) 5%, transparent 86%);
+      height: 7%;
+    background: rgba(46, 71, 126, 0.753);
+  }
+
+  .sidebar-footer {
+      margin-top: 170%;
   }
 
   /* BASIC */

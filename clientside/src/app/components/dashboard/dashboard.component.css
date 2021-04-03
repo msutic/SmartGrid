@@ -1,16 +1,30 @@
 #context{
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: rgb(230, 229, 229);
-  margin-top: 17%;
-  margin-bottom: 5%;
-  height: 90vh;
-  width: 80vw;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    margin-top: 20%;
+    height: 90%;
+    margin-bottom: 5%;
+    padding: 30px;
+    width: 1550px;
+    max-width: 1850px;
+    min-width: 1000px;
+    position: relative;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
 }
 
 mat-grid-tile {
     background: lightblue;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
   }
