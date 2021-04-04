@@ -12,12 +12,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
+import { IncidentsComponent } from './components/incidents/incidents.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    IncidentsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatSidenavModule,
     MatGridListModule,
     MatIconModule,
+    MatButtonToggleModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
