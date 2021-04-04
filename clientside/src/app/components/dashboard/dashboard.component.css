@@ -4,6 +4,11 @@
     gap: 100px;
     margin: 20px 0;
   }
+
+  .main__cards > a {
+    color: black;
+    text-decoration: none;
+  }
   
   .card {
     display: flex;

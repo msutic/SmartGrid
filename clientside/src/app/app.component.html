@@ -11,14 +11,12 @@
           <a class="text-lightblue" href="#">PROFILE</a>
         </div>
       </nav>
-
       <div id="sidebar">
         <div class="sidebar__title">
           <div class="sidebar__img text-yellow">
             GSS Distribution
           </div>
         </div>
-
         <div class="sidebar__menu">
           <div class="sidebar__link active_menu_link">
             <mat-icon class="mr-2" aria-hidden="false">home</mat-icon>
@@ -62,31 +60,9 @@
           </div>
         </div>
       </div>
-
       <main>
         <div class="main__container">
             <router-outlet></router-outlet>
         </div>
       </main>
-              
-        
 </div>
-<script>
-    var sidebarOpen = false;
-var sidebar = document.getElementById("sidebar");
-var sidebarCloseIcon = document.getElementById("sidebarIcon");
-
-function toggleSidebar() {
-  if (!sidebarOpen) {
-    sidebar.classList.add("sidebar_responsive");
-    sidebarOpen = true;
-  }
-}
-
-function closeSidebar() {
-  if (sidebarOpen) {
-    sidebar.classList.remove("sidebar_responsive");
-    sidebarOpen = false;
-  }
-}
-</script>
