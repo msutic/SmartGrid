@@ -16,6 +16,7 @@ import { IncidentsComponent } from './components/incidents/incidents.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatButtonToggleModule,
     MatTableModule,
     MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
