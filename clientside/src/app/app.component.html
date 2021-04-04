@@ -1,21 +1,92 @@
-<div class="backgroundImg">
-    <mat-drawer-container class="example-container" autosize>
-      <mat-drawer #drawer class="sidenav text-warning text-start" opened='true' mode="side">
-        <p class="h6">GSS DISTRIBUTION</p>
-        <button class="mt-5" mat-button routerLink='/dashboard'>DASHBOARD</button> <br/>
-        <button class="mt-3" mat-button>SEARCH</button><br/>
-        <button class="mt-3" mat-button>NOTIFICATIONS</button><br/>
-        <button class="mt-3" mat-button>SETTINGS</button><br/>
-        <button class="mt-3" mat-button>MAPS</button><br/>
-        <button class="mt-3" mat-button>DOCUMENTS</button><br/>
-        <button class="mt-3" mat-button>ADD ELEMENTS</button><br/>
-        <button class="mt-3" mat-button>ADD A CREW</button><br/>
-        <button class="mt-3" mat-button>ADD A CONSUMER</button><br/>
-        <button class="mt-3" mat-button>LOGOUT</button><br/>
-      </mat-drawer>
-      <div class="content fadeInDown">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-drawer-container>
-</div>
+<div class="container">
+      <nav class="navbar">
+        <div class="navbar__left">
+          <a href="/home">HOME</a>
+        </div>
+        <div class="navbar__right">
+            <button mat-raised-button color="warn" class="warn fadeIn third">
+                Report Outage
+              </button>
+          <a class="text-lightblue" href="#">CREATE ACCOUNT</a>
+          <a class="text-lightblue" href="#">PROFILE</a>
+        </div>
+      </nav>
 
+      <div id="sidebar">
+        <div class="sidebar__title">
+          <div class="sidebar__img text-yellow">
+            GSS Distribution
+          </div>
+        </div>
+
+        <div class="sidebar__menu">
+          <div class="sidebar__link active_menu_link">
+            <mat-icon class="mr-2" aria-hidden="false">home</mat-icon>
+            <a href="/dashboard">DASHBOARD</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">search</mat-icon>
+            <a class="text-green" href="#">SEARCH</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">article</mat-icon>
+            <a href="#">DOCUMENTS</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">location_on</mat-icon>
+            <a href="#">MAPS</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">add_business</mat-icon>
+            <a href="#">ADD ELEMENT</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">group_add</mat-icon>
+            <a href="#">ADD CREW</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
+            <a href="#">ADD CONSUMER</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
+            <a href="#">NOTIFICATIONS</a>
+          </div>
+          <div class="sidebar__link">
+            <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
+            <a href="#">SETTINGS</a>
+          </div>
+          <div class="sidebar__logout">
+            <mat-icon class="mr-2" aria-hidden="false">logout</mat-icon>
+            <a href="#">Log out</a>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="main__container">
+            <router-outlet></router-outlet>
+        </div>
+      </main>
+              
+        
+</div>
+<script>
+    var sidebarOpen = false;
+var sidebar = document.getElementById("sidebar");
+var sidebarCloseIcon = document.getElementById("sidebarIcon");
+
+function toggleSidebar() {
+  if (!sidebarOpen) {
+    sidebar.classList.add("sidebar_responsive");
+    sidebarOpen = true;
+  }
+}
+
+function closeSidebar() {
+  if (sidebarOpen) {
+    sidebar.classList.remove("sidebar_responsive");
+    sidebarOpen = false;
+  }
+}
+</script>

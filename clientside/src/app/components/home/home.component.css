@@ -39,10 +39,10 @@ h2 {
 }
 .authentication-login{
   display: block;
-  margin-top: 10%;
-  margin-bottom: 10px;
+  margin-top: 5%;
+  margin-bottom: 10%;
   font-weight: 500;
-  font-size: 18pt;
+  font-size: 25pt;
 }
 
 .recover-password{
@@ -61,8 +61,9 @@ h2 {
 }
 
 #formContent {
+  margin-top: 7%;
   -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   background: #fff;
   padding: 30px;
   width: 90%;
@@ -74,9 +75,7 @@ h2 {
   text-align: center;
 }
 
-.continueWith{
-  margin-left: 20%;
-}
+
 
 .socialImg {
   width: 35px;
@@ -98,7 +97,8 @@ h2 {
 .login{
   width: 120px;
   padding: 2px;
-  margin-bottom: 10%;
+  margin-top: 2%;
+  margin-bottom: 5%;
   font-size: larger;
   border-radius: 25px 25px 25px 25px;
 }
