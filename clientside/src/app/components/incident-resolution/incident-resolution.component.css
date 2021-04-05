@@ -5,6 +5,7 @@ div > label {
   }
 
 .nodes {
+    margin-bottom: 5%;
     margin-left: 7%;
     margin-top: 5%;
     align-items: center;

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
+import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
 import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
       {
         path: 'resolution',
         component: IncidentResolutionComponent
+      },
+      {
+        path: 'calls',
+        component: IncidentCallsComponent
       },
     ]
   }
