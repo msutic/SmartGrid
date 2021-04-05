@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -24,6 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     DashboardComponent,
     IncidentsComponent,
     NewIncidentComponent,
-    IncidentBasicInfoComponent
+    IncidentBasicInfoComponent,
+    IncidentDevicesComponent,
   ],
   imports: [
     BrowserModule,

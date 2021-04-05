@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
+import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
 
@@ -37,6 +38,10 @@ const routes: Routes = [
         path: 'basic-info',
         component: IncidentBasicInfoComponent
       },
+      {
+        path: 'devices',
+        component: IncidentDevicesComponent
+      }
     ]
   }
 ];

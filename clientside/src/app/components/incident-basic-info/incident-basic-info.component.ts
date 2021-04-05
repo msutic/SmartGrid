@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidentBasicInfoComponent implements OnInit {
 
+  value = 'WR 5';
+  valueDesc = '';
   constructor() { }
 
   ngOnInit(): void {
