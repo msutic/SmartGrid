@@ -1,15 +1,17 @@
 <div class="main_content">
-    <div class="tab">
-        <button [routerLink]="['/new-incident', { outlets: {'router-info':['basic-info'] }}]" mat-button class="tablinks mt-2">Basic Information</button>
-        <button mat-button class="tablinks">Devices</button>
-        <button mat-button class="tablinks">Resolution</button>
-        <button mat-button class="tablinks">Calls</button>
-        <button mat-button class="tablinks">Crew</button>
-        <button mat-button class="tablinks">Multimedia Attachments</button>
-        <button mat-button class="tablinks mb-2">Equipment</button>
-    </div>
-    <div class="tabcontent">
-        <router-outlet name="router-info"></router-outlet>
+    <div class="row row-cols-lg-auto g-3 grid">
+        <div class="tab">
+            <button routerLink="basic-info" mat-button class="tablinks mt-2">Basic Information</button>
+            <button mat-button class="tablinks">Devices</button>
+            <button mat-button class="tablinks">Resolution</button>
+            <button mat-button class="tablinks">Calls</button>
+            <button mat-button class="tablinks">Crew</button>
+            <button mat-button class="tablinks">Multimedia Attachments</button>
+            <button mat-button class="tablinks mb-2">Equipment</button>
+        </div>
+        <div class="tabcontent">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 

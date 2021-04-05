@@ -11,6 +11,7 @@ export interface IncidentData {
   address: string;
 }
 
+  const date1: Date = new Date(2020, 9, 9);
 const ELEMENT_DATA: IncidentData[] = [
   {id: 'WR 1', startDate: new Date(2018, 8, 13), phoneNum: '351-661-3252', status: 'Draft', address: 'Vladike Cirica 10'},
   {id: 'WR 2', startDate: new Date(2020, 9, 20), phoneNum: '351-677-8212', status: 'Draft', address: 'Suboticka 10'},

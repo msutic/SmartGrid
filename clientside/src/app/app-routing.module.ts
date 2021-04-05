@@ -29,9 +29,13 @@ const routes: Routes = [
     component: NewIncidentComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'basic-info',
+        pathMatch: 'full'
+      },
+      {
         path: 'basic-info',
-        component: IncidentBasicInfoComponent,
-        outlet: 'router-info'
+        component: IncidentBasicInfoComponent
       },
     ]
   }
