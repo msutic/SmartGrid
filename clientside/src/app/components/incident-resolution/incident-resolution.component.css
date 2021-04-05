@@ -1,0 +1,12 @@
+div > label {
+    width: 20%;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+.nodes {
+    margin-left: 7%;
+    margin-top: 5%;
+    align-items: center;
+    justify-content: space-between;
+}

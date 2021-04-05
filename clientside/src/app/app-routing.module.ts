@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
 import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
+import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
 
@@ -41,7 +42,11 @@ const routes: Routes = [
       {
         path: 'devices',
         component: IncidentDevicesComponent
-      }
+      },
+      {
+        path: 'resolution',
+        component: IncidentResolutionComponent
+      },
     ]
   }
 ];

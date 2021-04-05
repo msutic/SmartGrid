@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
+import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 
 
 
@@ -37,6 +38,7 @@ import { IncidentDevicesComponent } from './components/incident-devices/incident
     NewIncidentComponent,
     IncidentBasicInfoComponent,
     IncidentDevicesComponent,
+    IncidentResolutionComponent,
   ],
   imports: [
     BrowserModule,
