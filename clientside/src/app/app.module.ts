@@ -17,6 +17,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    IncidentsComponent
+    IncidentsComponent,
+    NewIncidentComponent,
+    IncidentBasicInfoComponent
   ],
   imports: [
     BrowserModule,
