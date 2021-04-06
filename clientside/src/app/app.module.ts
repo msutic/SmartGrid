@@ -28,7 +28,7 @@ import { IncidentDevicesComponent } from './components/incident-devices/incident
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
 import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
-
+import { IncidentCrewComponent } from './components/incident-crew/incident-crew.component';
 
 
 @NgModule({
@@ -43,6 +43,7 @@ import { IncidentNewCallComponent } from './components/incident-new-call/inciden
     IncidentResolutionComponent,
     IncidentCallsComponent,
     IncidentNewCallComponent,
+    IncidentCrewComponent,
   ],
   imports: [
     BrowserModule,
