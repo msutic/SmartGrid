@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
 import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
+import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path: 'calls',
         component: IncidentCallsComponent
+      },
+      {
+        path: 'new-call',
+        component: IncidentNewCallComponent
       },
     ]
   }
