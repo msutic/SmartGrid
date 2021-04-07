@@ -5,22 +5,22 @@
         </div>
         <div class="navbar__right">
             <button mat-raised-button color="warn" class="warn fadeIn third">
-                Report Outage
-              </button>
+                <mat-icon class="mr-2">phone</mat-icon>Report Outage
+            </button>
           <a class="text-lightblue" href="#">CREATE ACCOUNT</a>
           <a class="text-lightblue" href="#">PROFILE</a>
         </div>
       </nav>
       <div id="sidebar">
         <div class="sidebar__title">
-          <div class="sidebar__img text-yellow">
-            GSS Distribution
+          <div class="sidebar__img">
+            <a href="/home" class="text-yellow">GSS Distribution</a>
           </div>
         </div>
         <div class="sidebar__menu">
           <div class="sidebar__link active_menu_link">
             <mat-icon class="mr-2" aria-hidden="false">home</mat-icon>
-            <a href="/dashboard">DASHBOARD</a>
+            <a routerLink="/dashboard">DASHBOARD</a>
           </div>
           <div class="sidebar__link">
             <mat-icon class="mr-2" aria-hidden="false">search</mat-icon>
@@ -36,7 +36,7 @@
           </div>
           <div class="sidebar__link">
             <mat-icon class="mr-2" aria-hidden="false">add_business</mat-icon>
-            <a href="#">ADD ELEMENT</a>
+            <a href="#">ADD DEVICE</a>
           </div>
           <div class="sidebar__link">
             <mat-icon class="mr-2" aria-hidden="false">group_add</mat-icon>
