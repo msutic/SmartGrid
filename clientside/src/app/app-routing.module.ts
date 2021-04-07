@@ -14,6 +14,7 @@ import { NewIncidentComponent } from './components/new-incident/new-incident.com
 import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
 import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
 import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
       {
         path: 'basicinfo',
         component: SafetydocBasicinfoComponent,
+      },
+      {
+        path: 'checklist',
+        component: SafetydocChecklistComponent,
       },
     ]
   },

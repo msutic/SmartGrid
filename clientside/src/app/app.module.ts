@@ -35,6 +35,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
 import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
 import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/sa
     SafetyDocsComponent,
     NewSafetydocComponent,
     SafetydocBasicinfoComponent,
+    SafetydocChecklistComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/sa
     MatNativeDateModule,
     NgbModalModule,
     MatRadioModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
