@@ -29,6 +29,9 @@ import { IncidentResolutionComponent } from './components/incident-resolution/in
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
 import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
 import { IncidentCrewComponent } from './components/incident-crew/incident-crew.component';
+import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -44,6 +47,7 @@ import { IncidentCrewComponent } from './components/incident-crew/incident-crew.
     IncidentCallsComponent,
     IncidentNewCallComponent,
     IncidentCrewComponent,
+    IncidentMultimediaComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,8 @@ import { IncidentCrewComponent } from './components/incident-crew/incident-crew.
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgbModalModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

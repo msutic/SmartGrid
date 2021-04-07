@@ -6,6 +6,7 @@ import { IncidentBasicInfoComponent } from './components/incident-basic-info/inc
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
 import { IncidentCrewComponent } from './components/incident-crew/incident-crew.component';
 import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
+import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
 import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: 'crew',
         component: IncidentCrewComponent
+      },
+      {
+        path: 'multimedia-attachments',
+        component: IncidentMultimediaComponent
       },
     ]
   }
