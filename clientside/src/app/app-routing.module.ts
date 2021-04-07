@@ -11,6 +11,9 @@ import { IncidentNewCallComponent } from './components/incident-new-call/inciden
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
+import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
+import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
 
 const routes: Routes = [
   {
@@ -68,7 +71,26 @@ const routes: Routes = [
         component: IncidentMultimediaComponent
       },
     ]
-  }
+  },
+  {
+    path: 'safety-docs',
+    component: SafetyDocsComponent
+  },
+  {
+    path: 'new-safetydoc',
+    component: NewSafetydocComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'basicinfo',
+        pathMatch: 'full',
+      },
+      {
+        path: 'basicinfo',
+        component: SafetydocBasicinfoComponent,
+      },
+    ]
+  },
 ];
 
 @NgModule({

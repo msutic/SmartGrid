@@ -32,6 +32,9 @@ import { IncidentCrewComponent } from './components/incident-crew/incident-crew.
 import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
+import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
+import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
+import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import {MatRadioModule} from '@angular/material/radio';
     IncidentNewCallComponent,
     IncidentCrewComponent,
     IncidentMultimediaComponent,
+    SafetyDocsComponent,
+    NewSafetydocComponent,
+    SafetydocBasicinfoComponent,
   ],
   imports: [
     BrowserModule,
