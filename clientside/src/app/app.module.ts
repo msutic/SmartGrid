@@ -37,6 +37,8 @@ import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.
 import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
 import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DevicesComponent } from './components/devices/devices.component';
+import { NewDeviceComponent } from './components/new-device/new-device.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     NewSafetydocComponent,
     SafetydocBasicinfoComponent,
     SafetydocChecklistComponent,
+    DevicesComponent,
+    NewDeviceComponent,
   ],
   imports: [
     BrowserModule,

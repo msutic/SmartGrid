@@ -75,7 +75,7 @@ body {
 }
 
 .navbar {
-  background: #dbdbdb;
+  background: #ffffff;
   grid-area: nav;
   width: 83vw;
   height: 60px;
@@ -101,9 +101,9 @@ body {
 .navbar__left > a {
   margin-right: 30px;
   text-decoration: none;
-  color: #a5aaad;
-  font-size: 15px;
-  font-weight: 700;
+  color: #5c5c5c;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .navbar__left .active_link {
@@ -121,8 +121,8 @@ body {
 .navbar__right > a, button {
   margin-left: 20px;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .navbar__right > a > i {

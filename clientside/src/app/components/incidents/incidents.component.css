@@ -12,15 +12,19 @@
 
   .main_content {
     overflow: auto;
+    border-radius: 20px;
+    border: 1px solid grey;
   }
 
   table {
     width: 100%;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    border: none;
   }
 
   th {
       font-size: 16pt;
+      font-weight: 600;
   }
   
   th.mat-sort-header-sorted {
