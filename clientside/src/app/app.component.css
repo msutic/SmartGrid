@@ -60,7 +60,9 @@ body {
   color: #3b9668;
 }
 
+
 .container {
+  
   display: grid;
   height: 100vh;
   grid-template-columns: 0.8fr 1fr 1fr 1fr;
@@ -69,18 +71,22 @@ body {
     "sidebar nav nav nav"
     "sidebar main main main";
   /* grid-gap: 0.2rem; */
+  
 }
 
 .navbar {
-  background: #ffffff;
+  background: #dbdbdb;
   grid-area: nav;
-  width: 87vw;
+  width: 83vw;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px 0 30px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid gray;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 25px 25px 25px 25px;
 }
 
 .nav_icon {
@@ -130,8 +136,9 @@ body {
 
 main {
   border: none;
-  width: 87vw;
-  background: url(/assets/images/bg.png);
+  width: 84vw;
+  
+  
   grid-area: main;
   overflow-y: auto;
 }
@@ -140,12 +147,11 @@ main {
   padding: 20px 35px;
 }
 
-
 #sidebar {
-  background: #505050;
+  background: #0d270f;
   grid-area: sidebar;
   overflow-y: auto;
-  padding: 20px;
+  width: 300px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -162,6 +168,7 @@ main {
 .sidebar__img {
   display: flex;
   align-items: center;
+  margin: 0 auto;
   font-weight: 700;
   font-size: 27px;
 }
@@ -190,17 +197,28 @@ main {
   font-weight: 700;
 }
 
+.sidebar-button {
+  border-radius: 40px;
+  padding: 10px;
+  width: 260px;
+  text-align: left;
+  font-size: 12pt;
+  font-weight: 400;
+}
+
 .sidebar__img > a {
   text-decoration: none;
 }
 
 .sidebar__link {
   color: #f3f4f6;
-  padding: 10px;
   border-radius: 3px;
   margin-bottom: 5px;
 }
 
+.sidebar__link button:hover {
+  background-color: #2b6e50;
+}
 .active_menu_link {
   background: rgba(62, 161, 117, 0.3);
   color: #3ea175;
@@ -212,7 +230,7 @@ main {
 
 .sidebar__link > a {
   text-decoration: none;
-  color: #a5aaad;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -256,6 +274,14 @@ main {
       "main";
   }
 
+  .navbar {
+    width: 100vw;
+  }
+
+  main {
+    width: 100vw;
+  }
+
   #sidebar {
     display: none;
   }
@@ -287,3 +313,4 @@ main {
     display: none;
   }
 }
+
