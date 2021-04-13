@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: "incidents",
     component: IncidentsComponent
+  },
+  {
+    path: "profile",
+    component: EditProfileComponent
   },
   {
     path: 'new-incident',

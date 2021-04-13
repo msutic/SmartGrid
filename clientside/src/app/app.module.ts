@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { EditProfileComponent} from './components/edit-profile/edit-profile.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,6 +35,7 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import {MatRadioModule} from '@angular/material/radio';
     IncidentNewCallComponent,
     IncidentCrewComponent,
     IncidentMultimediaComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
