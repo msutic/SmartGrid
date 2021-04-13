@@ -107,7 +107,10 @@ html {
     text-align: center;
   }
   
-  
+  .par{
+    margin-left:25.5%; 
+    font-size: 24px; 
+  }
   
   .socialImg {
     width: 35px;

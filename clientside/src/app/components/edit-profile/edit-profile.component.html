@@ -1,10 +1,11 @@
-<p>MY PROFILE</p>
 
+<p class=par>PERSONAL INFORMATION</p>
 <div class="container">
 
 
     <form>
         <table>
+        
             <tr>
                 <td align="right">Username:</td>
                 <td align="left"><input type="text" name="username" [(ngModel)]="UserName" [readonly]="!isDivVisible" [style.background]="color" /></td>
@@ -34,7 +35,7 @@
           </tr>
           <br/>
           <tr>
-            <td align="right">Date Of Birth</td>
+            <td align="right">Date Of Birth:</td>
             <td align="left"><input type="date"  name="date" id="date" [readonly]="!isDivVisible" [style.background]="color"/></td>
             
            </tr>
