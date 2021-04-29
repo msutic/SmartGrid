@@ -59,24 +59,51 @@
       </div>
     </div>
   </a>
-  <br/>
-  <div class="card" id="chart">
-    <apx-chart
-      [series]="chartOptions.series"
-      [chart]="chartOptions.chart"
-      [xaxis]="chartOptions.xaxis"
-      [stroke]="chartOptions.stroke"
-      [tooltip]="chartOptions.tooltip"
-      [dataLabels]="chartOptions.dataLabels"
-    ></apx-chart>
-  </div>
-
-  <div class="card" id="chart">
-    <apx-chart
-      [series]="piechartOptions.series"
-      [chart]="piechartOptions.chart"
-      [labels]="piechartOptions.labels"
-      [responsive]="piechartOptions.responsive"
-    ></apx-chart>
-  </div>
 </div>
+
+<div class="main__cards">
+  <a routerLink="/incidents">
+    <div class="chart_line" id="chart1">
+      <div class="card_inner">
+        <span class="font-bold text-title">INCIDENTS</span>
+        <div>
+            <mat-icon aria-hidden="false">warning</mat-icon>
+            <small class="ml-1"><b>5</b></small>
+        </div>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div id="chart1">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [dataLabels]="chartOptions.dataLabels"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
+  <a routerLink="/documents">
+    <div class="card h-auto" id="chart2">
+      <div class="card_inner">
+        <span class="font-bold text-title">DOCUMENTS</span>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div id="chart2">
+          <apx-chart
+            [series]="piechartOptions.series"
+            [chart]="piechartOptions.chart"
+            [labels]="piechartOptions.labels"
+            [responsive]="piechartOptions.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+  
+

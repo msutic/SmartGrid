@@ -38,9 +38,24 @@
     margin-left: 25px;
   }
 
-  #chart {
-    max-width: 650px;
+  #chart1 {
     margin: 35px auto;
-    height: auto;
+    width: 890px;
   }
+
+  .chart_line {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    padding: 25px;
+    border-radius: 5px;
+    background: whitesmoke;
+    box-shadow: 2px 2px 5px #666565;
+  }
+
+  #chart2 {
+    margin: 35px auto;
+    width: 420px;
+  }
+
   

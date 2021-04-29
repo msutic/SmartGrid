@@ -49,12 +49,12 @@ export class DashboardComponent {
   constructor() {
     //piechart
     this.piechartOptions = {
-      series: [44, 55, 13, 43, 22],
+      series: [44, 55, 13],
       chart: {
         width: 380,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      labels: ["WP", "WR", "SD"],
       responsive: [
         {
           breakpoint: 480,
@@ -74,11 +74,11 @@ export class DashboardComponent {
     this.chartOptions = {
       series: [
         {
-          name: "series1",
+          name: "Planned incident",
           data: [31, 40, 28, 51, 42, 109, 100]
         },
         {
-          name: "series2",
+          name: "Unplanned incident",
           data: [11, 32, 45, 32, 34, 52, 41]
         }
       ],
