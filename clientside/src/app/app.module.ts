@@ -33,7 +33,8 @@ import { IncidentCrewComponent } from './components/incident-crew/incident-crew.
 import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { WorkplanTableComponent } from './components/workplan-table/workplan-table.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {MatRadioModule} from '@angular/material/radio';
     IncidentCrewComponent,
     IncidentMultimediaComponent,
     EditProfileComponent,
+    WorkplanTableComponent,
   ],
   imports: [
     BrowserModule,
