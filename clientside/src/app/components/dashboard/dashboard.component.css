@@ -1,7 +1,7 @@
 .main__cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 100px;
+    gap: 50px;
     margin: 20px 0;
   }
 
@@ -38,4 +38,9 @@
     margin-left: 25px;
   }
 
+  #chart {
+    max-width: 650px;
+    margin: 35px auto;
+    height: auto;
+  }
   

@@ -1,6 +1,6 @@
 <div class="main__cards">
   <a routerLink="/incidents">
-    <div class="card ml-5">
+    <div class="card">
       <div class="card_inner">
         <span class="font-bold text-title">MY INCIDENTS</span>
         <div>
@@ -59,4 +59,24 @@
       </div>
     </div>
   </a>
+  <br/>
+  <div class="card" id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [tooltip]="chartOptions.tooltip"
+      [dataLabels]="chartOptions.dataLabels"
+    ></apx-chart>
+  </div>
+
+  <div class="card" id="chart">
+    <apx-chart
+      [series]="piechartOptions.series"
+      [chart]="piechartOptions.chart"
+      [labels]="piechartOptions.labels"
+      [responsive]="piechartOptions.responsive"
+    ></apx-chart>
+  </div>
 </div>

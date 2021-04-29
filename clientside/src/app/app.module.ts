@@ -39,6 +39,7 @@ import { SafetydocChecklistComponent } from './components/safetydoc-checklist/sa
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NewDeviceComponent } from './components/new-device/new-device.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { NewDeviceComponent } from './components/new-device/new-device.component
     NgbModalModule,
     MatRadioModule,
     MatSlideToggleModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
