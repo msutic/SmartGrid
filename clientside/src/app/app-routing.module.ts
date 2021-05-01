@@ -12,6 +12,7 @@ import { IncidentNewCallComponent } from './components/incident-new-call/inciden
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
 const routes: Routes = [
@@ -42,7 +43,18 @@ const routes: Routes = [
   },
   {
     path: 'new-workplan',
-    component:NewWorkplanComponent
+    component:NewWorkplanComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'new-workplan-basicinfo',
+        pathMatch: 'full'
+      },
+      {
+        path:'new-workplan-basicinfo',
+        component: NewWorkplanBasicinfoComponent
+      }
+    ]
   },
   {
     path: 'new-incident',

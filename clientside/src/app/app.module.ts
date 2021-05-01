@@ -37,7 +37,7 @@ import { WorkplanTableComponent } from './components/workplan-table/workplan-tab
 import { RouterModule } from '@angular/router';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -80,6 +80,7 @@ import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicin
     MatNativeDateModule,
     NgbModalModule,
     MatRadioModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
