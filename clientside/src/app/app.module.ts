@@ -36,6 +36,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { WorkplanTableComponent } from './components/workplan-table/workplan-table.component';
 import { RouterModule } from '@angular/router';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
+import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { NewWorkplanComponent } from './components/new-workplan/new-workplan.com
     EditProfileComponent,
     WorkplanTableComponent,
     NewWorkplanComponent,
+    NewWorkplanBasicinfoComponent,
   ],
   imports: [
     BrowserModule,
