@@ -12,6 +12,7 @@ import { IncidentNewCallComponent } from './components/incident-new-call/inciden
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: "workplans",
     component:WorkplanTableComponent
+  },
+  {
+    path: 'new-workplan',
+    component:NewWorkplanComponent
   },
   {
     path: 'new-incident',

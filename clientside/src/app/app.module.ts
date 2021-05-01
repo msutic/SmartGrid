@@ -35,6 +35,7 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
 import { WorkplanTableComponent } from './components/workplan-table/workplan-table.component';
 import { RouterModule } from '@angular/router';
+import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { RouterModule } from '@angular/router';
     IncidentMultimediaComponent,
     EditProfileComponent,
     WorkplanTableComponent,
+    NewWorkplanComponent,
   ],
   imports: [
     BrowserModule,
