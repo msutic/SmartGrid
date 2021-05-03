@@ -15,7 +15,6 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   value = 'WR 5';
   valueDesc = '';
   valueStreet='';
-  selected_status='Draft';
   selected_nalog='';
   selected_incident='';
   selected_crew='';
@@ -28,6 +27,9 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   company='';
   option='';
   phone='';
+  possible_status=["Draft","Approved", "Denyed"];
+  selected_status=this.possible_status[0];
+
   created_on = new Date(Date.now());
   
   

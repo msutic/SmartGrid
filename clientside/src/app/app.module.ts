@@ -38,6 +38,7 @@ import { RouterModule } from '@angular/router';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     WorkplanTableComponent,
     NewWorkplanComponent,
     NewWorkplanBasicinfoComponent,
+    NewWorkplanStatesComponent,
     
   ],
   imports: [

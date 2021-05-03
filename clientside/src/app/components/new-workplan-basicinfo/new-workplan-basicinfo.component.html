@@ -41,9 +41,7 @@
             <label>Status:</label>
             <mat-form-field appearance="legacy">
                 <mat-select [(value)]="selected_status" placeholder="" >
-                    <mat-option value="Draft">Draft</mat-option>
-                    <mat-option value="Status_option_2">Status option 2</mat-option>
-                    <mat-option value="Status_option_3">Status option 3</mat-option>
+                    <mat-option *ngFor="let p of possible_status" [value]="p">{{p}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
