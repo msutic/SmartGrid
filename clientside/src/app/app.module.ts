@@ -57,6 +57,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     WorkplanTableComponent,
     NewWorkplanComponent,
     NewWorkplanBasicinfoComponent,
+    
   ],
   imports: [
     BrowserModule,

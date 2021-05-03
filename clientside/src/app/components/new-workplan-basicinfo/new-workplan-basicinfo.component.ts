@@ -2,15 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import { getLocaleDateTimeFormat } from '@angular/common';
+import {DatePipe} from '@angular/common';
 @Component({
   selector: 'app-new-workplan-basicinfo',
   templateUrl: './new-workplan-basicinfo.component.html',
-  styleUrls: ['./new-workplan-basicinfo.component.css']
+  styleUrls: ['./new-workplan-basicinfo.component.css'],
+  providers:[DatePipe]
 })
 export class NewWorkplanBasicinfoComponent implements OnInit {
   myControl = new FormControl();
   value = 'WR 5';
   valueDesc = '';
+  valueStreet='';
   selected_status='Draft';
   selected_nalog='';
   selected_incident='';
@@ -21,8 +25,15 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   options: string[] = ['Equipment Malfunction', 'Equipment Upgrade', 'Equipment Replace'];
   filteredOptions: Observable<string[]>;
   created_by="Current user";
+  company='';
+  option='';
+  phone='';
+  created_on = new Date(Date.now());
   
-  constructor() { }
+  
+  
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges

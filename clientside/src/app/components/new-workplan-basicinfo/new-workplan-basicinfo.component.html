@@ -50,8 +50,8 @@
         <div class="mt-3">
             <label>Street:</label>
             <mat-form-field appearance="legacy">
-                <textarea matInput type="text" [(ngModel)]="valueDesc"></textarea>
-                <button mat-button *ngIf="valueDesc" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
+                <textarea matInput type="text" [(ngModel)]="valueStreet" placeholder="Select street"></textarea>
+                <button mat-button *ngIf="valueStreet" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
@@ -99,15 +99,54 @@
                          aria-label="Reason for work"
                          matInput
                          [formControl]="myControl"
-                         [matAutocomplete]="auto">
+                         [matAutocomplete]="auto"
+                         [(ngModel)]="option">
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option}}
                     </mat-option>
                   </mat-autocomplete>
+                  <button mat-button *ngIf="option" matSuffix mat-icon-button aria-label="Clear" (click)="option=''">
+                    <mat-icon>close</mat-icon>
+                </button>
                 </mat-form-field>
+                
+                
               
         </div>
+        <div class="mt-3">
+            <label>Notes:</label>
+            <mat-form-field appearance="legacy" >
+                <textarea matInput type="text" [(ngModel)]="valueDesc" placeholder="Additional Notes"></textarea>
+                <button mat-button *ngIf="valueDesc" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Company:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" [(ngModel)]="company" placeholder="Select Company">
+                <button mat-button *ngIf="company" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <label>Phone Number:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" [(ngModel)]="phone" placeholder="Enter Phone Number">
+                <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Create On:</label>
+            <label> {{created_on | date:'HH:mm dd.MM.yyyy' }}</label>
+        </div>
+        
     </div>
 </div>
 
