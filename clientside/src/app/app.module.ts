@@ -42,6 +42,7 @@ import { NewWorkplanStatesComponent } from './components/new-workplan-states/new
 import { HttpClientModule } from '@angular/common/http';
 import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
+import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { WorkplanEquipmentComponent } from './components/workplan-equipment/work
     NewWorkplanStatesComponent,
     NewWorkplanMultimediaComponent,
     WorkplanEquipmentComponent,
+    WorkplanInstructionsComponent,
     
   ],
   imports: [

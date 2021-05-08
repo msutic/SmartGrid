@@ -17,6 +17,7 @@ import { NewWorkplanMultimediaComponent } from './components/new-workplan-multim
 import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
+import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
 import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
       {
         path:'workplan-devices',
         component: WorkplanEquipmentComponent
+      },
+      {
+        path:'new-workplan-instructions',
+        component: WorkplanInstructionsComponent
       }
     ]
   },
