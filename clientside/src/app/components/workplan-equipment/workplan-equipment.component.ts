@@ -23,9 +23,9 @@ const ELEMENT_DATA: EquipmentData[] = [
 })
 export class WorkplanEquipmentComponent implements AfterViewInit {
   existing_equipment=ELEMENT_DATA;
-  selected_equipment='';
+  selected_equipment=ELEMENT_DATA[0];
   constructor() { }
-  displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates'];
+  displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates', 'button'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -35,6 +35,16 @@ export class WorkplanEquipmentComponent implements AfterViewInit {
 
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  clickMethod(equipment: EquipmentData) {
+    if(confirm("Are you sure to "+equipment.name+" this document")) {
+      console.log("Document state changed");
+    }
+  }
+  remove(equipment: EquipmentData) {
+    if(confirm("Are you sure to "+equipment.id+" this document")) {
+      console.log("Document state changed");
+    }
   }
 
 }
