@@ -15,6 +15,7 @@ const ELEMENT_DATA: EquipmentData[] = [
   {id: 'EQ 3', type: "Transformator",   address: 'Mileve Marića 14',name:"Transformator1", coordinates:[10,40]},
   {id: 'EQ 4', type: "Diskonektor",  address: 'Masarikova 2',name:"Diskonektor1", coordinates:[10,50]},
 ];
+ 
 
 @Component({
   selector: 'app-workplan-equipment',
@@ -24,6 +25,7 @@ const ELEMENT_DATA: EquipmentData[] = [
 export class WorkplanEquipmentComponent implements AfterViewInit {
   existing_equipment=ELEMENT_DATA;
   selected_equipment=ELEMENT_DATA[0];
+  binded_equipment:EquipmentData[];
   constructor() { }
   displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates', 'button'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -32,14 +34,11 @@ export class WorkplanEquipmentComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit(): void {
-
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
   clickMethod(equipment: EquipmentData) {
-    if(confirm("Are you sure to "+equipment.name+" this document")) {
-      console.log("Document state changed");
-    }
+    this.binded_equipment.push(equipment);
   }
   remove(equipment: EquipmentData) {
     if(confirm("Are you sure to "+equipment.id+" this document")) {
