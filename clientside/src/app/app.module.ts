@@ -41,6 +41,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
+import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { NewWorkplanMultimediaComponent } from './components/new-workplan-multim
     NewWorkplanBasicinfoComponent,
     NewWorkplanStatesComponent,
     NewWorkplanMultimediaComponent,
+    WorkplanEquipmentComponent,
     
   ],
   imports: [
