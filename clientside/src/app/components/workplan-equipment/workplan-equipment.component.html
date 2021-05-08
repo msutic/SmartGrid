@@ -1,7 +1,12 @@
 <div class="mt-3">
     <div class="toolbar ml-5">
         <div class="toolbar_left">
-            
+            <label>Add Equipment:</label>
+            <mat-form-field appearance="legacy" style="margin: 10px;">
+                <mat-select [(value)]="selected_equipment" placeholder="Select Equipment"  >
+                    <mat-option *ngFor="let p of existing_equipment" [value]="p">{{p.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
     </div>
 

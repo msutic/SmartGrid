@@ -22,7 +22,8 @@ const ELEMENT_DATA: EquipmentData[] = [
   styleUrls: ['./workplan-equipment.component.css']
 })
 export class WorkplanEquipmentComponent implements AfterViewInit {
-
+  existing_equipment=ELEMENT_DATA;
+  selected_equipment='';
   constructor() { }
   displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
