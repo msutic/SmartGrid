@@ -1,12 +1,12 @@
 <div class="main_content">
     <div class="row row-cols-lg-auto g-3 grid">
         <div class="tab">
-            <button routerLink="basic-info" mat-button class="tablinks mt-2">Basic Information</button>
-            <button routerLink="devices" mat-button class="tablinks">Devices</button>
-            <button routerLink='resolution' mat-button class="tablinks">Resolution</button>
-            <button routerLink='calls' mat-button class="tablinks">Calls</button>
-            <button routerLink='crew' mat-button class="tablinks">Crew</button>
-            <button routerLink='multimedia-attachments' mat-button class="tablinks mb-2">Multimedia Attachments</button>
+            <button routerLink="basic-info" routerLinkActive="selected" mat-button class="mt-2">Basic Information</button>
+            <button routerLink="devices" routerLinkActive="selected" mat-button class="tablinks">Devices</button>
+            <button routerLink='resolution' routerLinkActive="selected" mat-button class="tablinks">Resolution</button>
+            <button routerLink='calls' routerLinkActive="selected" mat-button class="tablinks">Calls</button>
+            <button routerLink='crew' routerLinkActive="selected" mat-button class="tablinks">Crew</button>
+            <button routerLink='multimedia-attachments' routerLinkActive="selected" mat-button class="tablinks mb-2">Multimedia Attachments</button>
         </div>
         <div class="tabcontent">
             <router-outlet></router-outlet>

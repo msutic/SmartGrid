@@ -1,0 +1,21 @@
+<div class="main_content">
+    <div class="row row-cols-lg-auto g-3 grid">
+        <div class="tab">
+            <button routerLink="basicinfo" mat-button class="tablinks mt-2">Basic Information</button>
+            <button routerLink="devices" mat-button class="tablinks">History of State Changes</button>
+            <button routerLink='resolution' mat-button class="tablinks">Multimedia Attachments</button>
+            <button routerLink='checklist' mat-button class="tablinks mb-2">Checklist</button>
+        </div>
+        <div class="tabcontent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="footer">
+        <button routerLink="/incidents" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+        <button class="ml-2" mat-icon-button>
+            <mat-icon>save</mat-icon>
+        </button>
+    </div>
+</div>

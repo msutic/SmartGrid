@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DevicesComponent } from './components/devices/devices.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
 import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
@@ -10,7 +11,12 @@ import { IncidentMultimediaComponent } from './components/incident-multimedia/in
 import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
 import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
+import { NewDeviceComponent } from './components/new-device/new-device.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
+import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
+import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
 
 const routes: Routes = [
   {
@@ -28,47 +34,93 @@ const routes: Routes = [
   },
   {
     path: "incidents",
-    component: IncidentsComponent
-  },
-  {
-    path: 'new-incident',
-    component: NewIncidentComponent,
     children: [
       {
         path: '',
-        redirectTo: 'basic-info',
-        pathMatch: 'full'
+        component: IncidentsComponent
       },
       {
-        path: 'basic-info',
-        component: IncidentBasicInfoComponent
+        path: 'new',
+        component: NewIncidentComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'basic-info',
+            pathMatch: 'full'
+          },
+          {
+            path: 'basic-info',
+            component: IncidentBasicInfoComponent
+          },
+          {
+            path: 'devices',
+            component: IncidentDevicesComponent
+          },
+          {
+            path: 'resolution',
+            component: IncidentResolutionComponent
+          },
+          {
+            path: 'calls',
+            component: IncidentCallsComponent
+          },
+          {
+            path: 'new-call',
+            component: IncidentNewCallComponent
+          },
+          {
+            path: 'crew',
+            component: IncidentCrewComponent
+          },
+          {
+            path: 'multimedia-attachments',
+            component: IncidentMultimediaComponent
+          },
+        ]
+      }
+    ]
+  },
+  {
+    path: 'safety-docs',
+    children: [
+      {
+        path: '',
+        component: SafetyDocsComponent,
       },
       {
-        path: 'devices',
-        component: IncidentDevicesComponent
+        path: 'new',
+        component: NewSafetydocComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'basicinfo',
+            pathMatch: 'full',
+          },
+          {
+            path: 'basicinfo',
+            component: SafetydocBasicinfoComponent,
+          },
+          {
+            path: 'checklist',
+            component: SafetydocChecklistComponent,
+          },
+        ]
+      }
+    ]
+  },
+  {
+    path: 'devices',
+    children: [
+      {
+        path: '',
+        component: DevicesComponent
       },
       {
-        path: 'resolution',
-        component: IncidentResolutionComponent
-      },
-      {
-        path: 'calls',
-        component: IncidentCallsComponent
-      },
-      {
-        path: 'new-call',
-        component: IncidentNewCallComponent
-      },
-      {
-        path: 'crew',
-        component: IncidentCrewComponent
-      },
-      {
-        path: 'multimedia-attachments',
-        component: IncidentMultimediaComponent
+        path: 'new',
+        component: NewDeviceComponent
       },
     ]
-  }
+  },
 ];
 
 @NgModule({

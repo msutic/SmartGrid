@@ -1,4 +1,4 @@
-  .toolbar {
+.toolbar {
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -13,18 +13,17 @@
   .main_content {
     overflow: auto;
     border-radius: 20px;
-    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
+    border: 1px solid grey;
   }
 
   table {
     width: 100%;
-    background-color: rgb(255, 255, 255);
-    border: none;
+    background-color: white;
   }
 
   th {
-      font-size: 16pt;
-      font-weight: 600;
+    font-size: 16pt;
+    font-weight: 600;
   }
   
   th.mat-sort-header-sorted {

@@ -1,0 +1,28 @@
+div > label {
+    width: 30%;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+.nodes {
+    margin: 0 auto;
+    margin-left: 10%;
+    margin-right: 2px;
+}
+
+.content {
+  border-radius: 15px;
+  background-color: #f1f1f1c0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: max-content;
+  min-width: 607px;
+  height: inherit;
+  margin: 0 auto;
+  margin-top: 5%;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
+}
+
+.action-buttons {
+    margin-top: 50px;
+}

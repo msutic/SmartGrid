@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container bg">
       <nav class="navbar">
         <div class="navbar__left">
-          <a href="/home">HOME</a>
+          <a routerLink="/home" routerLinkActive="a">HOME</a>
         </div>
         <div class="navbar__right">
             <button mat-raised-button color="warn" class="warn fadeIn third">
@@ -14,49 +14,68 @@
       <div id="sidebar">
         <div class="sidebar__title">
           <div class="sidebar__img">
-            <a href="/home" class="text-yellow">GSS Distribution</a>
+            <a href="/home" class="text-yellow"><img src="/assets/images/logo2.png"></a>
           </div>
         </div>
         <div class="sidebar__menu">
-          <div class="sidebar__link active_menu_link">
-            <mat-icon class="mr-2" aria-hidden="false">home</mat-icon>
-            <a routerLink="/dashboard">DASHBOARD</a>
+          <div class="sidebar__link">
+            <button class="sidebar-button" title="Dashboard" mat-button routerLink="/dashboard" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">home</mat-icon>
+              <span class="minimized">DASHBOARD</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">search</mat-icon>
-            <a class="text-green" href="#">SEARCH</a>
+            <button class="sidebar-button" title="Search" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">search</mat-icon>
+              <span class="minimized">SEARCH</span> 
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">article</mat-icon>
-            <a href="#">DOCUMENTS</a>
+            <button class="sidebar-button" title="Documents" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">article</mat-icon>
+              <span class="minimized">DOCUMENTS</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">location_on</mat-icon>
-            <a href="#">MAPS</a>
+            <button class="sidebar-button" title="Maps" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">location_on</mat-icon>
+              <span class="minimized">MAPS</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">add_business</mat-icon>
-            <a href="#">ADD DEVICE</a>
+            <button class="sidebar-button" title="Devices" mat-button routerLink="/devices" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">add_business</mat-icon>
+              <span class="minimized">DEVICES</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">group_add</mat-icon>
-            <a href="#">ADD CREW</a>
+            <button class="sidebar-button" title="Add Crew" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">group_add</mat-icon>
+              <span class="minimized">ADD CREW</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
-            <a href="#">ADD CONSUMER</a>
+            <button class="sidebar-button" title="Add Consumer" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
+              <span class="minimized">ADD CONSUMER</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
-            <a href="#">NOTIFICATIONS</a>
+            <button class="sidebar-button" title="Notifications" mat-button routerLink="#" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
+              <span class="minimized">NOTIFICATIONS</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
-            <a href="#">SETTINGS</a>
+            <button class="sidebar-button" title="Settings" mat-button routerLink="/incidents" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
+              <span class="minimized">SETTINGS</span>
+            </button>
           </div>
-          <div class="sidebar__logout">
-            <mat-icon class="mr-2" aria-hidden="false">logout</mat-icon>
-            <a href="#">Log out</a>
+          <div class="sidebar__link mt-5">
+            <button class="sidebar-button" title="Logout" color="warn" mat-button href="#">
+              <mat-icon class="mr-2" aria-hidden="false">logout</mat-icon>
+              <span class="minimized">LOGOUT</span></button>
           </div>
         </div>
       </div>

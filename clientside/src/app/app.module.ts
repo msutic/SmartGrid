@@ -32,6 +32,14 @@ import { IncidentCrewComponent } from './components/incident-crew/incident-crew.
 import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
+import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
+import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
+import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DevicesComponent } from './components/devices/devices.component';
+import { NewDeviceComponent } from './components/new-device/new-device.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -48,6 +56,12 @@ import {MatRadioModule} from '@angular/material/radio';
     IncidentNewCallComponent,
     IncidentCrewComponent,
     IncidentMultimediaComponent,
+    SafetyDocsComponent,
+    NewSafetydocComponent,
+    SafetydocBasicinfoComponent,
+    SafetydocChecklistComponent,
+    DevicesComponent,
+    NewDeviceComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +85,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatNativeDateModule,
     NgbModalModule,
     MatRadioModule,
+    MatSlideToggleModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
