@@ -283,16 +283,16 @@ main {
 
   #sidebar {
     /*display: none;*/
-    min-width: 60px !important;
-    max-width: 60px;
-    width: 60px;
+    min-width: 72px !important;
+    max-width: 72px;
+    width: 72px;
   }
 
   .sidebar-button {
     border-radius: 10px 0 0 10px ;
     padding: 5px;
-    min-width: 39px;
-    width: 39px;
+    min-width: 51px;
+    width: 51px;
     text-align: left;
     font-size: 12pt;
     font-weight: 400;
