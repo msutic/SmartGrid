@@ -51,10 +51,16 @@ export class DevicesComponent implements OnInit {
     this.deviceService.deleteDevice(this.deletedDevice).subscribe(
       (res) => {
         //this.dataSource = new MatTableDataSource(this.allDevices);
-        this.changeDetectorRefs.detectChanges();
+        this.fetchData();
       }
 
     )
+  }
+
+  fetchData(){
+    this.deviceService.loadDevices().subscribe(
+      data => {this.dataSource = data;}
+    );
   }
 
   applyFilter(event: Event) {
