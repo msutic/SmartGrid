@@ -72,10 +72,4 @@ export class DevicesComponent implements OnInit {
     }
   }
 
-
-
-  // loadDevices(): void {
-  //   this.allDevices = this.deviceService.loadDevices();
-  // }
-
 }
