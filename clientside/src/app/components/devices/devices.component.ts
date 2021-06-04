@@ -46,7 +46,6 @@ export class DevicesComponent implements OnInit {
     
   }
 
-
   onDelete(id: number){
     this.deletedDevice = this.allDevices.find(e => e.id == id);
     this.deviceService.deleteDevice(this.deletedDevice).subscribe(
@@ -56,6 +55,15 @@ export class DevicesComponent implements OnInit {
       }
 
     )
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 
