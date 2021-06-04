@@ -17,7 +17,7 @@ namespace SmartGrid.Models
 
         public string Address { get; set; }
 
-        public double X_coordinate { get; set; }
-        public double Y_coordinate { get; set; }
+        public int X_coordinate { get; set; }
+        public int Y_coordinate { get; set; }
     }
 }

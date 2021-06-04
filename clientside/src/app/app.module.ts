@@ -40,6 +40,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NewDeviceComponent } from './components/new-device/new-device.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { DeviceService } from './services/device.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -87,8 +89,12 @@ import { NgApexchartsModule } from "ng-apexcharts";
     MatRadioModule,
     MatSlideToggleModule,
     NgApexchartsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    DeviceService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

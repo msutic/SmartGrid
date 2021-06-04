@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace SmartGrid.Models
 {
-    public class Incident
+    public class IncidentCalls
     {
-        public int Id { get; set; }
+
     }
 }
