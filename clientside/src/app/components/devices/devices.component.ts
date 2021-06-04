@@ -31,19 +31,21 @@ export class DevicesComponent implements OnInit {
   displayedColumns: string[] = ['type', 'id', 'name', 'address', 'x_coordinate', 'y_coordinate', 'action'];
   dataSource = new MatTableDataSource(this.allDevices);
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
     this.deviceService.loadDevices().subscribe(
       (res: any) => {
         this.allDevices = res;
         this.dataSource = new MatTableDataSource(this.allDevices);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
     )
+    
   }
+
 
   onDelete(id: number){
     this.deletedDevice = this.allDevices.find(e => e.id == id);

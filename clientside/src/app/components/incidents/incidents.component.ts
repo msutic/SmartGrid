@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -24,13 +24,17 @@ const ELEMENT_DATA: IncidentData[] = [
   templateUrl: './incidents.component.html',
   styleUrls: ['./incidents.component.css']
 })
-export class IncidentsComponent implements AfterViewInit {
+export class IncidentsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'startDate', 'phoneNum', 'status', 'address'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngOnInit(){
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
