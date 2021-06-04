@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Device } from 'src/app/entities/device';
 import { DeviceService } from 'src/app/services/device.service';
+import { Router } from '@angular/router';
+
 
 export interface DeviceData {
   id: number;
@@ -22,10 +24,11 @@ export interface DeviceData {
 export class DevicesComponent implements OnInit {
 
   allDevices = new Array<Device>();
+  deletedDevice: Device;
 
-  constructor(private deviceService: DeviceService) {}
+  constructor(private deviceService: DeviceService, private router: Router, private changeDetectorRefs: ChangeDetectorRef ) {}
 
-  displayedColumns: string[] = ['type', 'id', 'name', 'address', 'x_coordinate', 'y_coordinate'];
+  displayedColumns: string[] = ['type', 'id', 'name', 'address', 'x_coordinate', 'y_coordinate', 'action'];
   dataSource = new MatTableDataSource(this.allDevices);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -41,6 +44,19 @@ export class DevicesComponent implements OnInit {
       }
     )
   }
+
+  onDelete(id: number){
+    this.deletedDevice = this.allDevices.find(e => e.id == id);
+    this.deviceService.deleteDevice(this.deletedDevice).subscribe(
+      (res) => {
+        //this.dataSource = new MatTableDataSource(this.allDevices);
+        this.changeDetectorRefs.detectChanges();
+      }
+
+    )
+  }
+
+
 
   // loadDevices(): void {
   //   this.allDevices = this.deviceService.loadDevices();

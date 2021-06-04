@@ -65,13 +65,13 @@ namespace SmartGrid.Controllers
             }
 
             _context.Devices.Add(device);
-
             await _context.SaveChangesAsync();
+            
             return CreatedAtAction("GetAllDevices", _context.Devices);
         }
 
         [HttpDelete]
-        [Route("DeleteDevice/{id}")]
+        [Route("/api/Devices/deleteDevice/{id}")]
         public async Task<ActionResult<Device>> DeleteDevice(int id)
         {
             var device = await _context.Devices.FindAsync(id);
@@ -80,6 +80,34 @@ namespace SmartGrid.Controllers
             _context.Devices.Remove(device);
             await _context.SaveChangesAsync();
             return device;
+        }
+
+        [Route("/api/Devices/updateDevice/{id}")]
+        public async Task<IActionResult> UpdateDevice(Device device)
+        {
+            if (device.Type.StartsWith("Pow")) device.Name = "POW";
+            else if (device.Type.StartsWith("Fus")) device.Name = "FUS";
+            else if (device.Type.StartsWith("Tra")) device.Name = "TRA";
+            else device.Name = "DIS";
+
+            _context.Entry(device).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DeviceExists(device.Id))
+                {
+                    return NotFound();
+                }else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
         private bool DeviceExists(int id)

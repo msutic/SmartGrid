@@ -1,5 +1,5 @@
 <div class="content">
-    <form (ngSubmit)="f.form.valid && onClickSubmit(f)" #f="ngForm">
+    <form [formGroup]="newDeviceFormGroup" (ngSubmit)="onClickSubmit()">
     <div class="nodes">
         <div class="mt-3">
             <label>Type: </label>
@@ -8,7 +8,7 @@
             </mat-form-field>
             -->
             <mat-form-field appearance="legacy">
-                <mat-select id="type" name="type" class="form-control" placeholder="Select type" ngModel>
+                <mat-select id="type" name="type" class="form-control" placeholder="Select type" formControlName="type">
                     <mat-option value="Power Switch">Power Switch</mat-option>
                     <mat-option value="Fuse">Fuse</mat-option>
                     <mat-option value="Transformator">Transformator</mat-option>
@@ -19,31 +19,31 @@
         <div class="mt-3">
             <label>Id: </label>
             <mat-form-field appearance="legacy">
-                <input id="id" name="id" matInput type="text" placeholder="" disabled>
+                <input id="id" name="id" matInput type="text" placeholder="database generated" readonly formControlName="id">
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Name: </label>
             <mat-form-field appearance="legacy">
-                <input id="name" name="name" matInput type="text" placeholder="" disabled>
+                <input id="name" name="name" matInput type="text" placeholder="database generated" readonly formControlName="name">
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Address: </label>
             <mat-form-field appearance="legacy">
-                <input id="address" name="address" matInput type="text" placeholder="" ngModel>
+                <input id="address" name="address" matInput type="text" placeholder="" formControlName="address">
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Coordinate X: </label>
             <mat-form-field appearance="legacy">
-                <input id="x_coordinate" name="x_coordinate" matInput type="text" placeholder="" ngModel>
+                <input id="x_coordinate" name="x_coordinate" matInput type="text" placeholder="" formControlName="x_coordinate">
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Coordinate Y: </label>
             <mat-form-field appearance="legacy">
-                <input id="y_coordinate" name="y_coordinate" matInput type="text" placeholder="" ngModel>
+                <input id="y_coordinate" name="y_coordinate" matInput type="text" placeholder="" formControlName="y_coordinate">
             </mat-form-field>
         </div>
     </div>
@@ -51,7 +51,7 @@
         <button routerLink='/devices' mat-raised-button>
             CANCEL
         </button>
-        <button class="ml-3" type="submit" mat-raised-button [disabled]="!f.form.valid">
+        <button class="ml-3" type="submit" mat-raised-button>
             SAVE
         </button>
     </div>
