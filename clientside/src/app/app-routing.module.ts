@@ -119,6 +119,14 @@ const routes: Routes = [
         path: 'new',
         component: NewDeviceComponent
       },
+      {
+        path: ':id/edit',
+        component: NewDeviceComponent
+      },
+      {
+        path: ':id/delete',
+        component: DevicesComponent
+      }
     ]
   },
 ];
