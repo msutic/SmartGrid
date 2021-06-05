@@ -68,8 +68,8 @@ export class NewDeviceComponent implements OnInit {
     if(this.edit){ 
       this.newDevice.type = this.newDeviceFormGroup.value.type;
       this.newDevice.address = this.newDeviceFormGroup.value.address;
-      this.newDevice.x_coordinate = this.newDeviceFormGroup.value.x_coordinate;
-      this.newDevice.y_coordinate = this.newDeviceFormGroup.value.y_coordinate;
+      this.newDevice.x_coordinate = parseInt(this.newDeviceFormGroup.value.x_coordinate);
+      this.newDevice.y_coordinate = parseInt(this.newDeviceFormGroup.value.y_coordinate);
       this.deviceService.updateDevice(this.newDevice).subscribe(
         (res) => {
           this.router.navigate(['devices']);
