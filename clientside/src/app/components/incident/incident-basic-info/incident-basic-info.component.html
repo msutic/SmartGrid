@@ -3,10 +3,7 @@
         <div class="mt-3">
             <label>Incident ID:</label>
             <mat-form-field appearance="legacy">
-                <input matInput type="text" [(ngModel)]="value">
-                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                    <mat-icon>close</mat-icon>
-                </button>
+                <input matInput type="text" placeholder="Automatically generated" readonly>
             </mat-form-field>
         </div>
         <div class="mt-3">
@@ -21,11 +18,7 @@
         <div class="mt-3">
             <label>Priority: </label>
             <mat-form-field appearance="legacy">
-                <mat-select placeholder="Select Priority">
-                    <mat-option value="option 1">1</mat-option>
-                    <mat-option value="option 2">2</mat-option>
-                    <mat-option value="option 3">3</mat-option>
-                </mat-select>
+                <input matInput type="text" placeholder="Automatically determined" readonly>
             </mat-form-field>
         </div>
         <div class="mt-3">
@@ -47,20 +40,18 @@
         </div>
         <div class="mt-3">
             <label>ETA:</label>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Estimated Time for the crew Arrival</mat-label>
+                <input matInput type="datetime-local" >
+                <mat-datepicker #ETAPicker></mat-datepicker>
+            </mat-form-field>
         </div>
         <div class="mt-3">
             <label>ATA:</label>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker2">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Actual Time of the crew Arrival</mat-label>
+                <input matInput type="datetime-local">
+                <mat-datepicker #ATAPicker></mat-datepicker>
               </mat-form-field>
         </div>
     </div>
@@ -68,25 +59,23 @@
         <div class="mt-3">
             <label>Affected Comsumers:</label>
             <mat-form-field appearance="legacy">
-                <input matInput type="number" placeholder="">
+                <input matInput type="number" placeholder="Automatically generated" readonly>
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Outage Time:</label>
-            <mat-form-field appearance="fill">
+            <mat-form-field class="date-mat" appearance="fill">
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="outageTime">
-                <mat-datepicker-toggle matSuffix [for]="outageTime"></mat-datepicker-toggle>
-                <mat-datepicker #outageTime></mat-datepicker>
+                <input matInput type="datetime-local">
+                <mat-datepicker #OutageTimePicker></mat-datepicker>
               </mat-form-field>
         </div>
         <div class="mt-3">
             <label>ETR:</label>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="etrPicker">
-                <mat-datepicker-toggle matSuffix [for]="etrPicker"></mat-datepicker-toggle>
-                <mat-datepicker #etrPicker></mat-datepicker>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Estimated Time to Restore</mat-label>
+                <input matInput type="datetime-local">
+                <mat-datepicker #ETRPicker></mat-datepicker>
               </mat-form-field>
         </div>
         <div class="mt-3">
@@ -103,11 +92,10 @@
         </div>
         <div class="mt-3">
             <label>Scheduled Time:</label>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="schTimePicker">
-                <mat-datepicker-toggle matSuffix [for]="schTimePicker"></mat-datepicker-toggle>
-                <mat-datepicker #schTimePicker></mat-datepicker>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Choose a date and time</mat-label>
+                <input matInput type="datetime-local">
+                <mat-datepicker #SchTimePicker></mat-datepicker>
               </mat-form-field>
         </div>
     </div>

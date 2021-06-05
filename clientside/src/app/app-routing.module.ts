@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DevicesComponent } from './components/devices/devices.component';
+import { DevicesComponent } from './components/device/devices/devices.component';
 import { HomeComponent } from './components/home/home.component';
-import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
-import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
-import { IncidentCrewComponent } from './components/incident-crew/incident-crew.component';
-import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
-import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
-import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
-import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
-import { IncidentsComponent } from './components/incidents/incidents.component';
-import { NewDeviceComponent } from './components/new-device/new-device.component';
-import { NewIncidentComponent } from './components/new-incident/new-incident.component';
-import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
-import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
-import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
-import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
+import { IncidentBasicInfoComponent } from './components/incident/incident-basic-info/incident-basic-info.component';
+import { IncidentCallsComponent } from './components/incident/incident-calls/incident-calls.component';
+import { IncidentCrewComponent } from './components/incident/incident-crew/incident-crew.component';
+import { IncidentDevicesComponent } from './components/incident/incident-devices/incident-devices.component';
+import { IncidentMultimediaComponent } from './components/incident/incident-multimedia/incident-multimedia.component';
+import { IncidentNewCallComponent } from './components/incident/incident-new-call/incident-new-call.component';
+import { IncidentResolutionComponent } from './components/incident/incident-resolution/incident-resolution.component';
+import { IncidentsComponent } from './components/incident/incidents/incidents.component';
+import { NewDeviceComponent } from './components/device/new-device/new-device.component';
+import { NewIncidentComponent } from './components/incident/new-incident/new-incident.component';
+import { NewSafetydocComponent } from './components/safety-doc/new-safetydoc/new-safetydoc.component';
+import { SafetyDocsComponent } from './components/safety-doc/safety-docs/safety-docs.component';
+import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-checklist/safetydoc-checklist.component';
 
 const routes: Routes = [
   {

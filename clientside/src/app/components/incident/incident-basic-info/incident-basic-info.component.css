@@ -8,6 +8,10 @@
       display: flex;
       justify-content:space-between;
   }
+
+  .date-mat {
+    width: 50%;
+  }
   
 
 
