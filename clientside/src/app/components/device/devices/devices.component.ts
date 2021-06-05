@@ -6,15 +6,6 @@ import { Device } from 'src/app/entities/device';
 import { DeviceService } from 'src/app/services/device.service';
 import { Router } from '@angular/router';
 
-
-export interface DeviceData {
-  id: number;
-  type: string;
-  name: string;
-  address: string;
-  x_coordinate: number;
-  y_coordinate: number;
-}
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',

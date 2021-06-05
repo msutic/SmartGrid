@@ -100,3 +100,12 @@ import { IncidentService } from './services/incident/incident.service';
 })
 export class AppModule { }
 
+export interface DeviceData {
+  id: number;
+  type: string;
+  name: string;
+  address: string;
+  x_coordinate: number;
+  y_coordinate: number;
+}
+
