@@ -11,10 +11,12 @@
             </mat-button-toggle-group>
         </div>
         <div class="toolbar_right">
-            <button mat-raised-button color="secondary" class="mr-5">
-                <mat-icon aria-hidden="false">filter_alt</mat-icon>
-                FILTER
-            </button>
+          <div class="toolbar_right">
+            <mat-form-field class="mr-5" style="width: 400px;">
+              <mat-label>Search</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Status" #input>
+            </mat-form-field>
+          </div>
         </div>
     </div>
     <hr/>
