@@ -68,15 +68,15 @@ export class NewDeviceComponent implements OnInit {
     if(this.edit){ 
       this.newDevice.type = this.newDeviceFormGroup.value.type;
       this.newDevice.address = this.newDeviceFormGroup.value.address;
-      this.newDevice.x_coordinate = parseInt(this.newDeviceFormGroup.value.x_coordinate);
-      this.newDevice.y_coordinate = parseInt(this.newDeviceFormGroup.value.y_coordinate);
+      this.newDevice.x_coordinate = parseFloat(this.newDeviceFormGroup.value.x_coordinate);
+      this.newDevice.y_coordinate = parseFloat(this.newDeviceFormGroup.value.y_coordinate);
       this.deviceService.updateDevice(this.newDevice).subscribe(
         (res) => {
           this.router.navigate(['devices']);
         }
       )
     } else {
-      this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseInt(this.newDeviceFormGroup.value.x_coordinate), parseInt(this.newDeviceFormGroup.value.y_coordinate));
+      this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseFloat(this.newDeviceFormGroup.value.x_coordinate), parseFloat(this.newDeviceFormGroup.value.y_coordinate));
     
       this.deviceService.addNewDevice(this.newDevice).subscribe(
         (res) => {

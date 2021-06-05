@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SmartGrid.Data;
+using SmartGrid.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,15 @@ namespace SmartGrid.Controllers
         public IncidentsController(SmartGridContext context)
         {
             _context = context;
+        }
+
+        // GET: api/Incidents
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Incident>>> GetAllIncidents()
+        {
+            List<Incident> incidents = await _context.Incidents.ToListAsync();
+
+            return incidents;
         }
     }
 }

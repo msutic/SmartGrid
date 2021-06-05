@@ -29,7 +29,7 @@ namespace SmartGrid.Models
         public DateTime ScheduledTime { get; set; }
 
         //Devices
-        public ICollection<Device> Devices { get; set; } = new List<Device>();
+        public ICollection<Device> Devices { get; set; }
 
         //Resolution
         public string Cause { get; set; }

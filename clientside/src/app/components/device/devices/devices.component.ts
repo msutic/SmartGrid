@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { Device } from 'src/app/entities/device';
 import { DeviceService } from 'src/app/services/device.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-devices',
@@ -17,7 +16,7 @@ export class DevicesComponent implements OnInit {
   allDevices = new Array<Device>();
   deletedDevice: Device;
 
-  constructor(private deviceService: DeviceService, private router: Router, private changeDetectorRefs: ChangeDetectorRef ) {}
+  constructor(private deviceService: DeviceService) {}
 
   displayedColumns: string[] = ['type', 'id', 'name', 'address', 'x_coordinate', 'y_coordinate', 'action'];
   dataSource = new MatTableDataSource(this.allDevices);
@@ -34,7 +33,6 @@ export class DevicesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     )
-    
   }
 
   onDelete(id: number){
@@ -44,7 +42,6 @@ export class DevicesComponent implements OnInit {
         //this.dataSource = new MatTableDataSource(this.allDevices);
         this.fetchData();
       }
-
     )
   }
 
