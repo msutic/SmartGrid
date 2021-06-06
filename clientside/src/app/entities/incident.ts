@@ -1,3 +1,4 @@
+import { Device } from "./device";
 
 export class Incident {
     id: number;
@@ -19,7 +20,7 @@ export class Incident {
     voltage: number;
     scheduledTime: Date;
     scheduledTimeStr: string;
-    //devices: Array<Device>;
+    devices: Array<Device>;
     cause: string;
     subCause: string;
     constructionType: string;

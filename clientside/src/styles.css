@@ -8,3 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
    background-color: rgb(226, 226, 226);
 }
 
+.myCustomModalClass .modal-dialog {
+   max-width: 900px;
+ }
+

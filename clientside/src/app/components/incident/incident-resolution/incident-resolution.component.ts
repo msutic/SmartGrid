@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Resolution } from 'src/app/entities/incidents/resolution';
 import { IncidentService } from 'src/app/services/incident/incident.service';
 
@@ -13,7 +13,7 @@ export class IncidentResolutionComponent implements OnInit {
 
   resolutionForm: FormGroup;
   newResolution: Resolution;
-  constructor(private incidentService: IncidentService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private incidentService: IncidentService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -37,6 +37,8 @@ export class IncidentResolutionComponent implements OnInit {
     );
 
     this.incidentService.resolutionEmitChange(this.newResolution);
+
+    this.router.navigate(['/incidents/new/calls']);
   }
 
 }

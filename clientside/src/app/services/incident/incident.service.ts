@@ -37,4 +37,8 @@ export class IncidentService {
     this.emitChangeResolution.next(change);
   }
 
+  devicesEmitChange(change: any){
+    this.emitChangeDevices.next(change);
+  }
+
 }

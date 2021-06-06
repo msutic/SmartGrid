@@ -6,12 +6,19 @@
 
 .main_content {
     overflow: auto;
+    background-color: transparent;
+}
+
+.tableMod{
+    padding: 2%;
 }
 
 table {
     width: 100%;
     background-color: white;
+    border-radius: 15px;
 }
+tr:hover {background-color:#687adfb2;}
 
   th {
       font-size: 16pt;
@@ -24,4 +31,9 @@ table {
   .paginator {
       background-color: whitesmoke;
 }
+
+.modalDev{
+    width: 900px;
+}
+
 

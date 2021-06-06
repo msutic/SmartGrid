@@ -29,5 +29,14 @@ namespace SmartGrid.Controllers
 
             return incidents;
         }
+
+        [HttpPost("/api/Incidents/addIncident")]
+        public async Task<ActionResult<Incident>> AddIncident(Incident incident)
+        {
+            _context.Incidents.Add(incident);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAllIncidents", _context.Incidents);
+        }
     }
 }

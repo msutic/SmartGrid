@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BasicInfo } from 'src/app/entities/incidents/basic-info';
 import { IncidentService } from 'src/app/services/incident/incident.service';
 
@@ -14,7 +14,7 @@ export class IncidentBasicInfoComponent implements OnInit {
   basicInfoForm: FormGroup;
   newBasicInfo: BasicInfo;
 
-  constructor(private incidentService: IncidentService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private incidentService: IncidentService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.incidentId = this.route.snapshot.paramMap.get('id');
@@ -59,6 +59,7 @@ export class IncidentBasicInfoComponent implements OnInit {
     );
 
     this.incidentService.emitChange(this.newBasicInfo); 
+    this.router.navigate(['/incidents/new/resolution']);
    }
 
 
