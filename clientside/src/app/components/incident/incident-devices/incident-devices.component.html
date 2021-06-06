@@ -13,34 +13,7 @@
     <hr/>
     <div class="main_content">
         <table mat-table [dataSource]="selectedDevicesDataSource" matSort class="mat-elevation-z8 tableMod">
-          <!-- <ng-container *ngFor="let col of displayedColumns;" [matColumnDef]="col">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col }}</th>
-            <td mat-cell *matCellDef="let element">{{ element[col] }}</td>
-          </ng-container> -->
-
-          <!-- <tbody>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Type</th>
-              <th>X Coordinate</th>
-              <th>Y Coordinate</th>
-              <th>Address</th>
-              <th>Action</th>
-            </tr>
-            
-            <tr *ngFor="let item of selectedDevices; let i=index;">
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.type}}</td>
-                <td>{{item.x_coordinate}}</td>
-                <td>{{item.y_coordinate}}</td>
-                <td>{{item.address}}</td>
-                <td>
-                  <button mat-raised-button (click)="RemoveDevice(i)">Remove</button>
-                </td>
-            </tr>
-          </tbody> -->
+         
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -88,29 +61,7 @@
   </div>
   <div class="modal-body modalDev">
     <table mat-table [dataSource]="allDevicesDataSource" matSort class="mat-elevation-z8 hover">
-      <!-- <tbody>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>X Coordinate</th>
-          <th>Y Coordinate</th>
-          <th>Address</th>
-          <th>Action</th>
-        </tr>
-        
-        <tr *ngFor="let item of allDevices; let i=index;" (click)="RowSelected(i)">
-            <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.type}}</td>
-            <td>{{item.x_coordinate}}</td>
-            <td>{{item.y_coordinate}}</td>
-            <td>{{item.address}}</td>
-            <td>
-              <button mat-raised-button (click)="SelectDevice(i)">Add</button>
-            </td>
-        </tr>
-      </tbody> -->
+     
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -150,7 +101,6 @@
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
 </ng-template>
-
 <hr>
-<button mat-button (click)="onSave()">Save Changes</button>
+<button class="mt-5 mb-5 ml-5 btn btn-lg btn-primary" (click)="onSave()">Save Changes</button>
 

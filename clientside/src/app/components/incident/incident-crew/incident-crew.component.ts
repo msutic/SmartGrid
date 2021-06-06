@@ -25,7 +25,10 @@ export class IncidentCrewComponent implements OnInit {
 
   onSave(){
     this.crewName = this.crewForm.value.crew;
-    this.incidentService.crewEmitChange(this.crewName);
+    if(this.crewName == null)
+      alert("You must select crew for this incident");
+    else
+      this.incidentService.crewEmitChange(this.crewName);
   }
 
 }

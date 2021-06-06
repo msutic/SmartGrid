@@ -13,10 +13,11 @@ import { IncidentService } from 'src/app/services/incident/incident.service';
 export class IncidentsComponent implements OnInit {
 
   allIncidents = new Array<Incident>();
+  incidentToDelete: Incident;
   
   constructor(private incidentService: IncidentService){}
 
-  displayedColumns: string[] = ['id', 'type', 'priority', 'confirmed', 'status', 'description'
+  displayedColumns: string[] = ['action', 'id', 'type', 'priority', 'confirmed', 'status', 'description'
                             , 'etaStr', 'ataStr', 'outageTimeStr', 'etrStr', 'affectedConsumersNumber',
                             'calls', 'voltage', 'scheduledTimeStr', 'cause', 'subCause', 'constructionType',
                             'material', 'crew', 'multimediaAttachment'];
@@ -28,11 +29,7 @@ export class IncidentsComponent implements OnInit {
   ngOnInit(){
     this.incidentService.loadIncidents().subscribe(
       (res:any) => {
-        this.allIncidents = res;
-        this.convertDate();
-        this.dataSource = new MatTableDataSource(this.allIncidents);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+        this.fetchData()
       }
     )
   }
@@ -58,7 +55,13 @@ export class IncidentsComponent implements OnInit {
 
   fetchData(){
     this.incidentService.loadIncidents().subscribe(
-      data => {this.dataSource = data;}
+      data => {
+        this.allIncidents = data;
+        this.convertDate();
+        this.dataSource = new MatTableDataSource(this.allIncidents);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      }
     );
   }
 
@@ -69,6 +72,15 @@ export class IncidentsComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onDelete(id: number){
+    this.incidentToDelete = this.allIncidents.find(i => i.id == id);
+    this.incidentService.deleteIncident(this.incidentToDelete).subscribe(
+      (res) => {
+        this.fetchData();
+      }
+    )
   }
 
 }

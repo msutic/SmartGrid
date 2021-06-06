@@ -57,5 +57,17 @@ namespace SmartGrid.Controllers
 
             return CreatedAtAction("GetAllIncidents", _context.Incidents);
         }
+
+        [HttpDelete]
+        [Route("/api/Incidents/deleteIncident/{id}")]
+        public async Task<ActionResult<Incident>> DeleteIncident(int id)
+        {
+            var incident = await _context.Incidents.FindAsync(id);
+            if (incident == null) return NotFound();
+
+            _context.Incidents.Remove(incident);
+            await _context.SaveChangesAsync();
+            return incident;
+        }
     }
 }

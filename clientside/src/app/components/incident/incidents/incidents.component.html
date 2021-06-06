@@ -20,14 +20,21 @@
         </div>
     </div>
     <div class="main_content mt-2">
-        <table *ngIf="dataSource.data.length > 0; else elseBlock" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table-hover">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table-hover">
+          <ng-container matColumnDef="action" sticky>
+            <th class="stickyCell" mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
+            <td class="stickyCell" mat-cell *matCellDef="let element">
+              <button mat-button routerLink="{{element.id}}/edit">Edit</button>
+              <button mat-button (click)=onDelete(element.id)>Delete</button>
+            </td>
+          </ng-container>
           <ng-container class="container-table" matColumnDef="id" sticky>
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <th class="stickyCell" mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td class="stickyCell" mat-cell *matCellDef="let element"> {{element.id}} </td>
           </ng-container>
           <ng-container matColumnDef="type" sticky>
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            <th class="stickyCell" mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td class="stickyCell" mat-cell *matCellDef="let element"> {{element.type}} </td>
           </ng-container>
           <ng-container matColumnDef="priority">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
@@ -108,7 +115,4 @@
     </div>
     <mat-paginator *ngIf="dataSource.data.length > 0" class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-<ng-template #elseBlock>
-  <h1>There are no incidents.</h1>
-</ng-template>
 

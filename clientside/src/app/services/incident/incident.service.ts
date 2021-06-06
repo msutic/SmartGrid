@@ -81,4 +81,9 @@ export class IncidentService {
     this.emitChangeCrew.next(change);
   }
 
+  deleteIncident(incident: Incident){
+    console.log('deleting incident... ID: ' + incident.id);
+    return this.http.delete(this.api_url+'incidents/deleteIncident/'+incident.id);
+  }
+
 }

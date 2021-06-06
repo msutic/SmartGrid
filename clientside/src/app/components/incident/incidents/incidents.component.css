@@ -64,5 +64,9 @@
     white-space:nowrap;
   }
 
+  .stickyCell{
+    background: rgb(255, 255, 255);
+  }
+
 
 
