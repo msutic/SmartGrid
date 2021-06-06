@@ -1,5 +1,5 @@
  .call-form {
-    margin-left: 7%;
+    margin-left: 4%;
     justify-content: space-between;
     align-items: center;
  }
@@ -28,7 +28,7 @@
 
  .customer-info {
      margin-top: 3%;
-     margin-left: 7%;
+     margin-left: 4%;
      margin-bottom: 5%;
      margin-right: 7%;
      border: 1px solid gray;

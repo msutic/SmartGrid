@@ -1,3 +1,4 @@
+import { Call } from "./call";
 import { Device } from "./device";
 
 export class Incident {
@@ -29,10 +30,10 @@ export class Incident {
     crew: string;
     multimediaAttachment: number;
 
-    constructor(type: string = "", priority: number = 3, confirmed: boolean = true, status: string = "", description: string = "",
+    constructor(type: string, priority: number = 3, confirmed: boolean = true, status: string = "", description: string = "",
         eta: Date = new Date(2021,6,15,13,15,0), ata: Date  = new Date(2021,6,15,13,15,0), outageTime: Date  = new Date(2021,6,15,13,15,0),
         etr: Date = new Date(2021,6,15,13,15,0), affectedConsumersNumber: number = 0,
-        calls: number = 0, voltage: number = 0, scheduledTime: Date = new Date(2021,6,15,13,15,0), cause: string = "", subCause: string = "", 
+        calls: number = 0, voltage: number = 0, scheduledTime: Date = new Date(2021,6,15,13,15,0), devices:Array<Device>, cause: string = "", subCause: string = "", 
         constructionType: string = "", material: string = "", crew: string = "", multimediaAttachment: number = 0){
             this.type = type;
             this.priority = priority;
@@ -47,10 +48,12 @@ export class Incident {
             this.calls = calls;
             this.voltage = voltage;
             this.scheduledTime = scheduledTime;
+            this.devices = devices;
             this.cause = cause;
             this.subCause = subCause;
             this.constructionType = constructionType;
             this.material = material;
+            //this.callsList = callsList;
             this.crew = crew;
             this.multimediaAttachment = multimediaAttachment;
         }

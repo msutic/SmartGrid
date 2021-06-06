@@ -1,20 +1,33 @@
+<form [formGroup]="newCallForm" (ngSubmit)="onClickSubmit()">
 <div class="call-form">
+    <div class="mt-3">
+        <label>Id:</label>
+        <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
+            <input readonly  matInput placeholder="Input id" type="text">
+        </mat-form-field>
+    </div>
     <div class="mt-3">
         <label>Reason:</label>
         <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
-            <input placeholder="What is the reason of report?" matInput type="text">
+            <input required id="reason" name="reason" formControlName="reason" placeholder="What is the reason of report?" matInput type="text">
         </mat-form-field>
     </div>
     <div class="mt-3">
         <label>Comment:</label>
         <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
-            <textarea placeholder="Input additional information here..." matInput type="text"></textarea>
+            <textarea id="comment" name="comment" formControlName="comment" placeholder="Input additional information here..." matInput type="text"></textarea>
         </mat-form-field>
     </div>
     <div class="mt-3">
         <label>Hazard:</label>
         <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
-            <input matInput placeholder="Input malfunction" type="text">
+            <input required id="hazard" name="hazard" formControlName="hazard" matInput placeholder="Input malfunction" type="text">
+        </mat-form-field>
+    </div>
+    <div class="mt-3">
+        <label>Address:</label>
+        <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
+            <input id="address" name="address" formControlName="address" matInput placeholder="Enter your address" type="text" required>
         </mat-form-field>
     </div>
 </div>
@@ -89,6 +102,8 @@
         </div>
     </div>
 </div>
+<button type="submit" class="mb-5 ml-5 btn btn-lg btn-primary">Save Changes</button>
+</form>
 
 
   

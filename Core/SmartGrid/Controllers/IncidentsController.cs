@@ -34,7 +34,26 @@ namespace SmartGrid.Controllers
         public async Task<ActionResult<Incident>> AddIncident(Incident incident)
         {
             _context.Incidents.Add(incident);
+            List<Device> allDevices = await _context.Devices.ToListAsync();
+
+            //var deviceDb = await _context.Devices.SingleOrDefaultAsync(d => d.Id == i)
+            
+            //foreach(Device item in incident.Devices)
+            //{
+            //    foreach(Device device in allDevices)
+            //    {
+            //        if(item.Id == device.Id)
+            //        {
+            //            device.IncidentId = incident.Id;
+            //            _context.Devices.Update(device);
+            //        }
+            //    }
+            //}
+
             await _context.SaveChangesAsync();
+
+            List<Incident> allIncidents = await _context.Incidents.ToListAsync();
+
 
             return CreatedAtAction("GetAllIncidents", _context.Incidents);
         }

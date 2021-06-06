@@ -14,6 +14,8 @@ export class IncidentBasicInfoComponent implements OnInit {
   basicInfoForm: FormGroup;
   newBasicInfo: BasicInfo;
 
+  selected = 'Planned Work';
+
   constructor(private router: Router, private incidentService: IncidentService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class IncidentBasicInfoComponent implements OnInit {
       'description': new FormControl(),
       'eta': new FormControl(),
       'ata': new FormControl(),
-      'affectedCustomers': new FormControl(),
+      'affectedConsumers': new FormControl(),
       'outageTime': new FormControl(),
       'etr': new FormControl(),
       'calls': new FormControl(),
@@ -42,24 +44,46 @@ export class IncidentBasicInfoComponent implements OnInit {
   }
 
   onSaveClick(){
-    this.newBasicInfo = new BasicInfo(
-      this.basicInfoForm.value.type,
-      parseInt(this.basicInfoForm.value.priority),
-      this.basicInfoForm.value.confirmed,
-      this.basicInfoForm.value.status,
-      this.basicInfoForm.value.description,
-      this.basicInfoForm.value.eta.toString(),
-      this.basicInfoForm.value.ata.toString(),
-      parseInt(this.basicInfoForm.value.affectedCustomets),
-      this.basicInfoForm.value.outageTime.toString(),
-      this.basicInfoForm.value.etr.toString(),
-      parseInt(this.basicInfoForm.value.calls),
-      parseFloat(this.basicInfoForm.value.voltage),
-      this.basicInfoForm.value.scheduledTime.toString()
-    );
+    if(this.basicInfoForm.value.type == null) this.basicInfoForm.value.type = "Planned Work"
+    if(this.basicInfoForm.value.status == null) this.basicInfoForm.value.status = "Draft";
+    if(this.basicInfoForm.value.eta == null) this.basicInfoForm.value.eta = new Date(Date.now())
+    if(this.basicInfoForm.value.ata == null) this.basicInfoForm.value.ata = new Date(Date.now())
+    if(this.basicInfoForm.value.outageTime == null) this.basicInfoForm.value.outageTime = new Date(Date.now())
+    if(this.basicInfoForm.value.etr == null) this.basicInfoForm.value.etr = new Date(Date.now())
+    if(this.basicInfoForm.value.scheduledTime == null) this.basicInfoForm.value.scheduledTime = new Date(Date.now())
+    let conf = this.basicInfoForm.value.confirmed;
+    if(conf == null) conf = false;
 
-    this.incidentService.emitChange(this.newBasicInfo); 
-    this.router.navigate(['/incidents/new/resolution']);
+    if(this.basicInfoForm.value.priority == null) this.basicInfoForm.value.priority = 0;
+    if(this.basicInfoForm.value.affectedConsumers == null) this.basicInfoForm.value.affectedConsumers = 0;
+    if(this.basicInfoForm.value.calls == null) this.basicInfoForm.value.calls = 0;
+    if(this.basicInfoForm.value.voltage == null) this.basicInfoForm.value.voltage = 0;
+
+    if(this.basicInfoForm.value.priority < 0 || 
+      this.basicInfoForm.value.affectedConsumers < 0 || this.basicInfoForm.value.calls < 0 ||
+      this.basicInfoForm.value.voltage < 0){
+      alert('Invalid input. Check number fields.')
+    } else {
+      this.newBasicInfo = new BasicInfo(
+        this.basicInfoForm.value.type,
+        parseInt(this.basicInfoForm.value.priority),
+        conf,
+        this.basicInfoForm.value.status,
+        this.basicInfoForm.value.description,
+        this.basicInfoForm.value.eta,
+        this.basicInfoForm.value.ata,
+        parseInt(this.basicInfoForm.value.affectedConsumers),
+        this.basicInfoForm.value.outageTime,
+        this.basicInfoForm.value.etr,
+        parseInt(this.basicInfoForm.value.calls),
+        parseFloat(this.basicInfoForm.value.voltage),
+        this.basicInfoForm.value.scheduledTime
+      );
+  
+      this.incidentService.emitChange(this.newBasicInfo); 
+      this.router.navigate(['/incidents/new/devices']);
+    }
+    
    }
 
 

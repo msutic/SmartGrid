@@ -1,21 +1,23 @@
+import { DateFilterFn } from "@angular/material/datepicker";
+
 export class BasicInfo {
     type: string;
     priority: number;
     confirmed: boolean;
     status: string;
     description: string;
-    eta: string;
-    ata: string;
-    affectedCustomers: number;
-    outageTime: string;
-    etr: string;
+    eta: Date;
+    ata: Date;
+    affectedConsumers: number;
+    outageTime: Date;
+    etr: Date;
     calls: number;
     voltage: number;
-    scheduledTime: string;
+    scheduledTime: Date;
 
     constructor(type: string, priority: number = 2, confirmed: boolean, status: string,
-        description: string, eta: string, ata: string, affectedCustomers: number, outageTime: string, etr: string,
-        calls: number, voltage: number, scheduledTime: string){
+        description: string, eta: Date, ata: Date, affectedConsumers: number, outageTime: Date, etr: Date,
+        calls: number, voltage: number, scheduledTime: Date){
             this.type = type;
             this.priority = priority;
             this.confirmed = confirmed;
@@ -23,7 +25,7 @@ export class BasicInfo {
             this.description = description;
             this.eta = eta;
             this.ata = ata;
-            this.affectedCustomers = affectedCustomers;
+            this.affectedConsumers = affectedConsumers;
             this.outageTime = outageTime;
             this.etr = etr;
             this.calls = calls;

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Call } from 'src/app/entities/call';
+import { IncidentService } from 'src/app/services/incident/incident.service';
 declare var $:any;
 @Component({
   selector: 'app-incident-new-call',
@@ -13,8 +17,13 @@ export class IncidentNewCallComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  newCallForm: FormGroup;
+  newIncidentCall: Call;
+
+  constructor(private modalService: NgbModal, private incidentService: IncidentService, private router: Router) {}
+
   ngOnInit(): void {
+    this.initForm();
   }
 
   open(content: any) {
@@ -34,6 +43,24 @@ export class IncidentNewCallComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+  initForm(){
+    this.newCallForm = new FormGroup({
+      'reason': new FormControl(),
+      'comment': new FormControl(),
+      'hazard': new FormControl(),
+      'address': new FormControl()
+    });
+  }
+
+  onClickSubmit(){
+    this.newIncidentCall = new Call(this.newCallForm.value.reason,
+      this.newCallForm.value.comment,this.newCallForm.value.hazard, this.newCallForm.value.address);
+  
+      this.incidentService.addNewIncidentCall(this.newIncidentCall);
+
+      this.router.navigate(['/incidents/new/calls']);
+    }
 
   
 

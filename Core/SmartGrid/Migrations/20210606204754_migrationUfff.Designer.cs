@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartGrid.Data;
 
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    partial class SmartGridContextModelSnapshot : ModelSnapshot
+    [Migration("20210606204754_migrationUfff")]
+    partial class migrationUfff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,7 @@ namespace SmartGrid.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IncidentId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -46,6 +49,8 @@ namespace SmartGrid.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IncidentId");
 
                     b.ToTable("Devices");
                 });
@@ -122,6 +127,18 @@ namespace SmartGrid.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Incidents");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.Device", b =>
+                {
+                    b.HasOne("SmartGrid.Models.Incident", null)
+                        .WithMany("Devices")
+                        .HasForeignKey("IncidentId");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.Incident", b =>
+                {
+                    b.Navigation("Devices");
                 });
 #pragma warning restore 612, 618
         }

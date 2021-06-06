@@ -29,16 +29,22 @@ export class IncidentResolutionComponent implements OnInit {
   }
 
   onSaveClick(){
-    this.newResolution = new Resolution(
-      this.resolutionForm.value.cause,
-      this.resolutionForm.value.subcause,
-      this.resolutionForm.value.constructionType,
-      this.resolutionForm.value.material
-    );
-
-    this.incidentService.resolutionEmitChange(this.newResolution);
-
-    this.router.navigate(['/incidents/new/calls']);
+    if(this.resolutionForm.value.cause == null || this.resolutionForm.value.subcause == null ||
+      this.resolutionForm.value.constructionType == null || this.resolutionForm.value.material == null){
+        alert('Invalid selection.');
+      } else {
+        this.newResolution = new Resolution(
+          this.resolutionForm.value.cause,
+          this.resolutionForm.value.subcause,
+          this.resolutionForm.value.constructionType,
+          this.resolutionForm.value.material
+        );
+    
+        this.incidentService.resolutionEmitChange(this.newResolution);
+    
+        this.router.navigate(['/incidents/new/calls']);
+      }
+    
   }
 
 }

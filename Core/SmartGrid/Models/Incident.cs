@@ -15,7 +15,7 @@ namespace SmartGrid.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public IncidentType Type { get; set; }
+        public string Type { get; set; }
         public int Priority { get; set; }
         public bool Confirmed { get; set; }
         public string Status { get; set; }
@@ -35,7 +35,7 @@ namespace SmartGrid.Models
         public DateTime ScheduledTime { get; set; }
 
         //Devices
-        public ICollection<Device> Devices { get; set; }
+        //public ICollection<Device> Devices { get; set; }
 
         //Resolution
         [Required]
@@ -48,7 +48,7 @@ namespace SmartGrid.Models
         public string Material { get; set; }
 
         //Calls
-        public ICollection<Call> CallsList { get; set; } = new List<Call>();
+        //public ICollection<Call> CallsList { get; set; } = new List<Call>();
 
         //Crew
         public string Crew { get; set; }

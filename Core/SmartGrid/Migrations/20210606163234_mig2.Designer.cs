@@ -3,21 +3,52 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartGrid.Data;
 
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    partial class SmartGridContextModelSnapshot : ModelSnapshot
+    [Migration("20210606163234_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("SmartGrid.Models.Call", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hazard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IncidentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IncidentId");
+
+                    b.ToTable("Call");
+                });
 
             modelBuilder.Entity("SmartGrid.Models.Device", b =>
                 {
@@ -46,6 +77,8 @@ namespace SmartGrid.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IncidentId");
 
                     b.ToTable("Devices");
                 });
@@ -122,6 +155,31 @@ namespace SmartGrid.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Incidents");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.Call", b =>
+                {
+                    b.HasOne("SmartGrid.Models.Incident", "Incident")
+                        .WithMany("CallsList")
+                        .HasForeignKey("IncidentId");
+
+                    b.Navigation("Incident");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.Device", b =>
+                {
+                    b.HasOne("SmartGrid.Models.Incident", "Incident")
+                        .WithMany("Devices")
+                        .HasForeignKey("IncidentId");
+
+                    b.Navigation("Incident");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.Incident", b =>
+                {
+                    b.Navigation("CallsList");
+
+                    b.Navigation("Devices");
                 });
 #pragma warning restore 612, 618
         }

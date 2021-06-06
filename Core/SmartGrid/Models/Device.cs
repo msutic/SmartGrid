@@ -21,6 +21,9 @@ namespace SmartGrid.Models
         public float X_coordinate { get; set; }
         public float Y_coordinate { get; set; }
 
-        public Incident Incident { get; set; }
+        public int? IncidentId { get; set; }
+
+        //[ForeignKey("IncidentId")]
+        //public virtual Incident Incident { get; set; }
     }
 }

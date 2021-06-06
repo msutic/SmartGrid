@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Call } from 'src/app/entities/call';
 import { Device } from 'src/app/entities/device';
 import { Incident } from 'src/app/entities/incident';
 import { BasicInfo } from 'src/app/entities/incidents/basic-info';
@@ -16,8 +18,10 @@ export class NewIncidentComponent implements OnInit {
   incidentBasicInfo: BasicInfo;
   incidentDevicesList: Array<Device>;
   incidentResolution: Resolution;
+  incidentCallsList: Array<Call>;
+  incidentCrew: string;
   data1: string;
-  constructor(private incidentService: IncidentService) { }
+  constructor(private incidentService: IncidentService, private router: Router) { }
 
   ngOnInit(): void {
     this.incidentService.changeEmitted$.subscribe(
@@ -37,13 +41,53 @@ export class NewIncidentComponent implements OnInit {
         this.incidentDevicesList = res;
       }
     )
+
+    this.incidentService.changeEmittedCalls$.subscribe(
+      res => {
+        this.incidentCallsList = res;
+      }
+    )
+
+    this.incidentService.changeEmittedCrew$.subscribe(
+      res => {
+        this.incidentCrew = res;
+      }
+    )
   }
 
   onSubmit(){
-    if(this.incidentBasicInfo == null || this.incidentResolution == null || this.incidentDevicesList == null){
-      alert('NE MOZE! POPUNI SVE PODATKE PRVO');
+    if(this.incidentBasicInfo == null || this.incidentResolution == null
+       || this.incidentCrew == null){
     } else {
-      alert('PROSLO!');
+      this.newIncident = new Incident(
+        this.incidentBasicInfo.type,
+        this.incidentBasicInfo.priority,
+        this.incidentBasicInfo.confirmed,
+        this.incidentBasicInfo.status,
+        this.incidentBasicInfo.description,
+        this.incidentBasicInfo.eta,
+        this.incidentBasicInfo.ata,
+        this.incidentBasicInfo.outageTime,
+        this.incidentBasicInfo.etr,
+        this.incidentBasicInfo.affectedConsumers,
+        this.incidentBasicInfo.calls,
+        this.incidentBasicInfo.voltage,
+        this.incidentBasicInfo.scheduledTime,
+        this.incidentDevicesList,
+        this.incidentResolution.cause,
+        this.incidentResolution.subcause,
+        this.incidentResolution.constructionType,
+        this.incidentResolution.material,
+        
+        this.incidentCrew,
+        1
+      );
+
+      this.incidentService.addNewIncident(this.newIncident).subscribe(
+        (res) => {
+          this.router.navigate(['incidents']);
+        }
+      );
     }
   }
 
