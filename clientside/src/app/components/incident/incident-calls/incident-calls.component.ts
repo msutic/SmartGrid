@@ -21,7 +21,7 @@ export interface IncidentCallsData {
 })
 export class IncidentCallsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'reason', 'hazard', 'comment', 'address'];
+  displayedColumns: string[] = ['reason', 'hazard', 'comment', 'address'];
   allIncidentCalls = new Array<Call>();
   dataSource = new MatTableDataSource(this.allIncidentCalls);
 

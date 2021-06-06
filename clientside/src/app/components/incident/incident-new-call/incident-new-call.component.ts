@@ -54,12 +54,18 @@ export class IncidentNewCallComponent implements OnInit {
   }
 
   onClickSubmit(){
-    this.newIncidentCall = new Call(this.newCallForm.value.reason,
-      this.newCallForm.value.comment,this.newCallForm.value.hazard, this.newCallForm.value.address);
-  
-      this.incidentService.addNewIncidentCall(this.newIncidentCall);
-
-      this.router.navigate(['/incidents/new/calls']);
+    if(this.newCallForm.value.reason == null || this.newCallForm.value.hazard == null || 
+      this.newCallForm.value.address == null){
+        alert("Invalid input. Some fields are left empty.")
+      } else {
+        this.newIncidentCall = new Call(this.newCallForm.value.reason,
+          this.newCallForm.value.comment,this.newCallForm.value.hazard, this.newCallForm.value.address);
+      
+          this.incidentService.addNewIncidentCall(this.newIncidentCall);
+    
+          this.router.navigate(['/incidents/new/calls']);
+      }
+    
     }
 
   

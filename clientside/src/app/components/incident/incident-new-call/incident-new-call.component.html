@@ -1,12 +1,6 @@
 <form [formGroup]="newCallForm" (ngSubmit)="onClickSubmit()">
 <div class="call-form">
     <div class="mt-3">
-        <label>Id:</label>
-        <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
-            <input readonly  matInput placeholder="Input id" type="text">
-        </mat-form-field>
-    </div>
-    <div class="mt-3">
         <label>Reason:</label>
         <mat-form-field class="input-field" floatLabel="never" appearance="legacy">
             <input required id="reason" name="reason" formControlName="reason" placeholder="What is the reason of report?" matInput type="text">

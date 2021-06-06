@@ -46,8 +46,6 @@ export class IncidentDevicesComponent implements OnInit {
       res => {
         this.allDevices = res;
         this.allDevicesDataSource = new MatTableDataSource(this.allDevices);
-        this.allDevicesDataSource.sort = this.sort;
-        this.allDevicesDataSource.paginator = this.paginator;
       }
     )
   }
