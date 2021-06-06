@@ -17,6 +17,7 @@ import { NewSafetydocComponent } from './components/safety-doc/new-safetydoc/new
 import { SafetyDocsComponent } from './components/safety-doc/safety-docs/safety-docs.component';
 import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-basicinfo/safetydoc-basicinfo.component';
 import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-checklist/safetydoc-checklist.component';
+import { AdminsGuard } from './guards/admins.guard';
 
 const routes: Routes = [
   {
@@ -117,7 +118,8 @@ const routes: Routes = [
       },
       {
         path: 'new',
-        component: NewDeviceComponent
+        component: NewDeviceComponent,
+        canActivate: [AdminsGuard],
       },
       {
         path: ':id/edit',

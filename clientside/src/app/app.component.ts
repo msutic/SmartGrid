@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clientside';
+
+  logout(){
+    if(localStorage.length > 0) {
+      localStorage.removeItem('sessionUser');
+      alert('Successfully logged out!');
+    }
+  }
 }
+
+
