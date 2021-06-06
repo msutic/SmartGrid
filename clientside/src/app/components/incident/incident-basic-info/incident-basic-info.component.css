@@ -12,6 +12,16 @@
   .date-mat {
     width: 50%;
   }
+
+  .saveButton{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .checkbox-field{
+    width: 20px;
+    height: 15px;
+  }
   
 
 

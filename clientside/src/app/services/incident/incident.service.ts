@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Incident } from 'src/app/entities/incident';
 import { environment } from 'src/environments/environment';
@@ -8,6 +9,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class IncidentService {
+
+  private emitChangeSource = new Subject<any>();
+  changeEmitted$ = this.emitChangeSource.asObservable();
+
+  private emitChangeDevices = new Subject<any>();
+  changeEmittedDevices$ = this.emitChangeDevices.asObservable();
+
+  private emitChangeResolution = new Subject<any>();
+  changeEmittedResolution$ = this.emitChangeResolution.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -18,4 +28,13 @@ export class IncidentService {
   loadIncidents():Observable<any>{
     return this.http.get<any>(this.api_url+'incidents', this.httpOptions);
   }
+
+  emitChange(change: any){
+    this.emitChangeSource.next(change);
+  }
+
+  resolutionEmitChange(change: any){
+    this.emitChangeResolution.next(change);
+  }
+
 }
