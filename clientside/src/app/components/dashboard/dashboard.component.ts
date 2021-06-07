@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ngbCarouselTransitionOut } from '@ng-bootstrap/ng-bootstrap/carousel/carousel-transition';
 
 import {
   ChartComponent,
@@ -24,6 +25,10 @@ import {
   ApexNonAxisChartSeries,
   ApexResponsive
 } from "ng-apexcharts";
+import { Incident } from 'src/app/entities/incident';
+import { Safetydoc } from 'src/app/entities/safetydocs/safetydoc';
+import { IncidentService } from 'src/app/services/incident/incident.service';
+import { SafetydocService } from 'src/app/services/safetydoc/safetydoc.service';
 
 export type PieChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -37,8 +42,18 @@ export type PieChartOptions = {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  drafts = 0;
+  submitted = 0;
+  dispatched = 0;
+  denied = 0;
+
+  docsDrafts = 0;
+  docsCanceled = 0;
   showFiller = false;
+  allIncidents: Array<Incident>;
+  allSafetydocs: Array<Safetydoc>;
+
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
@@ -46,7 +61,7 @@ export class DashboardComponent {
   @ViewChild("piechart") piechart: ChartComponent;
   public piechartOptions: Partial<PieChartOptions>;
 
-  constructor() {
+  constructor(private incidentsService: IncidentService, private safetydocService: SafetydocService) {
     //piechart
     this.piechartOptions = {
       series: [44, 55, 13],
@@ -110,6 +125,36 @@ export class DashboardComponent {
         }
       }
     };
+  }
+
+  ngOnInit(){
+    this.incidentsService.loadIncidents().subscribe(
+      res => {
+        this.allIncidents = res;
+        this.allIncidents.forEach(element => {
+          if(element.status == "Draft"){
+            this.drafts += 1;
+          } else if (element.status == "Submitted"){
+            this.submitted += 1;
+          } else if (element.status == "Dispatched"){
+            this.dispatched += 1;
+          } else if (element.status == "Denied"){
+            this.denied += 1;
+          }
+        });
+      }
+    )
+
+    this.safetydocService.loadSafetydocs().subscribe(
+      res => {
+        this.allSafetydocs = res;
+        this.allSafetydocs.forEach(element => {
+          if(element.status == "Draft"){
+            this.docsDrafts += 1;
+          }
+        });
+      }
+    )
   }
 
   public generateData(baseval: any, count: any, yrange: any) {
