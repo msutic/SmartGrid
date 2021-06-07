@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DevicesComponent } from './components/devices/devices.component';
+import { DevicesComponent } from './components/device/devices/devices.component';
 import { HomeComponent } from './components/home/home.component';
-import { IncidentBasicInfoComponent } from './components/incident-basic-info/incident-basic-info.component';
-import { IncidentCallsComponent } from './components/incident-calls/incident-calls.component';
-import { IncidentCrewComponent } from './components/incident-crew/incident-crew.component';
-import { IncidentDevicesComponent } from './components/incident-devices/incident-devices.component';
-import { IncidentMultimediaComponent } from './components/incident-multimedia/incident-multimedia.component';
-import { IncidentNewCallComponent } from './components/incident-new-call/incident-new-call.component';
-import { IncidentResolutionComponent } from './components/incident-resolution/incident-resolution.component';
-import { IncidentsComponent } from './components/incidents/incidents.component';
-import { NewDeviceComponent } from './components/new-device/new-device.component';
-import { NewIncidentComponent } from './components/new-incident/new-incident.component';
-import { NewSafetydocComponent } from './components/new-safetydoc/new-safetydoc.component';
-import { SafetyDocsComponent } from './components/safety-docs/safety-docs.component';
-import { SafetydocBasicinfoComponent } from './components/safetydoc-basicinfo/safetydoc-basicinfo.component';
-import { SafetydocChecklistComponent } from './components/safetydoc-checklist/safetydoc-checklist.component';
+import { IncidentBasicInfoComponent } from './components/incident/incident-basic-info/incident-basic-info.component';
+import { IncidentCallsComponent } from './components/incident/incident-calls/incident-calls.component';
+import { IncidentCrewComponent } from './components/incident/incident-crew/incident-crew.component';
+import { IncidentDevicesComponent } from './components/incident/incident-devices/incident-devices.component';
+import { IncidentMultimediaComponent } from './components/incident/incident-multimedia/incident-multimedia.component';
+import { IncidentNewCallComponent } from './components/incident/incident-new-call/incident-new-call.component';
+import { IncidentResolutionComponent } from './components/incident/incident-resolution/incident-resolution.component';
+import { IncidentsComponent } from './components/incident/incidents/incidents.component';
+import { NewDeviceComponent } from './components/device/new-device/new-device.component';
+import { NewIncidentComponent } from './components/incident/new-incident/new-incident.component';
+import { NewSafetydocComponent } from './components/safety-doc/new-safetydoc/new-safetydoc.component';
+import { SafetyDocsComponent } from './components/safety-doc/safety-docs/safety-docs.component';
+import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-basicinfo/safetydoc-basicinfo.component';
+import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-checklist/safetydoc-checklist.component';
+import { AdminsGuard } from './guards/admins.guard';
+import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
+import { NonregisteredGuard } from './guards/nonregistered.guard';
 
 const routes: Routes = [
   {
@@ -30,10 +33,12 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [NonregisteredGuard]
   },
   {
     path: "incidents",
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -42,6 +47,7 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewIncidentComponent,
+        canActivate: [AdminsGuard],
         children: [
           {
             path: '',
@@ -81,7 +87,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'safety-docs',
+    path: 'safetydocs',
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -90,6 +97,7 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewSafetydocComponent,
+        canActivate: [AdminsGuard],
         children: [
           {
             path: '',
@@ -104,12 +112,17 @@ const routes: Routes = [
             path: 'checklist',
             component: SafetydocChecklistComponent,
           },
+          {
+            path: 'devices',
+            component: SafetydocDevicesComponent,
+          },
         ]
       }
     ]
   },
   {
     path: 'devices',
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -117,15 +130,18 @@ const routes: Routes = [
       },
       {
         path: 'new',
-        component: NewDeviceComponent
+        component: NewDeviceComponent,
+        canActivate: [AdminsGuard],
       },
       {
         path: ':id/edit',
-        component: NewDeviceComponent
+        component: NewDeviceComponent,
+        canActivate: [AdminsGuard]
       },
       {
         path: ':id/delete',
-        component: DevicesComponent
+        component: DevicesComponent,
+        canActivate: [AdminsGuard]
       }
     ]
   },

@@ -47,6 +47,8 @@ namespace SmartGrid.Controllers
         [HttpPost("/api/Devices/addDevice")]
         public async Task<ActionResult<Device>> AddDevice(Device device)
         {
+            
+
             if (device.Type.StartsWith("Pow"))
             {
                 device.Name = "POW";
@@ -66,7 +68,13 @@ namespace SmartGrid.Controllers
 
             _context.Devices.Add(device);
             await _context.SaveChangesAsync();
-            
+
+            List<Device> devices = await _context.Devices.ToListAsync();
+            device.Name += devices[devices.Count() - 1].Id;
+
+            _context.Devices.Update(device);
+            await _context.SaveChangesAsync();
+
             return CreatedAtAction("GetAllDevices", _context.Devices);
         }
 
@@ -85,10 +93,10 @@ namespace SmartGrid.Controllers
         [Route("/api/Devices/updateDevice/{id}")]
         public async Task<IActionResult> UpdateDevice(Device device)
         {
-            if (device.Type.StartsWith("Pow")) device.Name = "POW";
-            else if (device.Type.StartsWith("Fus")) device.Name = "FUS";
-            else if (device.Type.StartsWith("Tra")) device.Name = "TRA";
-            else device.Name = "DIS";
+            if (device.Type.StartsWith("Pow")) device.Name = "POW" + device.Id;
+            else if (device.Type.StartsWith("Fus")) device.Name = "FUS" + device.Id;
+            else if (device.Type.StartsWith("Tra")) device.Name = "TRA" + device.Id;
+            else device.Name = "DIS" + device.Id;
 
             _context.Entry(device).State = EntityState.Modified;
 

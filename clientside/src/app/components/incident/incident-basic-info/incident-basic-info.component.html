@@ -1,0 +1,116 @@
+<form [formGroup]="basicInfoForm" (ngSubmit)="onSaveClick()">
+<div class="nodes">
+    <div class="container mt-3 ml-1 mb-3">
+        <div class="mt-3">
+            <label>Incident ID:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" placeholder="Automatically generated" readonly>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Type: </label>
+            <mat-form-field appearance="legacy">
+                <mat-select id='type' [(value)]="selected" name='type' class="form-control" placeholder="Select Type" formControlName='type'>
+                    <mat-option value="Planned Work">Planned Work</mat-option>
+                    <mat-option value="Unplanned Work">Unplanned Work</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Priority: </label>
+            <mat-form-field appearance="legacy">
+                <input matInput id="priority" name="priority" class="form-control" formControlName='priority' type="number" placeholder="Automatically determined">
+            </mat-form-field>
+        </div>
+        <div class="mt-3 checkbox-field">
+                <label>Confirmed: </label>
+                <input id='confirmed' name='confirmed' class="form-control checkbox-field" formControlName='confirmed' type="checkbox">
+            
+        </div>
+        <div class="mt-4">
+            <label>Status:</label>
+            <mat-form-field appearance="legacy">
+                <mat-select id='status' name='status' class="form-control" placeholder="Select Status" formControlName='status'>
+                    <mat-option value="Dispatched">Dispatched</mat-option>
+                    <mat-option value="Submitted">Submitted</mat-option>
+                    <mat-option value="Denied">Denied</mat-option>
+                    <mat-option value="Draft">Draft</mat-option>
+                    <mat-option value="Accepted">Accepted</mat-option>
+                </mat-select>            
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Description:</label>
+            <mat-form-field appearance="legacy">
+                <textarea id='description' name='description' class="form-control" formControlName='description' matInput type="text"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>ETA:</label>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Estimated Time for the crew Arrival</mat-label>
+                <input id='eta' name='eta' class="form-control" formControlName='eta' matInput type="datetime-local" >
+                <mat-datepicker #ETAPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>ATA:</label>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Actual Time of the crew Arrival</mat-label>
+                <input id='ata' name='ata' class="form-control" formControlName='ata' matInput type="datetime-local">
+                <mat-datepicker #ATAPicker></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+    <div class="container mt-3 ml-5 mb-3">
+        <div class="mt-3">
+            <label>Affected Consumers:</label>
+            <mat-form-field appearance="legacy">
+                <input id='affectedConsumers' name='affectedConsumers' class="form-control" formControlName='affectedConsumers' matInput type="number">
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Outage Time:</label>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input id='outageTime' name='outageTime' class="form-control" formControlName='outageTime' matInput type="datetime-local">
+                <mat-datepicker #OutageTimePicker></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>ETR:</label>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Estimated Time to Restore</mat-label>
+                <input id='etr' name='etr' class="form-control" formControlName='etr' matInput type="datetime-local">
+                <mat-datepicker #ETRPicker></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Calls:</label>
+            <mat-form-field appearance="legacy">
+                <input id='calls' name='calls' class="form-control" formControlName='calls' matInput type="number" value="5">
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Voltage [kV]:</label>
+            <mat-form-field appearance="legacy">
+                <input id='voltage' name='voltage' class="form-control" formControlName='voltage' type="number" matInput>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Scheduled Time:</label>
+            <mat-form-field class="date-mat" appearance="fill">
+                <mat-label>Choose a date and time</mat-label>
+                <input id='scheduledTime' name='scheduledTime' class="form-control" formControlName='scheduledTime' matInput type="datetime-local">
+                <mat-datepicker #SchTimePicker></mat-datepicker>
+              </mat-form-field>
+        </div>
+
+        <button class="mt-5 mb-5 ml-5 btn btn-lg btn-primary"  type="submit">Save Changes</button>
+    </div>
+</div>
+</form>
+
+
+
+

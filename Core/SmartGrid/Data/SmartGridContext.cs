@@ -15,5 +15,7 @@ namespace SmartGrid.Data
         }
 
         public DbSet<Device> Devices { get; set; }
+        public DbSet<Incident> Incidents { get; set; }
+        public DbSet<Safetydoc> Safetydocs { get; set; }
     }
 }

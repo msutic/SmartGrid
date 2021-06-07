@@ -1,0 +1,13 @@
+<form [formGroup]="crewForm" (ngSubmit)="onSave()">
+<div class="container">
+    <label>Crew: </label>
+    <mat-form-field appearance="legacy">
+        <mat-select id="crew" name="crew" class="form-control" formControlName="crew" placeholder="Select Crew">
+            <mat-option value="Crew 1">Crew 1</mat-option>
+            <mat-option value="Crew 2">Crew 2</mat-option>
+            <mat-option value="Crew 3">Crew 3</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<button type="submit" class="mt-5 mb-5 ml-5 btn btn-lg btn-primary">Save Changes</button>
+</form>

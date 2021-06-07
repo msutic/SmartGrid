@@ -1,0 +1,49 @@
+<form [formGroup]="resolutionForm" (ngSubmit)="onSaveClick()">
+<div class="nodes">
+    <div class="mt-3">
+        <label>Cause: </label>
+        <mat-form-field appearance="legacy">
+            <mat-select id="cause" name="cause" class="form-control" formControlName="cause" placeholder="Select Cause">
+                <mat-option value="Weather">Weather</mat-option>
+                <mat-option value="Human Factor">Human Factor</mat-option>
+                <mat-option value="Break Down">Break Down</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="mt-3">
+        <label>Subcause: </label>
+        <mat-form-field appearance="legacy">
+            <mat-select id="subcause" name="subcause" class="form-control" formControlName="subcause" placeholder="Select Subcause">
+                <mat-option value="Wind">Wind</mat-option>
+                <mat-option value="Snow">Snow</mat-option>
+                <mat-option value="Flood">Flood</mat-option>
+                <mat-option value="Hurricane">Hurricane</mat-option>
+                <mat-option value="Electricity">Electricity</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="mt-3">
+        <label>Construction Type: </label>
+        <mat-form-field appearance="legacy">
+            <mat-select id="constructionType" name="constructionType" class="form-control" formControlName="constructionType" placeholder="Select Type">
+                <mat-option value="Underground">Underground</mat-option>
+                <mat-option value="Overground">Overground</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="mt-3">
+        <label>Material: </label>
+        <mat-form-field appearance="legacy">
+            <mat-select id="material" name="material" class="form-control" formControlName="material" placeholder="Select Material">
+                <mat-option value="Metal">Metal</mat-option>
+                <mat-option value="Plastic">Plastic</mat-option>
+                <mat-option value="Wood">Wood</mat-option>
+                <mat-option value="Glass">Glass</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <button class="mt-5 mb-5 ml-5 btn btn-lg btn-primary" type="submit">
+        Save Changes
+    </button>
+</div>
+</form>

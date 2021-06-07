@@ -1,9 +1,0 @@
-.container {
-    display: flex;
-}
-
-div > label {
-    width: 240px;
-    font-size: 15px;
-    font-weight: 300;
-}
