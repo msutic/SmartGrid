@@ -1,32 +1,39 @@
+<div class="mt-3">
+    <h1>Basic Information</h1>
+</div>
+<hr/>
+<form [formGroup]="safetydocBasicInfoForm" (ngSubmit)=onSave()>
 <div class="nodes">
     <div class="container mt-3 ml-1 mb-3">
         <div class="mt-3">
             <label>Status:</label>
-            <label>Draft</label>
+            <mat-form-field>
+                <input  placeholder="automatically generated" matInput id="status" name='status' class="form-control" formControlName='status' readonly type="text">
+            </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Type: </label>
             <mat-form-field appearance="legacy">
-                <mat-select placeholder="Select Type">
-                    <mat-option value="option 1">Planned Work</mat-option>
-                    <mat-option value="option 2">Unplanned Work</mat-option>
+                <mat-select id="type" name='type' class="form-control" formControlName='type' placeholder="Select Type">
+                    <mat-option value="Planned Work">Planned Work</mat-option>
+                    <mat-option value="Unplanned Work">Unplanned Work</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Switching plan: </label>
             <mat-form-field appearance="legacy">
-                <mat-select placeholder="Select Plan">
-                    <mat-option value="option 1">1</mat-option>
-                    <mat-option value="option 2">2</mat-option>
-                    <mat-option value="option 3">3</mat-option>
+                <mat-select id="switchingPlan" name='switchingPlan' class="form-control" formControlName='switchingPlan' placeholder="Select Plan">
+                    <mat-option value="SPlan 1">SPlan 1</mat-option>
+                    <mat-option value="SPlan 2">SPlan 2</mat-option>
+                    <mat-option value="SPlan 3">SPlan 3</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Safety doc type: </label>
             <mat-form-field appearance="legacy">
-                <mat-select placeholder="Select Plan">
+                <mat-select id="safetyDocType" name='safetyDocType' class="form-control" formControlName='safetyDocType' placeholder="Select Doc Type">
                     <mat-option value="option 1">Clearance</mat-option>
                     <mat-option value="option 2">2</mat-option>
                     <mat-option value="option 3">3</mat-option>
@@ -36,8 +43,8 @@
         <div class="mt-3">
             <label>Date/time created:</label>
             <mat-form-field appearance="fill">
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-label>Automatically generated</mat-label>
+                <input id="dateCreated" readonly name='dateCreated' class="form-control" formControlName='dateCreated' placeholder="Automatically generated" matInput type="datetime-local">
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
         </div>
@@ -46,44 +53,39 @@
         <div class="mt-3">
             <label>Phone Number:</label>
             <mat-form-field appearance="legacy">
-                <input matInput type="text" placeholder="">
+                <input id="phoneNo" name='phoneNo' class="form-control" formControlName='phoneNo' matInput type="text" placeholder="">
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Field Crew:</label>
             <mat-form-field appearance="legacy">
-                <input disabled value="Crew 1" type="text" matInput>
+                <input id="crew" placeholder="From Work Plan" name='crew' class="form-control" formControlName='crew' readonly value="Crew 1" type="text" matInput>
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Created by:</label>
             <mat-form-field appearance="legacy">
-                <input disabled value="Marko Sutic" matInput type="text">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear">
-                    <mat-icon>close</mat-icon>
-                </button>
+                <input id="creator" name='creator' class="form-control" formControlName='creator' readonly value="Marko Sutic" matInput type="text">
+                
             </mat-form-field>
         </div>
         <div class="mt-3">
             <label>Details:</label>
             <mat-form-field appearance="legacy">
-                <textarea matInput type="text"></textarea>
-                <button mat-button matSuffix mat-icon-button aria-label="Clear">
-                    <mat-icon>close</mat-icon>
-                </button>
+                <textarea id="details" name='details' class="form-control" formControlName='details' matInput type="text"></textarea>
             </mat-form-field>
         </div>
         <div class="mt-3 mb-5">
             <label>Notes:</label>
             <mat-form-field appearance="legacy">
-                <textarea matInput type="text"></textarea>
-                <button mat-button matSuffix mat-icon-button aria-label="Clear">
-                    <mat-icon>close</mat-icon>
-                </button>
+                <textarea id="notes" name='notes' class="form-control" formControlName='notes' matInput type="text"></textarea>
             </mat-form-field>
         </div>
     </div>
 </div>
+<button class=" mb-5 ml-5 btn btn-lg btn-primary"  type="submit">Save Changes</button>
+
+</form>
 
 
 

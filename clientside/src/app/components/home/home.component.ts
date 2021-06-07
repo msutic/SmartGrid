@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
       if(element.email === form.value.email && element.password === form.value.password){
         alert('Success!');
         localStorage.setItem('sessionUser', JSON.stringify(element.userRole));
+        localStorage.setItem('sessionUsername', JSON.stringify(element.name));
+        localStorage.setItem('sessionUserLastname', JSON.stringify(element.lastName));
+        localStorage.setItem('sessionUserRole', JSON.stringify(element.userRole));
         this.router.navigate(['dashboard']);
       }
     });

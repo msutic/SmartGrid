@@ -2,8 +2,9 @@
     <div class="row row-cols-lg-auto g-3 grid">
         <div class="tab">
             <button routerLink="basicinfo" mat-button class="tablinks mt-2">Basic Information</button>
-            <button routerLink="devices" mat-button class="tablinks">History of State Changes</button>
-            <button routerLink='resolution' mat-button class="tablinks">Multimedia Attachments</button>
+            <button routerLink="history" mat-button class="tablinks">History of State Changes</button>
+            <button routerLink='multimedia' mat-button class="tablinks">Multimedia Attachments</button>
+            <button routerLink='devices' mat-button class="tablinks">Devices</button>
             <button routerLink='checklist' mat-button class="tablinks mb-2">Checklist</button>
         </div>
         <div class="tabcontent">
@@ -11,10 +12,10 @@
         </div>
     </div>
     <div class="footer">
-        <button routerLink="/incidents" mat-icon-button>
+        <button routerLink="/safetydocs" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
-        <button class="ml-2" mat-icon-button>
+        <button (click)="onSubmit()" class="ml-2" mat-icon-button>
             <mat-icon>save</mat-icon>
         </button>
     </div>

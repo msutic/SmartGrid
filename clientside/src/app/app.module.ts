@@ -43,7 +43,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { DeviceService } from './services/device.service';
 import { HttpClientModule } from '@angular/common/http';
 import { IncidentService } from './services/incident/incident.service';
-
+import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +65,7 @@ import { IncidentService } from './services/incident/incident.service';
     SafetydocChecklistComponent,
     DevicesComponent,
     NewDeviceComponent,
+    SafetydocDevicesComponent,
   ],
   imports: [
     BrowserModule,

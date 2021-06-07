@@ -18,6 +18,7 @@ import { SafetyDocsComponent } from './components/safety-doc/safety-docs/safety-
 import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-basicinfo/safetydoc-basicinfo.component';
 import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-checklist/safetydoc-checklist.component';
 import { AdminsGuard } from './guards/admins.guard';
+import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 
 const routes: Routes = [
   {
@@ -82,7 +83,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'safety-docs',
+    path: 'safetydocs',
     children: [
       {
         path: '',
@@ -104,6 +105,10 @@ const routes: Routes = [
           {
             path: 'checklist',
             component: SafetydocChecklistComponent,
+          },
+          {
+            path: 'devices',
+            component: SafetydocDevicesComponent,
           },
         ]
       }

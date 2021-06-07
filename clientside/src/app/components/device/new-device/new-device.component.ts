@@ -16,8 +16,6 @@ export class NewDeviceComponent implements OnInit {
   
   newDeviceFormGroup:FormGroup;
 
-  //@ViewChild('f') courseForm: NgForm;
-
   newDevice : Device;
   constructor(private router: Router, private deviceService: DeviceService, private route: ActivatedRoute, private formBuilder: FormBuilder) {}
 
@@ -28,11 +26,6 @@ export class NewDeviceComponent implements OnInit {
       this.deviceService.getDevice(+this.deviceId).subscribe(
         (res: any) => {
           this.newDevice = res;
-          // this.type = this.newDevice.type;
-          // this.id = this.newDevice.id;
-          // this.name = this.newDevice.name;
-          // this.address = this.newDevice.address;
-          //this.id = this.newDevice.id;
           this.createForm();
         }
       )
