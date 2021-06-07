@@ -19,6 +19,7 @@ import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-b
 import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-checklist/safetydoc-checklist.component';
 import { AdminsGuard } from './guards/admins.guard';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
+import { NonregisteredGuard } from './guards/nonregistered.guard';
 
 const routes: Routes = [
   {
@@ -32,10 +33,12 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [NonregisteredGuard]
   },
   {
     path: "incidents",
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -44,6 +47,7 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewIncidentComponent,
+        canActivate: [AdminsGuard],
         children: [
           {
             path: '',
@@ -84,6 +88,7 @@ const routes: Routes = [
   },
   {
     path: 'safetydocs',
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -92,6 +97,7 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewSafetydocComponent,
+        canActivate: [AdminsGuard],
         children: [
           {
             path: '',
@@ -116,6 +122,7 @@ const routes: Routes = [
   },
   {
     path: 'devices',
+    canActivate: [NonregisteredGuard],
     children: [
       {
         path: '',
@@ -128,11 +135,13 @@ const routes: Routes = [
       },
       {
         path: ':id/edit',
-        component: NewDeviceComponent
+        component: NewDeviceComponent,
+        canActivate: [AdminsGuard]
       },
       {
         path: ':id/delete',
-        component: DevicesComponent
+        component: DevicesComponent,
+        canActivate: [AdminsGuard]
       }
     ]
   },

@@ -69,13 +69,19 @@ export class NewDeviceComponent implements OnInit {
         }
       )
     } else {
-      this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseFloat(this.newDeviceFormGroup.value.x_coordinate), parseFloat(this.newDeviceFormGroup.value.y_coordinate));
+      if(this.newDeviceFormGroup.value.type == null || this.newDeviceFormGroup.value.address == null ||
+        this.newDeviceFormGroup.value.x_coordinate == null || this.newDeviceFormGroup.value.y_coordinate == null){
+          alert("Denied! Some fields are left empty.")
+        } else {
+          this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseFloat(this.newDeviceFormGroup.value.x_coordinate), parseFloat(this.newDeviceFormGroup.value.y_coordinate));
     
-      this.deviceService.addNewDevice(this.newDevice).subscribe(
-        (res) => {
-          this.router.navigate(['devices']);
+          this.deviceService.addNewDevice(this.newDevice).subscribe(
+            (res) => {
+              this.router.navigate(['devices']);
+            }
+          )
         }
-      )
+      
     }
     
     

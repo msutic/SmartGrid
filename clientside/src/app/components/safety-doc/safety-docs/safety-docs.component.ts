@@ -54,12 +54,18 @@ export class SafetyDocsComponent implements OnInit {
   }
 
   onDelete(id: number){
-    this.deletedSafetydoc = this.allSafetydocs.find(i => i.id == id);
-    this.safetydocService.deleteSafetydoc(this.deletedSafetydoc).subscribe(
+    var userRole = JSON.parse(localStorage.getItem("sessionUserRole"));
+    if(userRole == 'admin'){
+      this.deletedSafetydoc = this.allSafetydocs.find(i => i.id == id);
+      this.safetydocService.deleteSafetydoc(this.deletedSafetydoc).subscribe(
       (res) => {
         this.fetchData();
       }
     )
+    } else {
+      alert('Not authorized!');
+    }
+    
   }
 
 }

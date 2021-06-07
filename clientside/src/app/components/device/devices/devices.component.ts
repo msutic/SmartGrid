@@ -36,13 +36,19 @@ export class DevicesComponent implements OnInit {
   }
 
   onDelete(id: number){
-    this.deletedDevice = this.allDevices.find(e => e.id == id);
+    var userRole = JSON.parse(localStorage.getItem('sessionUserRole'));
+    if(userRole == 'admin'){
+      this.deletedDevice = this.allDevices.find(e => e.id == id);
     this.deviceService.deleteDevice(this.deletedDevice).subscribe(
       (res) => {
         //this.dataSource = new MatTableDataSource(this.allDevices);
         this.fetchData();
       }
     )
+    } else {
+      alert('Not authorized!!');
+    }
+    
   }
 
   fetchData(){

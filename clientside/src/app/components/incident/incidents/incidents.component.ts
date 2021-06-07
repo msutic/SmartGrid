@@ -75,12 +75,18 @@ export class IncidentsComponent implements OnInit {
   }
 
   onDelete(id: number){
-    this.incidentToDelete = this.allIncidents.find(i => i.id == id);
-    this.incidentService.deleteIncident(this.incidentToDelete).subscribe(
-      (res) => {
-        this.fetchData();
-      }
-    )
+    var userRole = JSON.parse(localStorage.getItem("sessionUserRole"));
+    if(userRole == 'admin'){
+      this.incidentToDelete = this.allIncidents.find(i => i.id == id);
+      this.incidentService.deleteIncident(this.incidentToDelete).subscribe(
+        (res) => {
+          this.fetchData();
+        }
+      )
+    } else {
+      alert('Not authorized!');
+    }
+    
   }
 
 }
