@@ -16,5 +16,6 @@ export class User {
         this.address = addres;
         this.username = username;
         this.password = password;
+        
     }
 }

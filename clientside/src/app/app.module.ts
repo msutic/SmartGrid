@@ -43,6 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
 import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -92,7 +96,8 @@ import { WorkplanInstructionsComponent } from './components/workplan-instruction
     MatRadioModule,
     MatAutocompleteModule,
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]

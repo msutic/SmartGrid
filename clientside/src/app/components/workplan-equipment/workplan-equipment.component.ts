@@ -2,6 +2,9 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { ConfigurableFocusTrapConfig } from '@angular/cdk/a11y/focus-trap/configurable-focus-trap-config';
+
+
 export interface EquipmentData {
   id: string;
   type:string;
@@ -23,12 +26,17 @@ const ELEMENT_DATA: EquipmentData[] = [
   styleUrls: ['./workplan-equipment.component.css']
 })
 export class WorkplanEquipmentComponent implements AfterViewInit {
-  existing_equipment=ELEMENT_DATA;
-  selected_equipment=ELEMENT_DATA[0];
-  binded_equipment:EquipmentData[];
-  constructor() { }
-  displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates', 'button'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  existing_equipment:EquipmentData[]=ELEMENT_DATA;
+  selected_equipment:EquipmentData=this.existing_equipment[0];
+  binded_equipment:EquipmentData[]=[];
+  constructor()
+  { 
+    
+
+
+  }
+  displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates', 'actions'];
+  dataSource = new MatTableDataSource(this.binded_equipment);
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,12 +46,34 @@ export class WorkplanEquipmentComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   clickMethod(equipment: EquipmentData) {
-    this.binded_equipment.push(equipment);
+    if(this.binded_equipment.includes(equipment))
+    {
+      alert("Izabrana oprema se vec nalazi u planu rada");
+    }else
+    {
+      this.binded_equipment.push(equipment);
+      this.dataSource._updateChangeSubscription();
+    }
+    
+
+
   }
   remove(equipment: EquipmentData) {
-    if(confirm("Are you sure to "+equipment.id+" this document")) {
+    if(confirm("Are you sure to "+equipment.type+" this document")) {
       console.log("Document state changed");
     }
+  }
+
+  delete(equipment: EquipmentData)
+  {
+    if(confirm("Are you sure you want to remove "+equipment.name+" from workplan?"))
+    {
+      this.binded_equipment.forEach((element,index)=>{
+        if(element==equipment)  this.binded_equipment.splice(index,1);
+     });
+     this.dataSource._updateChangeSubscription();
+    }
+    
   }
 
 }
