@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "name": "SMARTGRID",
+  "description": "Web aplikacija koja omogućava nadgledanje radova nad distributivnom mrežom.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msutic/SmartGrid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msutic/SmartGrid/issues"
+  },
+  "homepage": "https://github.com/msutic/SmartGrid#readme"
+}

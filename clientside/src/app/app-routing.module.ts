@@ -13,12 +13,12 @@ import { IncidentResolutionComponent } from './components/incident-resolution/in
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { NewIncidentComponent } from './components/new-incident/new-incident.component';
 import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
-import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
 import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
 import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
 import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
 import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
+import { NewWorkplanMultimediaComponent} from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 const routes: Routes = [
   {
     path: '',
