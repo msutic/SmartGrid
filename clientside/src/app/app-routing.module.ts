@@ -19,6 +19,8 @@ import { WorkplanEquipmentComponent } from './components/workplan-equipment/work
 import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
 import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
 import { NewWorkplanMultimediaComponent} from './components/new-workplan-multimedia/new-workplan-multimedia.component';
+import { NotifikacijaComponent } from './components/notifikacija/notifikacija.component';
+import { AllNotificationsComponent } from './components/all-notifications/all-notifications.component';
 const routes: Routes = [
   {
     path: '',
@@ -73,6 +75,21 @@ const routes: Routes = [
       {
         path:'new-workplan-instructions',
         component: WorkplanInstructionsComponent
+      }
+    ]
+  },
+  {
+    path:'notifikacije',
+    component: NotifikacijaComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'all-notifications',
+        pathMatch: 'full'
+      },
+      {
+        path:'all-notifications',
+        component:AllNotificationsComponent
       }
     ]
   },
