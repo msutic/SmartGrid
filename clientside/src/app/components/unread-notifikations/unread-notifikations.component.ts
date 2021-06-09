@@ -13,11 +13,16 @@ export class UnreadNotifikationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
   neprocitane:Notifikacija[]=[];
   constructor() {
-    var procitana=new Notifikacija("error","error jbg",new Date(),"error");
-  procitana.procitana=true;
-  var neprocitana=new Notifikacija("warning","warning jbg",new Date,"warning");
+    var procitana=new Notifikacija("error","error jbg",new Date);
+    procitana.procitana=true;
+    var neprocitana=new Notifikacija("warning","warning jbg",new Date);
+    var procitana1=new Notifikacija("info","info jbg",new Date(2021,10));
+    procitana1.procitana=true;
+    var neprocitana2=new Notifikacija("success","success brt",new Date(1998,17,11,4,40,45));
   this.allNotifications.push(procitana);
   this.allNotifications.push(neprocitana); 
+  this.allNotifications.push(procitana1);
+  this.allNotifications.push(neprocitana2);
   this.GetUnread();
 }
 displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];
@@ -52,6 +57,10 @@ GetUnread()
       this.neprocitane.push(this.allNotifications[i]);
     }
   }
+}
+clickedRow(a:Notifikacija)
+{
+  alert(a.tip+" "+a.tekst+" "+a.procitana);
 }
   
 

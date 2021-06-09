@@ -14,9 +14,9 @@ export class SuccessNotifikationsComponent implements AfterViewInit {
   success:Notifikacija[]=[];
 
   constructor() {
-    var procitana=new Notifikacija("info","info jbg",new Date(),"info");
+    var procitana=new Notifikacija("info","info jbg",new Date);
   procitana.procitana=true;
-  var neprocitana=new Notifikacija("success","success brt",new Date,"check");
+  var neprocitana=new Notifikacija("success","success brt",new Date);
   this.allNotifications.push(procitana);
   this.allNotifications.push(neprocitana); 
   this.GetSuccess();
@@ -52,6 +52,10 @@ GetSuccess()
       this.success.push(this.allNotifications[i]);
     }
   }
+}
+clickedRow(a:Notifikacija)
+{
+  alert(a.tip+" "+a.tekst+" "+a.procitana);
 }
 
 }

@@ -13,14 +13,17 @@ import {MatTableDataSource} from '@angular/material/table';
 export class ErrorNotifikationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
   errors:Notifikacija[]=[];
+  empty;
 
   constructor() {
-    var procitana=new Notifikacija("error","error jbg",new Date(),"error");
+    var procitana=new Notifikacija("error","error jbg",new Date());
   procitana.procitana=true;
-  var neprocitana=new Notifikacija("warning","warning jbg",new Date,"warning");
+  var neprocitana=new Notifikacija("error","error2 jbg",new Date());
   this.allNotifications.push(procitana);
   this.allNotifications.push(neprocitana); 
   this.GetErrors();
+  
+
 
   }
   displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];
@@ -54,6 +57,10 @@ GetErrors()
       this.errors.push(this.allNotifications[i]);
     }
   }
+}
+clickedRow(a:Notifikacija)
+{
+  alert(a.tip+" "+a.tekst+" "+a.procitana);
 }
 
 }

@@ -3,30 +3,61 @@
     align-items: center;
     justify-content:space-between;
   }
-
+  
   .tooblar_right {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
+  
   .main_content {
     overflow: auto;
   }
-
+  
   table {
     width: 100%;
-    background-color: white;
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0 1em;
   }
-
-  th {
-      font-size: 16pt;
+  tr{
+    background-color: rgb(255, 95, 87);
+    height: 60px;
+    
   }
   
-  th.mat-sort-header-sorted {
-    color: black;
+  td,th{
+    border-top:  3px solid black;
+    border-bottom:  3px solid black;
   }
-
-  .paginator {
-      background-color: whitesmoke;
+  
+  
+  tr td:first-of-type {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  
+    border-left:  3px solid black;
+    
   }
+  
+  tr td:last-of-type {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
+    border-right:  3px solid black;
+  }
+    .colorError {
+      background-color: rgb(255, 95, 87);
+    }
+    .colorInfo{
+      background-color:rgb(149, 236, 255);
+    }
+    .colorSuccess{
+      background-color:rgb(66, 243, 66);
+    }
+    .colorWarning{
+      background-color:rgb(255, 255, 53);
+    }
+  
+    
+  

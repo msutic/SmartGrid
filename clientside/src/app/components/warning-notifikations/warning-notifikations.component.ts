@@ -14,9 +14,9 @@ export class WarningNotifikationsComponent implements AfterViewInit {
   warnings:Notifikacija[]=[];
 
   constructor() {
-    var procitana=new Notifikacija("info","info jbg",new Date(),"info");
+    var procitana=new Notifikacija("info","info jbg",new Date());
   procitana.procitana=true;
-  var neprocitana=new Notifikacija("warning","warning jbg",new Date,"warning");
+  var neprocitana=new Notifikacija("warning","warning jbg",new Date);
   this.allNotifications.push(procitana);
   this.allNotifications.push(neprocitana); 
   this.GetWarnings();
@@ -52,6 +52,10 @@ GetWarnings()
       this.warnings.push(this.allNotifications[i]);
     }
   }
+}
+clickedRow(a:Notifikacija)
+{
+  alert(a.tip+" "+a.tekst+" "+a.procitana);
 }
 
 }

@@ -3,31 +3,23 @@
     
     <hr/>
     <div class="main_content">
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-           <ng-container matColumnDef="ikona">
-               <th mat-header-cell *matHeaderCellDef ></th>
-               <td mat-cell *matCellDef="let element" class="status"><mat-icon>{{element.ikona}}</mat-icon></td>
-           </ng-container>
-            <ng-container matColumnDef="tip">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-              <td mat-cell *matCellDef="let element"> {{element.tip}} </td>
-            </ng-container>
-            <ng-container matColumnDef="tekst">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Opis </th>
-              <td mat-cell *matCellDef="let element"> {{element.tekst}}</td>
-            </ng-container>
-            <ng-container matColumnDef="vreme">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Vreme </th>
-              <td mat-cell *matCellDef="let element"> {{element.vreme.getDay()}}-{{element.vreme.getMonth()}}-{{element.vreme.getFullYear()}} </td>
-            </ng-container>
-            <ng-container matColumnDef="procitana">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Procitana </th>
-              <td mat-cell *matCellDef="let element"> {{element.procitana ? "Read" :"Unread"}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-          <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        <table>
+            <tbody>
+                
+                <tr *ngFor="let notifikacija of errors" (click)="clickedRow(notifikacija)">
+                    <td style="width: 30px;"></td>
+                    <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
+                    <td>{{notifikacija.tekst}}</td>
+                    <td style="width: 100px;">{{notifikacija.vreme.getDay()}}.{{notifikacija.vreme.getMonth()}}.{{notifikacija.vreme.getFullYear()}}</td>
+                    <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
+                   
+                    
+                </tr>
+                
+                
+            </tbody>
+        </table>
+         
     </div>
     <div class="footer" aligment="right">
         <button (click)="ReadAll()">Mark All As Read

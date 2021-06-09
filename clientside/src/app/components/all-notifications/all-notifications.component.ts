@@ -13,11 +13,16 @@ export class AllNotificationsComponent implements AfterViewInit {
 
 
   constructor() {
-    var procitana=new Notifikacija("error","error jbg",new Date(),"error");
+    var procitana=new Notifikacija("error","error jbg",new Date());
     procitana.procitana=true;
-    var neprocitana=new Notifikacija("warning","warning jbg",new Date,"warning");
+    var neprocitana=new Notifikacija("warning","warning jbg",new Date,);
+    var procitana1=new Notifikacija("info","info jbg",new Date(2021,10));
+    procitana1.procitana=true;
+    var neprocitana2=new Notifikacija("success","success brt",new Date(1998,17,11,4,40,45));
     this.allNotifications.push(procitana);
     this.allNotifications.push(neprocitana);
+    this.allNotifications.push(procitana1);
+    this.allNotifications.push(neprocitana2);
    }
 
   displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];
@@ -43,5 +48,10 @@ export class AllNotificationsComponent implements AfterViewInit {
     this.allNotifications.splice(0,this.allNotifications.length);
     this.dataSource._updateChangeSubscription();
   }
+  clickedRow(a:Notifikacija)
+{
+  alert(a.tip+" "+a.tekst+" "+a.procitana);
+}
+
 
 }

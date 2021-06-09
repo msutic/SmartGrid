@@ -11,8 +11,8 @@ export class NotifikacijaComponent implements OnInit {
   neprocitane:Notifikacija[]=[];
 
   constructor() { 
-    var neprocitana=new Notifikacija("warning","warning jbg",new Date(),"warning");
-    var procitana=new Notifikacija("error","error jbg",new Date(),"error");
+    var neprocitana=new Notifikacija("warning","warning jbg",new Date());
+    var procitana=new Notifikacija("error","error jbg",new Date());
     procitana.procitana=true;
     this.sve.push(neprocitana);
     this.sve.push(neprocitana);

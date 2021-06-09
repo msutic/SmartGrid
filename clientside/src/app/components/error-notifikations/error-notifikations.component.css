@@ -2,31 +2,48 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-  }
+}
 
-  .tooblar_right {
+.tooblar_right {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .main_content {
+.main_content {
     overflow: auto;
-  }
+}
 
-  table {
+table {
     width: 100%;
-    background-color: white;
-  }
+    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}
+tr{
+    background-color: rgb(255, 95, 87);
+    height: 60px;
+    
+}
 
-  th {
-      font-size: 16pt;
-  }
+td,th{
+    border-top:  3px solid black;
+    border-bottom:  3px solid black;
+}
+
+
+tr td:first-of-type {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: rgb(255, 95, 87);
+    border-left:  3px solid black;
+    
+}
   
-  th.mat-sort-header-sorted {
-    color: black;
-  }
+tr td:last-of-type {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: rgb(255, 95, 87);
+    border-right:  3px solid black;
+}
 
-  .paginator {
-      background-color: whitesmoke;
-  }
