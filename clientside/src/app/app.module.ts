@@ -54,6 +54,7 @@ import { UnreadNotifikationsComponent } from './components/unread-notifikations/
 import { ErrorNotifikationsComponent } from './components/error-notifikations/error-notifikations.component';
 import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
 import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
+import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { SuccessNotifikationsComponent } from './components/success-notifikation
     ErrorNotifikationsComponent,
     InfoNotifikationsComponent,
     SuccessNotifikationsComponent,
+    WarningNotifikationsComponent,
     
   ],
   imports: [
