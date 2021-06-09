@@ -24,6 +24,7 @@ import { AllNotificationsComponent } from './components/all-notifications/all-no
 import { UnreadNotifikationsComponent } from './components/unread-notifikations/unread-notifikations.component';
 import { ErrorNotifikationsComponent } from './components/error-notifikations/error-notifikations.component';
 import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
+import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
 const routes: Routes = [
   {
     path: '',
@@ -105,6 +106,10 @@ const routes: Routes = [
       {
         path:'info-notifications',
         component:InfoNotifikationsComponent
+      },
+      {
+        path:'success-notifications',
+        component:SuccessNotifikationsComponent
       }
     ]
   },
