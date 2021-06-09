@@ -21,6 +21,7 @@ import { WorkplanTableComponent} from './components/workplan-table/workplan-tabl
 import { NewWorkplanMultimediaComponent} from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 import { NotifikacijaComponent } from './components/notifikacija/notifikacija.component';
 import { AllNotificationsComponent } from './components/all-notifications/all-notifications.component';
+import { UnreadNotifikationsComponent } from './components/unread-notifikations/unread-notifikations.component';
 const routes: Routes = [
   {
     path: '',
@@ -90,6 +91,10 @@ const routes: Routes = [
       {
         path:'all-notifications',
         component:AllNotificationsComponent
+      },
+      {
+        path:'unread-notifications',
+        component:UnreadNotifikationsComponent
       }
     ]
   },
