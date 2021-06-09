@@ -51,6 +51,8 @@ import {MatCardModule} from '@angular/material/card';
 import { NotifikacijaComponent } from './components/notifikacija/notifikacija.component';
 import { AllNotificationsComponent } from './components/all-notifications/all-notifications.component';
 import { UnreadNotifikationsComponent } from './components/unread-notifikations/unread-notifikations.component';
+import { ErrorNotifikationsComponent } from './components/error-notifikations/error-notifikations.component';
+import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { UnreadNotifikationsComponent } from './components/unread-notifikations/
     NotifikacijaComponent,
     AllNotificationsComponent,
     UnreadNotifikationsComponent,
+    ErrorNotifikationsComponent,
+    InfoNotifikationsComponent,
     
   ],
   imports: [
