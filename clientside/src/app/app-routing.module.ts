@@ -26,6 +26,7 @@ import { ErrorNotifikationsComponent } from './components/error-notifikations/er
 import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
 import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
 import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
+import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path:'potrosaci',
+    component:PotrosaciComponent
   },
   {
     path: "dashboard",
