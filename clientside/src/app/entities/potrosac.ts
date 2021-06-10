@@ -7,6 +7,7 @@ export class Potrosac {
     broj:String;
     id:number;
     tip:String;
+    prioritet:number;
     constructor(ime:String,prezime:String,lokacija:Lokacija,broj:String,id:number,tip:String)
     {
         this.ime=ime;
@@ -15,6 +16,7 @@ export class Potrosac {
         this.broj=broj;
         this.id=id;
         this.tip=tip;
+        
     }
 
 }

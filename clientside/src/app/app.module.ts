@@ -56,6 +56,7 @@ import { InfoNotifikationsComponent } from './components/info-notifikations/info
 import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
 import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
 import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
+import { NewConsumerComponent } from './components/new-consumer/new-consumer.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
     SuccessNotifikationsComponent,
     WarningNotifikationsComponent,
     PotrosaciComponent,
+    NewConsumerComponent,
     
   ],
   imports: [
