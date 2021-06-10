@@ -38,5 +38,16 @@ export class PotrosaciComponent implements AfterViewInit {
     this.selectedRowIndex=row.id;
     alert(row.ime);
   }
+  DeleteRow()
+  {
+    for(var i=0;i<this.potrosaci.length;i++)
+    {
+      if(this.potrosaci[i].id==this.selectedRow.id)
+      {
+        this.potrosaci.splice(i,1);
+        this.dataSource._updateChangeSubscription();
+      }
+    }
+  }
 
 }
