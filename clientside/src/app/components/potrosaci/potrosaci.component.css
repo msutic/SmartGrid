@@ -30,3 +30,6 @@
   .paginator {
       background-color: whitesmoke;
   }
+  .selected {
+    background-color: #87CEEB;
+  }

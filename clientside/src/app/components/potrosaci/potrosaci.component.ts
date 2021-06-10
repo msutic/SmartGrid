@@ -13,6 +13,8 @@ import { Lokacija } from 'src/app/entities/lokacija';
 })
 export class PotrosaciComponent implements AfterViewInit {
   potrosaci:Potrosac[]=[];
+  selectedRow:Potrosac;
+  selectedRowIndex=-1;
   constructor() { 
     var potrosac1=new Potrosac("Pera","Petrovic",new Lokacija("Vojvodjanska","Novi Sad",21000),"0605148585",1,"Rezidentalni");
     var potrosac2=new Potrosac("Sima","Simic",new Lokacija("Krajiska","Mladenovo",21000),"0212066406",2,"Komercijalni");
@@ -29,6 +31,12 @@ export class PotrosaciComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  selectRow(row:Potrosac)
+  {
+    this.selectedRow=row;
+    this.selectedRowIndex=row.id;
+    alert(row.ime);
   }
 
 }
