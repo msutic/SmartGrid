@@ -3,6 +3,7 @@ import {Notifikacija} from '../../entities/notifikacija';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { SettingsServiceService } from 'src/app/services/settings-service.service';
 @Component({
   selector: 'app-all-notifications',
   templateUrl: './all-notifications.component.html',
@@ -12,7 +13,7 @@ export class AllNotificationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
 
 
-  constructor() {
+  constructor(public sss:SettingsServiceService) {
     var procitana=new Notifikacija("error","error jbg",new Date());
     procitana.procitana=true;
     var neprocitana=new Notifikacija("warning","warning jbg",new Date,);

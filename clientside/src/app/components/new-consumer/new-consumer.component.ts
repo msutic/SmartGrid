@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl,FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
+import { SettingsServiceService } from 'src/app/services/settings-service.service';
 @Component({
   selector: 'app-new-consumer',
   templateUrl: './new-consumer.component.html',
@@ -16,7 +17,7 @@ export class NewConsumerComponent implements OnInit {
   valueType:String="";
   consumerForm:FormGroup;
   selected="";
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public sss:SettingsServiceService) { }
 
   ngOnInit(): void {
     this.initializeForm();

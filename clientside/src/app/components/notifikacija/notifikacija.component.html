@@ -5,16 +5,16 @@
         <div class="tab">
             <button routerLink="all-notifications" mat-button class="tablinks mt-2">All Notifications</button>
             <button routerLink="unread-notifications" mat-button class="tablinks">Unread Notifications</button>
-            <button routerLink="error-notifications" mat-button class="tablinks mb-2">Error
+            <button routerLink="error-notifications" mat-button *ngIf="sss.errorsvisible" class="tablinks mb-2">Error
                 <mat-icon class="red-icon">error</mat-icon>
             </button>
-            <button routerLink="info-notifications" mat-button class="tablinks">Info
+            <button routerLink="info-notifications" mat-button class="tablinks" *ngIf="sss.infosvisible">Info
                 <mat-icon class="blue-icon">info_outline</mat-icon>
             </button>
-            <button routerLink="success-notifications" mat-button class="tablinks">Success
+            <button routerLink="success-notifications" mat-button class="tablinks" *ngIf="sss.successesvisible">Success
                 <mat-icon class="green-icon" >check</mat-icon>
             </button>
-            <button routerLink="warning-notifications" mat-button class="tablinks">Warning
+            <button routerLink="warning-notifications" mat-button class="tablinks" *ngIf="sss.warrningsvisible">Warning
                 <mat-icon class="yellow-icon">warning</mat-icon>
             </button>
           

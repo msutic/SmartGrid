@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import {Notifikacija} from '../../entities/notifikacija';
 
 @Component({
@@ -10,7 +11,7 @@ export class NotifikacijaComponent implements OnInit {
   sve:Notifikacija[]=[];
   neprocitane:Notifikacija[]=[];
 
-  constructor() { 
+  constructor(public sss:SettingsServiceService) { 
     var neprocitana=new Notifikacija("warning","warning jbg",new Date());
     var procitana=new Notifikacija("error","error jbg",new Date());
     procitana.procitana=true;

@@ -4,13 +4,14 @@
     <hr/>
     <div class="main_content">
         <table>
-            <tbody>
+            <tbody *ngFor="let notifikacija of allNotifications" (click)="clickedRow(notifikacija)" >
                 
-                <tr *ngFor="let notifikacija of allNotifications" (click)="clickedRow(notifikacija)"
+                <tr *ngIf="(notifikacija.tip=='error' && sss.errorsvisible) || (notifikacija.tip=='info' && sss.infosvisible) || (notifikacija.tip=='warning' && sss.warrningsvisible) || (notifikacija.tip=='success' && sss.successesvisible)"
                 [class.colorError]='notifikacija.tip=="error"'
                 [class.colorInfo]='notifikacija.tip=="info"'
                 [class.colorSuccess]='notifikacija.tip=="success"'
                 [class.colorWarning]='notifikacija.tip=="warning"'
+                
                 >
                     <td style="width: 30px;"></td>
                     <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>

@@ -28,6 +28,7 @@ import { SuccessNotifikationsComponent } from './components/success-notifikation
 import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
 import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
 import { NewConsumerComponent } from './components/new-consumer/new-consumer.component';
+import { SettingsComponent } from './components/settings/settings.component';
 const routes: Routes = [
   {
     path: '',
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path:'potrosaci',
     component:PotrosaciComponent
+  },
+  {
+    path:'settings',
+    component:SettingsComponent
   },
   {
     path:'new-consumer',
