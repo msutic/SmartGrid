@@ -57,20 +57,28 @@
             </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
-            <a routerLink="/potrosaci">ADD CONSUMER</a>
+            <button class="sidebar-button" title="Add Consumer" mat-button routerLink="/potrosaci" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
+              <span class="minimized">ADD CONSUMER</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
-            <a routerLink="/notifikacije">NOTIFICATIONS</a>
+            <button class="sidebar-button" title="Notifications" mat-button routerLink="/notifikacije" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
+              <span class="minimized">NOTIFICATIONS</span>
+            </button>
           </div>
           <div class="sidebar__link">
-            <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
-            <a routerLink='/settings'>SETTINGS</a>
+            <button class="sidebar-button" title="Settings" mat-button routerLink="/settings" routerLinkActive="active_menu_link">
+              <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
+              <span class="minimized">SETTINGS</span>
+            </button>
           </div>
-          <div  (click)="logout()"  >
-            <mat-icon class="mr-2" aria-hidden="false"  >logout</mat-icon>
-            <label>LOG OUT</label>
+          <div class="sidebar__link">
+            <button class="sidebar-button" (click)='logout()' title="Logout" color="warn" mat-button>
+              <mat-icon class="mr-2" aria-hidden="false">logout</mat-icon>
+              <span class="minimized">LOGOUT</span>
+            </button>
           </div>
         </div>
       </div>

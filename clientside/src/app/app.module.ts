@@ -35,14 +35,11 @@ import { NewWorkplanComponent } from './components/new-workplan/new-workplan.com
 import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
-import { HttpClientModule } from '@angular/common/http';
 import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
 import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
 import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -138,7 +135,7 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
     BrowserModule,
     MatProgressBarModule,
     MatCardModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    //!environment.production ? StoreDevtoolsModule.instrument() : [],
     MatSlideToggleModule,
     NgApexchartsModule,
     HttpClientModule,
