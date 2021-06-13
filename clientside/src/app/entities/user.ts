@@ -6,6 +6,7 @@ export class User {
     address: string;
     username: string;
     password: string;
+    userRole: string;
     // add user type and profile picture
 
     constructor(name: string, lastName: string, email: string, birthDate: Date, addres: string, username: string, password: string){

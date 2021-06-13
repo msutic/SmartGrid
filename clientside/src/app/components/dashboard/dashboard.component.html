@@ -1,6 +1,6 @@
 <div class="main__cards">
   <a routerLink="/incidents">
-    <div class="card ml-5">
+    <div class="card">
       <div class="card_inner">
         <span class="font-bold text-title">MY INCIDENTS</span>
         <div>
@@ -11,10 +11,10 @@
       <hr/>
       <div class="card_inner">
           <div>
-            <small class="mt-2"><b>0</b> Drafts<br/></small>
-            <small class="mt-2"><b>0</b> Canceled<br/></small>
-            <small class="mt-2"><b>2</b> Executing<br/></small>
-            <small class="mt-2"><b>1</b> Completed<br/></small>
+            <small class="mt-2"><b>{{drafts}}</b> Drafts<br/></small>
+            <small class="mt-2"><b>{{dispatched}}</b> Dispatched<br/></small>
+            <small class="mt-2"><b>{{denied}}</b> Denied<br/></small>
+            <small class="mt-2"><b>{{submitted}}</b> Submitted<br/></small>
           </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       </div>
     </div>
   </a>
-  <a href="#">
+  <a routerLink='/safetydocs'>
     <div class="card">
       <div class="card_inner">
         <span class="font-bold text-title">MY SAFETY DOCS</span>
@@ -51,12 +51,99 @@
       <hr/>
       <div class="card_inner">
           <div>
-            <small class="mt-2"><b>0</b> Drafts<br/></small>
-            <small class="mt-2"><b>0</b> Canceled<br/></small>
-            <small class="mt-2"><b>2</b> Executing<br/></small>
-            <small class="mt-2"><b>1</b> Completed<br/></small>
+            <small class="mt-2"><b>{{docsDrafts}}</b> Drafts<br/></small>
+            <small class="mt-2"><b>{{docsCanceled}}</b> Canceled<br/></small>
           </div>
       </div>
     </div>
   </a>
+  <a routerLink="/incidents">
+    <div class="card" id="chart1">
+      <div class="card_inner">
+        <span class="font-bold text-title">INCIDENTS</span>
+        <div>
+            <mat-icon aria-hidden="false">warning</mat-icon>
+            <small class="ml-1"><b>5</b></small>
+        </div>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div>
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [dataLabels]="chartOptions.dataLabels"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
+  <a routerLink="/documents">
+    <div class="card h-auto" id="chart2">
+      <div class="card_inner">
+        <span class="font-bold text-title">DOCUMENTS</span>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div id="chart2">
+          <apx-chart
+            [series]="piechartOptions.series"
+            [chart]="piechartOptions.chart"
+            [labels]="piechartOptions.labels"
+            [responsive]="piechartOptions.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
 </div>
+
+<!--<div class="main__cards">
+  <a routerLink="/incidents">
+    <div class="chart_line" id="chart1">
+      <div class="card_inner">
+        <span class="font-bold text-title">INCIDENTS</span>
+        <div>
+            <mat-icon aria-hidden="false">warning</mat-icon>
+            <small class="ml-1"><b>5</b></small>
+        </div>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div id="chart1">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [dataLabels]="chartOptions.dataLabels"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
+  <a routerLink="/documents">
+    <div class="card h-auto" id="chart2">
+      <div class="card_inner">
+        <span class="font-bold text-title">DOCUMENTS</span>
+      </div>
+      <hr/>
+      <div class="card_inner">
+        <div id="chart2">
+          <apx-chart
+            [series]="piechartOptions.series"
+            [chart]="piechartOptions.chart"
+            [labels]="piechartOptions.labels"
+            [responsive]="piechartOptions.responsive"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+-->
+

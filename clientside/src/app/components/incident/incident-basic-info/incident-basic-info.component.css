@@ -1,0 +1,28 @@
+  div > label {
+    width: 35%;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .nodes {
+      display: flex;
+      justify-content:space-between;
+  }
+
+  .date-mat {
+    width: 50%;
+  }
+
+  .saveButton{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .checkbox-field{
+    width: 20px;
+    height: 15px;
+  }
+  
+
+
+  

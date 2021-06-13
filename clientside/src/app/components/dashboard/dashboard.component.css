@@ -1,7 +1,8 @@
 .main__cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    gap: 50px;
     margin: 20px 0;
   }
 
@@ -13,9 +14,10 @@
   .card {
     display: flex;
     flex-direction: column;
-    width: 420px;
-    height: 260px;
-    padding: 25px;
+    min-width: 240px;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
     border-radius: 5px;
     background: whitesmoke;
     box-shadow: 2px 2px 5px #666565;
@@ -37,5 +39,16 @@
     font-size: 20px;
     margin-left: 25px;
   }
+
+  .chart_line {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 5px;
+    background: whitesmoke;
+    box-shadow: 2px 2px 5px #666565;
+  }
+
+  
 
   
