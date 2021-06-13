@@ -8,7 +8,9 @@
                 <mat-icon class="mr-2">phone</mat-icon>Report Outage
             </button>
           <a class="text-lightblue" href="#">CREATE ACCOUNT</a>
-          <a class="text-lightblue" (click)="checkLogin()">PROFILE</a>
+
+          <a class="text-lightblue" href="profile">PROFILE</a>
+
         </div>
       </nav>
       <div id="sidebar">
@@ -55,27 +57,28 @@
             </button>
           </div>
           <div class="sidebar__link">
-            <button class="sidebar-button" title="Add Consumer" mat-button routerLink="#" routerLinkActive="active_menu_link">
+            <button class="sidebar-button" title="Add Consumer" mat-button routerLink="/potrosaci" routerLinkActive="active_menu_link">
               <mat-icon class="mr-2" aria-hidden="false">person_add</mat-icon>
               <span class="minimized">ADD CONSUMER</span>
             </button>
           </div>
           <div class="sidebar__link">
-            <button class="sidebar-button" title="Notifications" mat-button routerLink="#" routerLinkActive="active_menu_link">
+            <button class="sidebar-button" title="Notifications" mat-button routerLink="/notifikacije" routerLinkActive="active_menu_link">
               <mat-icon class="mr-2" aria-hidden="false">notifications</mat-icon>
               <span class="minimized">NOTIFICATIONS</span>
             </button>
           </div>
           <div class="sidebar__link">
-            <button class="sidebar-button" title="Settings" mat-button routerLink="/incidents" routerLinkActive="active_menu_link">
+            <button class="sidebar-button" title="Settings" mat-button routerLink="/settings" routerLinkActive="active_menu_link">
               <mat-icon class="mr-2" aria-hidden="false">settings</mat-icon>
               <span class="minimized">SETTINGS</span>
             </button>
           </div>
           <div class="sidebar__link">
-            <button class="sidebar-button" (click)='logout()' title="Logout" color="warn" mat-button href="#">
+            <button class="sidebar-button" (click)='logout()' title="Logout" color="warn" mat-button>
               <mat-icon class="mr-2" aria-hidden="false">logout</mat-icon>
-              <span class="minimized">LOGOUT</span></button>
+              <span class="minimized">LOGOUT</span>
+            </button>
           </div>
         </div>
       </div>

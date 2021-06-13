@@ -1,0 +1,32 @@
+<p>error-notifikations works!</p>
+<div class="mt-3">
+    
+    <hr/>
+    <div class="main_content">
+        <table>
+            <tbody>
+                
+                <tr *ngFor="let notifikacija of errors" (click)="clickedRow(notifikacija)">
+                    <td style="width: 30px;"></td>
+                    <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
+                    <td>{{notifikacija.tekst}}</td>
+                    <td style="width: 100px;">{{notifikacija.vreme.getDay()}}.{{notifikacija.vreme.getMonth()}}.{{notifikacija.vreme.getFullYear()}}</td>
+                    <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
+                   
+                    
+                </tr>
+                
+                
+            </tbody>
+        </table>
+         
+    </div>
+    <div class="footer" aligment="right">
+        <button (click)="ReadAll()">Mark All As Read
+            
+        </button>
+        <button (click)="ClearAll()" > Clear All
+           
+        </button>
+    </div>
+</div>

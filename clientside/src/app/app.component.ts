@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TestAuthentificationServiceService } from './services/test-authentification-service.service';
+import {User} from '../app/entities/user';
+
 
 @Component({
   selector: 'app-root',
@@ -8,30 +11,37 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'clientside';
+  currentUser: User;
+  
+  isLoggedin:boolean=false;
+  constructor( private router:Router,private authenticationService:TestAuthentificationServiceService)
+  {
+    
+    this.authenticationService.currentUser.subscribe(x=>this.currentUser=x);
 
-  username = JSON.parse(localStorage.getItem('sessionUsername'));
-
-  constructor(private router: Router){}
-
-  logout(){
-    if(localStorage.length > 0) {
-      localStorage.removeItem('sessionUser');
-      localStorage.removeItem('sessionUsername');
-      localStorage.removeItem('sessionUserLastname');
-      localStorage.removeItem('sessionUserRole');
-      alert('Successfully logged out!');
-      this.router.navigate(['/home']);
-    }
+  }
+  
+  logout()
+  {
+    alert("Logout pressed");
+    this.authenticationService.logout();
+    this.router.navigate(['/home']);
   }
 
-  checkLogin(){
-    let username = localStorage.getItem("sessionUsername");
-    if(username != null){
-      alert("You are logged in as " + JSON.parse(username) + '\nRole: ' + JSON.parse(localStorage.getItem('sessionUserRole')));
-    } else {
-      alert('You are not logged in.');
+  /*
+  isloggedin():boolean
+  {
+    if(!this.currentUser.username)
+    {
+      alert("User undefined");
+      return false;
+    }else
+    {
+      alert("User defined");
+      return true;
     }
   }
+  */
 }
 
 

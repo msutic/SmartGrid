@@ -1,6 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
+import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
+import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
+import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
+import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
+import { WorkplanTableComponent} from './components/workplan-table/workplan-table.component';
+import { NewWorkplanMultimediaComponent} from './components/new-workplan-multimedia/new-workplan-multimedia.component';
+import { NotifikacijaComponent } from './components/notifikacija/notifikacija.component';
+import { AllNotificationsComponent } from './components/all-notifications/all-notifications.component';
+import { UnreadNotifikationsComponent } from './components/unread-notifikations/unread-notifikations.component';
+import { ErrorNotifikationsComponent } from './components/error-notifikations/error-notifikations.component';
+import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
+import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
+import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
+import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
+import { NewConsumerComponent } from './components/new-consumer/new-consumer.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { DevicesComponent } from './components/device/devices/devices.component';
 import { HomeComponent } from './components/home/home.component';
 import { IncidentBasicInfoComponent } from './components/incident/incident-basic-info/incident-basic-info.component';
@@ -32,9 +50,95 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path:'potrosaci',
+    component:PotrosaciComponent
+  },
+  {
+    path:'settings',
+    component:SettingsComponent
+  },
+  {
+    path:'new-consumer',
+    component:NewConsumerComponent
+  },
+  {
     path: "dashboard",
     component: DashboardComponent,
     canActivate: [NonregisteredGuard]
+  },
+  {
+    path: "profile",
+    component: EditProfileComponent
+  },
+  {
+    path: "workplans",
+    component:WorkplanTableComponent
+  },
+  {
+    path: 'new-workplan',
+    component:NewWorkplanComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'workplan-basic-info',
+        pathMatch: 'full'
+      },
+      {
+        path:'workplan-basic-info',
+        component: NewWorkplanBasicinfoComponent
+      },
+      {
+        path:'workplan-state-history',
+        component:NewWorkplanStatesComponent
+      },
+      {
+        path:'multimedia-attachments',
+        component:NewWorkplanMultimediaComponent
+      },
+      {
+        path:'workplan-devices',
+        component: WorkplanEquipmentComponent
+      },
+      {
+        path:'new-workplan-instructions',
+        component: WorkplanInstructionsComponent
+      }
+    ]
+  },
+  {
+    path:'notifikacije',
+    component: NotifikacijaComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'all-notifications',
+        pathMatch: 'full'
+      },
+      {
+        path:'all-notifications',
+        component:AllNotificationsComponent
+      },
+      {
+        path:'unread-notifications',
+        component:UnreadNotifikationsComponent
+      },
+      {
+        path:'error-notifications',
+        component:ErrorNotifikationsComponent
+      },
+      {
+        path:'info-notifications',
+        component:InfoNotifikationsComponent
+      },
+      {
+        path:'success-notifications',
+        component:SuccessNotifikationsComponent
+      },
+      {
+        path:'warning-notifications',
+        component:WarningNotifikationsComponent
+      },
+    ]
   },
   {
     path: "incidents",

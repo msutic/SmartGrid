@@ -1,0 +1,36 @@
+<p>settings works!</p>
+<div class="nodes">
+
+
+<div class="container mt-3 ml-1 mb-3">
+        
+        <ng-container>
+            <p>Neobavezna polja vidljiva:</p>
+        <div>
+          <input type="radio" id="Vidljiva" checked
+           name="neobaveznapolja" [(ngModel)]="vidljiva" [value]="true">
+          <label for="Vidljiva">Vidljiva</label>
+      
+          <input type="radio" id="Nevidljiva"
+           name="neobaveznapolja" [(ngModel)]="vidljiva" [value]="false">
+          <label for="Nevidljiva">Nevidljiva</label>
+        </div>
+    </ng-container>
+    <br/>
+    <ng-container>
+        <p>Vidljiva obavestenja:</p>
+        <div>
+            <input type="checkbox" name="vidljiva_obavestenja" value="error" checked (change)="toggleError($event)">Errors<br>
+            <input type="checkbox" name="vidljiva_obavestenja" value="info" checked (change)="toggleInfo($event)">Infos<br>
+            <input type="checkbox" name="vidljiva_obavestenja" value="warnings" checked (change)="toggleWarning($event)">Warnings<br>
+            <input type="checkbox" name="vidljiva_obavestenja" value="sucesses" checked (change)="toggleSucess($event)">Sucesses<br>
+
+        </div>
+    </ng-container>
+    <br/>
+    <button class="primary" (click)="SaveSettings()">
+        SAVE
+    </button>
+</div>
+
+</div>

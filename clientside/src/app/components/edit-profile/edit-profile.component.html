@@ -1,0 +1,70 @@
+
+<p class=par>PERSONAL INFORMATION</p>
+<div class="container">
+
+
+    <form>
+        <table>
+        
+            <tr>
+                <td align="right">Username:</td>
+                <td align="left"><input type="text" name="username" [(ngModel)]="UserName" [readonly]="!isDivVisible" [style.background]="color" /></td>
+                
+            </tr>
+            <br/>
+            <tr>
+              
+          
+            <td align="right">First Name:</td>
+            <td align="left"><input type="text" name="first" [(ngModel)]="FirstName" [readonly]="!isDivVisible" [style.background]="color"/></td>
+            
+            </tr>
+            <br/>
+            <tr>
+         
+          
+            <td align="right">Last Name:</td>
+            <td align="left"><input type="text" name="last" [(ngModel)]="LastName" [readonly]="!isDivVisible" [style.background]="color" /></td>
+           
+          </tr>
+          <br/>
+          <tr>
+            <td align="right">Email:</td>
+            <td align="left"><input type="email" name="email" [(ngModel)]="Email" [readonly]="!isDivVisible" [style.background]="color" /></td>
+            
+          </tr>
+          <br/>
+          <tr>
+            <td align="right">Date Of Birth:</td>
+            <td align="left"><input type="date"  name="date" id="date" [readonly]="!isDivVisible" [style.background]="color"/></td>
+            
+           </tr>
+           <br/>
+           <tr>
+            <td align="right">Address:</td>
+            <td align="left"><input type="text" name="adresa" [(ngModel)]="Address" [readonly]="!isDivVisible" [style.background]="color" /></td>
+            
+          </tr>
+          <tr>
+            <td colspan="2">
+                <button [style.visibility]="isDivVisible ? 'visible' : 'hidden'" (click)="confirm()" class="Confirm" type="button" name="confirm">Confirm</button>
+              </td>
+            </tr>
+                  <tr>
+                      <td colspan="2">
+                        <button class="Edit" (click)="edit()" [style.visibility]="isDivVisible ? 'hidden' : 'visible'" type="button">Edit</button>
+                      </td>
+
+                  
+              
+                
+                  </tr>
+                  <tr>
+                      <td colspan="2">
+                        <button class="Cancel" (click)="cancel()" [style.visibility]="isDivVisible ? 'visible' : 'hidden'" type="button">Cancel</button>
+                      </td>
+                
+            </tr>
+             
+        </table>
+      </form>

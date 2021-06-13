@@ -1,0 +1,36 @@
+<div class="mt-3">
+    
+    <div class="mt-3">
+        <label style="margin: 10px;">Workplan State:</label>
+        <mat-form-field appearance="legacy">
+            <mat-select [(value)]="selected_state" placeholder="Select Action" >
+                <mat-option *ngFor="let p of states" [value]="p">{{p}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button style="margin: 10px;" type=button class="btn btn-primary"  (click)="clickMethod(selected_state)">Confirm</button>
+    </div>
+    <div class="main_content">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+              <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+            </ng-container>
+            <ng-container matColumnDef="old_status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Old Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.old_status}} </td>
+            </ng-container>
+            <ng-container matColumnDef="new_status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> New Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.new_status}} </td>
+            </ng-container>
+            <ng-container matColumnDef="timeOfChange">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Change </th>
+              <td mat-cell *matCellDef="let element"> {{element.timeOfChange | date:'HH:mm dd.MM.yyyy' }} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

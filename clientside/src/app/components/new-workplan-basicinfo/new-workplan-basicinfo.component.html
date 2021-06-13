@@ -1,0 +1,153 @@
+
+<div class="nodes">
+    <div class="container mt-3 ml-1 mb-3">
+        <div class="mt-3">
+            <label>Workplan ID:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" [(ngModel)]="value">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Type: </label>
+            <mat-form-field appearance="legacy">
+                <mat-select placeholder="Select Type">
+                    <mat-option value="option 1">Planned Work</mat-option>
+                    <mat-option value="option 2">Unplanned Work</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Order:</label>
+            <mat-form-field appearance="legacy">
+                <mat-select [(value)]="selected_nalog" placeholder="Select Order" >
+                    <mat-option *ngFor="let p of nalozi_za_rad" [value]="p">{{p}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <label>Incident:</label>
+            <mat-form-field appearance="legacy">
+                <mat-select [(value)]="selected_nalog" placeholder="Select Incident" >
+                    <mat-option *ngFor="let p of incidenti_za_rad" [value]="p">{{p}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+      
+        <div class="mt-3">
+            <label>Status:</label>
+            <mat-form-field appearance="legacy">
+                <mat-select [(value)]="selected_status" placeholder="" >
+                    <mat-option *ngFor="let p of possible_status" [value]="p">{{p}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Street:</label>
+            <mat-form-field appearance="legacy">
+                <textarea matInput type="text" [(ngModel)]="valueStreet" placeholder="Select street"></textarea>
+                <button mat-button *ngIf="valueStreet" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Start Date:</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a start date</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <label>End Date:</label>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a end date</mat-label>
+                <input matInput [matDatepicker]="picker3">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+    <div class="container mt-3 ml-5 mb-3">
+        <div class="mt-3">
+            <label>Crew:</label>
+            <mat-form-field appearance="legacy">
+                <mat-select [(value)]="selected_crew" placeholder="Select Crew" >
+                    <mat-option *ngFor="let p of crews_za_rad" [value]="p">{{p}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Create by:</label>
+            <label> {{created_by}}</label>
+        </div>
+        
+        <div class="mt-3">
+            <Label>Purpuse</Label>
+                <mat-form-field apperance="legacy">
+                  <mat-label>Select purpuse</mat-label>
+                  <input type="text"
+                         
+                         aria-label="Reason for work"
+                         matInput
+                         [formControl]="myControl"
+                         [matAutocomplete]="auto"
+                         [(ngModel)]="option">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <button mat-button *ngIf="option" matSuffix mat-icon-button aria-label="Clear" (click)="option=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                </mat-form-field>
+                
+                
+              
+        </div>
+        <div class="mt-3">
+            <label>Notes:</label>
+            <mat-form-field appearance="legacy" >
+                <textarea matInput type="text" [(ngModel)]="valueDesc" placeholder="Additional Notes"></textarea>
+                <button mat-button *ngIf="valueDesc" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Company:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" [(ngModel)]="company" placeholder="Select Company">
+                <button mat-button *ngIf="company" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <label>Phone Number:</label>
+            <mat-form-field appearance="legacy">
+                <input matInput type="text" [(ngModel)]="phone" placeholder="Enter Phone Number">
+                <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="mt-3">
+            <label>Create On:</label>
+            <label> {{created_on | date:'HH:mm dd.MM.yyyy' }}</label>
+        </div>
+        
+    </div>
+</div>
+
+
+
+

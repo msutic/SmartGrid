@@ -1,10 +1,7 @@
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { EditProfileComponent} from './components/edit-profile/edit-profile.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,6 +29,32 @@ import { IncidentCrewComponent } from './components/incident/incident-crew/incid
 import { IncidentMultimediaComponent } from './components/incident/incident-multimedia/incident-multimedia.component';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
+import { WorkplanTableComponent } from './components/workplan-table/workplan-table.component';
+import { RouterModule } from '@angular/router';
+import { NewWorkplanComponent } from './components/new-workplan/new-workplan.component';
+import { NewWorkplanBasicinfoComponent } from './components/new-workplan-basicinfo/new-workplan-basicinfo.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NewWorkplanStatesComponent } from './components/new-workplan-states/new-workplan-states.component';
+import { NewWorkplanMultimediaComponent } from './components/new-workplan-multimedia/new-workplan-multimedia.component';
+import { WorkplanEquipmentComponent } from './components/workplan-equipment/workplan-equipment.component';
+import { WorkplanInstructionsComponent } from './components/workplan-instructions/workplan-instructions.component';
+//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
+import { NotifikacijaComponent } from './components/notifikacija/notifikacija.component';
+import { AllNotificationsComponent } from './components/all-notifications/all-notifications.component';
+import { UnreadNotifikationsComponent } from './components/unread-notifikations/unread-notifikations.component';
+import { ErrorNotifikationsComponent } from './components/error-notifikations/error-notifikations.component';
+import { InfoNotifikationsComponent } from './components/info-notifikations/info-notifikations.component';
+import { SuccessNotifikationsComponent } from './components/success-notifikations/success-notifikations.component';
+import { WarningNotifikationsComponent } from './components/warning-notifikations/warning-notifikations.component';
+import { PotrosaciComponent } from './components/potrosaci/potrosaci.component';
+import { NewConsumerComponent } from './components/new-consumer/new-consumer.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { SafetyDocsComponent } from './components/safety-doc/safety-docs/safety-docs.component';
 import { NewSafetydocComponent } from './components/safety-doc/new-safetydoc/new-safetydoc.component';
 import { SafetydocBasicinfoComponent } from './components/safety-doc/safetydoc-basicinfo/safetydoc-basicinfo.component';
@@ -59,6 +82,24 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
     IncidentNewCallComponent,
     IncidentCrewComponent,
     IncidentMultimediaComponent,
+    EditProfileComponent,
+    WorkplanTableComponent,
+    NewWorkplanComponent,
+    NewWorkplanBasicinfoComponent,
+    NewWorkplanStatesComponent,
+    NewWorkplanMultimediaComponent,
+    WorkplanEquipmentComponent,
+    WorkplanInstructionsComponent,
+    NotifikacijaComponent,
+    AllNotificationsComponent,
+    UnreadNotifikationsComponent,
+    ErrorNotifikationsComponent,
+    InfoNotifikationsComponent,
+    SuccessNotifikationsComponent,
+    WarningNotifikationsComponent,
+    PotrosaciComponent,
+    NewConsumerComponent,
+    SettingsComponent,
     SafetyDocsComponent,
     NewSafetydocComponent,
     SafetydocBasicinfoComponent,
@@ -89,6 +130,12 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
     MatNativeDateModule,
     NgbModalModule,
     MatRadioModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    BrowserModule,
+    MatProgressBarModule,
+    MatCardModule,
+    //!environment.production ? StoreDevtoolsModule.instrument() : [],
     MatSlideToggleModule,
     NgApexchartsModule,
     HttpClientModule,
