@@ -15,7 +15,7 @@
                     <td style="width: 30px;"></td>
                     <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
                     <td>{{notifikacija.tekst}}</td>
-                    <td style="width: 100px;">{{notifikacija.vreme.getDay()}}.{{notifikacija.vreme.getMonth()}}.{{notifikacija.vreme.getFullYear()}}</td>
+                    <td style="width: 100px;">{{notifikacija.vreme | date:"dd MM yyyy HH:mm:ss" }}</td>
                     <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
                    
                     

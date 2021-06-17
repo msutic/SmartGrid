@@ -124,6 +124,36 @@ namespace SmartGrid.Migrations
                     b.ToTable("Incidents");
                 });
 
+            modelBuilder.Entity("SmartGrid.Models.Notifikacija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Ikona")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Procitana")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Tekst")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Vreme")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("SmartGrid.Models.Safetydoc", b =>
                 {
                     b.Property<int>("Id")

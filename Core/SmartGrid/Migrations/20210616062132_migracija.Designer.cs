@@ -10,8 +10,8 @@ using SmartGrid.Data;
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    [Migration("20210606211851_migrationUffff")]
-    partial class migrationUffff
+    [Migration("20210616062132_migracija")]
+    partial class migracija
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,6 @@ namespace SmartGrid.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IncidentId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -49,8 +48,6 @@ namespace SmartGrid.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IncidentId");
 
                     b.ToTable("Devices");
                 });
@@ -129,18 +126,88 @@ namespace SmartGrid.Migrations
                     b.ToTable("Incidents");
                 });
 
-            modelBuilder.Entity("SmartGrid.Models.Device", b =>
+            modelBuilder.Entity("SmartGrid.Models.Notifikacija", b =>
                 {
-                    b.HasOne("SmartGrid.Models.Incident", "Incident")
-                        .WithMany("Devices")
-                        .HasForeignKey("IncidentId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Navigation("Incident");
+                    b.Property<string>("Ikona")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Procitana")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Tekst")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Vreme")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("SmartGrid.Models.Incident", b =>
+            modelBuilder.Entity("SmartGrid.Models.Safetydoc", b =>
                 {
-                    b.Navigation("Devices");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Crew")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("GroundingRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ReadyForService")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SafetyDocType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SwitchingPlan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TagsRemoved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("WorkOperationsCompleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Safetydocs");
                 });
 #pragma warning restore 612, 618
         }

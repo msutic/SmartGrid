@@ -5,7 +5,9 @@ import { Device } from 'src/app/entities/device';
 import { Incident } from 'src/app/entities/incident';
 import { BasicInfo } from 'src/app/entities/incidents/basic-info';
 import { Resolution } from 'src/app/entities/incidents/resolution';
+import { Notifikacija } from 'src/app/entities/notifikacija';
 import { IncidentService } from 'src/app/services/incident/incident.service';
+import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 
 @Component({
   selector: 'app-new-incident',
@@ -21,7 +23,7 @@ export class NewIncidentComponent implements OnInit {
   incidentCallsList: Array<Call>;
   incidentCrew: string;
   data1: string;
-  constructor(private incidentService: IncidentService, private router: Router) { }
+  constructor(private incidentService: IncidentService, private router: Router, public ns: NotifikacijaserviceService) { }
 
   ngOnInit(): void {
     this.incidentService.changeEmitted$.subscribe(
@@ -88,6 +90,13 @@ export class NewIncidentComponent implements OnInit {
           this.router.navigate(['incidents']);
         }
       );
+
+      this.ns.addNewNotification(new Notifikacija("info","incident uspesno dodat",new Date(Date.now()))).subscribe(
+        (res) => {
+          this.router.navigate(['incidents']);
+        }
+      );
+
     }
   }
 

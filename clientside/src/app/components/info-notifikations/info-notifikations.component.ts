@@ -3,6 +3,7 @@ import {Notifikacija} from '../../entities/notifikacija';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 
 
 @Component({
@@ -11,16 +12,11 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./info-notifikations.component.css']
 })
 export class InfoNotifikationsComponent implements AfterViewInit {
-  allNotifications:Notifikacija[]=[];
   info:Notifikacija[]=[];
 
-  constructor() { 
-    var procitana=new Notifikacija("info","info jbg",new Date());
-  procitana.procitana=true;
-  var neprocitana=new Notifikacija("warning","warning jbg",new Date());
-  this.allNotifications.push(procitana);
-  this.allNotifications.push(neprocitana); 
-  this.GetInfo();
+  constructor(public ns:NotifikacijaserviceService) { 
+    
+  
   }
   displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];
   dataSource = new MatTableDataSource(this.info);
@@ -28,35 +24,62 @@ export class InfoNotifikationsComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit(): void {
+    this.ns.loadInfoNotifikations().subscribe(
+      (res:any) => {
+        this.fetchData()
+      }
+    )
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  fetchData(){
+    this.ns.loadInfoNotifikations().subscribe(
+      data => {
+        this.info = data;
+        //this.convertDate();
+       
+
+        
+        this.dataSource = new MatTableDataSource(this.info);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      }
+    );
   }
   ReadAll()
   {
     for(var i=0;i<this.info.length;i++)
     {
-      this.info[i].procitana=true;
+      this.ns.ReadNotification(this.info[i]).subscribe(
+        res=>{
+          window.location.reload();
+        }
+      )
     }
-    this.dataSource._updateChangeSubscription();
+    
   }
 ClearAll()
   {
-    this.info.splice(0,this.info.length);
-    this.dataSource._updateChangeSubscription();
-  }
-GetInfo()
-{
-  for(var i=0;i<this.allNotifications.length;i++)
-  {
-    if(this.allNotifications[i].tip=="info")
+    for(var i=0;i<this.info.length;i++)
     {
-      this.info.push(this.allNotifications[i]);
+      this.ns.DeleteNotification(this.info[i]).subscribe(
+        res=>{
+          window.location.reload();
+        }
+      )
     }
   }
-}
+
 clickedRow(a:Notifikacija)
 {
-  alert(a.tip+" "+a.tekst+" "+a.procitana);
+  if(a.procitana==false)
+  {
+    this.ns.ReadNotification(a).subscribe(
+      res=>{
+        window.location.reload();
+      }
+    )
+  }
 }
 
 }

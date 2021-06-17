@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace SmartGrid.Controllers
 {
     [Route("api/[controller]")]
@@ -29,6 +30,8 @@ namespace SmartGrid.Controllers
 
             return devices;
         }
+
+
 
         // GET: api/Devices/1
         [HttpGet("{id}")]

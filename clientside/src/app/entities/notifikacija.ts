@@ -1,4 +1,5 @@
 export class Notifikacija {
+    id:number;
     tip:String;
     tekst:String;
     vreme:Date;
