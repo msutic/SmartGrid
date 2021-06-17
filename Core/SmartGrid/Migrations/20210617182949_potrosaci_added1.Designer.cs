@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartGrid.Data;
 
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    partial class SmartGridContextModelSnapshot : ModelSnapshot
+    [Migration("20210617182949_potrosaci_added1")]
+    partial class potrosaci_added1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,29 +124,6 @@ namespace SmartGrid.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Incidents");
-                });
-
-            modelBuilder.Entity("SmartGrid.Models.LokacijaPrioritet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Grad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Prioritet")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ulica")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PrioritetiLokacija");
                 });
 
             modelBuilder.Entity("SmartGrid.Models.Notifikacija", b =>

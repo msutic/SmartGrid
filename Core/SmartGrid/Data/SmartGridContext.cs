@@ -19,5 +19,9 @@ namespace SmartGrid.Data
         public DbSet<Safetydoc> Safetydocs { get; set; }
 
         public DbSet<Notifikacija> Notifications { get; set; }
+
+        public DbSet<Potrosac> Potrosaci { get; set; }
+
+        public DbSet<LokacijaPrioritet> PrioritetiLokacija { get; set; }
     }
 }
