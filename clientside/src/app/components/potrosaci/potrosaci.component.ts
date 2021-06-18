@@ -6,6 +6,7 @@ import {Potrosac} from '../../entities/potrosac';
 import { from } from 'rxjs';
 import { Lokacija } from 'src/app/entities/lokacija';
 import { PotrosacService } from 'src/app/services/potrosac.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-potrosaci',
@@ -16,10 +17,11 @@ export class PotrosaciComponent implements OnInit {
   potrosaci=new Array<Potrosac>();
   selectedRow:Potrosac;
   selectedRowIndex=-1;
-  constructor(public ps:PotrosacService) {}
+  routerLink:String;
+  constructor(public ps:PotrosacService, public router:Router) {}
   
 
-  displayedColumns: string[] = ['id', 'ime', 'prezime', 'ulica', 'grad','tip'];
+  displayedColumns: string[] = ['id', 'ime', 'prezime', 'ulica', 'grad','tip', 'action'];
   dataSource = new MatTableDataSource(this.potrosaci);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -48,6 +50,10 @@ export class PotrosaciComponent implements OnInit {
         this.fetchData();
       }
     )
+  }
+  EditRow()
+  {
+    this.router.navigate([this.routerLink]);
   }
 
   fetchData(){

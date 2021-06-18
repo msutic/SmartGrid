@@ -20,6 +20,76 @@ namespace SmartGrid.Controllers
             _context = context;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Potrosac>> GetPotrosac(int id)
+        {
+            var potrosac = await _context.Potrosaci.FindAsync(id);
+
+            if (potrosac == null)
+            {
+                return NotFound();
+            }
+
+            return potrosac;
+        }
+
+
+
+        [Route("/api/potrosaci/updatePotrosac")]
+        public async Task<IActionResult> UpdatePotrosac(Potrosac potrosac)
+        {
+            var oldpotrosac = _context.Potrosaci.Where(e => e.Id == potrosac.Id).FirstOrDefault();
+            oldpotrosac.Ime = potrosac.Ime;
+            oldpotrosac.Prezime = potrosac.Prezime;
+            oldpotrosac.Ulica = potrosac.Ulica;
+            oldpotrosac.Grad = potrosac.Grad;
+            oldpotrosac.Broj_telefona = potrosac.Broj_telefona;
+            oldpotrosac.Postanski_broj = potrosac.Postanski_broj;
+            oldpotrosac.Tip = potrosac.Tip;
+
+            Lokacija l = new Lokacija();
+            l.Ulica = oldpotrosac.Ulica;
+            l.Grad = oldpotrosac.Grad;
+            oldpotrosac.Prioritet = getPriority(l);
+
+            _context.Entry(oldpotrosac).State = EntityState.Modified;
+
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PotrosacExists(oldpotrosac.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return NoContent();
+ 
+        }
+
+        private bool PotrosacExists(int id)
+        {
+            return _context.Devices.Any(e => e.Id == id);
+        }
+
+
+
+
+
+
+
+
+
+
         [HttpPost]
         [Route("/api/Potrosaci/addPotrosac")]
         public async Task<ActionResult<Potrosac>> addPotrosac(Potrosac potrosac)

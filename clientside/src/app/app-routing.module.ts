@@ -38,6 +38,7 @@ import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-c
 import { AdminsGuard } from './guards/admins.guard';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 import { NonregisteredGuard } from './guards/nonregistered.guard';
+import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,21 @@ const routes: Routes = [
   },
   {
     path:'potrosaci',
-    component:PotrosaciComponent
+  
+    children:[
+      {
+        path:'',
+        component:PotrosaciComponent
+      },
+      {
+        path: ':id/edit',
+        component: NewConsumerComponent
+      },
+      {
+        path: 'new',
+        component: NewConsumerComponent
+      }
+    ]
   },
   {
     path:'settings',

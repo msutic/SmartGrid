@@ -93,6 +93,8 @@ namespace SmartGrid.Controllers
             return device;
         }
 
+        
+
         [Route("/api/Devices/updateDevice/{id}")]
         public async Task<IActionResult> UpdateDevice(Device device)
         {

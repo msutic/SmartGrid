@@ -30,4 +30,14 @@ export class PotrosacService {
     return this.http.delete(this.api_url+'Potrosaci/deletePotrosac/'+potrosac.id);
   }
 
+  getPotrosac(id: number):Observable<any>{
+    console.log('getting potrosac...')
+    return this.http.get<any>(this.api_url+'potrosaci/' + id.toString(), this.httpOptions);
+  }
+
+  updatePotrosac(potrosac: Potrosac){
+    console.log('updating potrosac with id: ' + potrosac.id);
+    return this.http.put(this.api_url+'potrosaci/updatePotrosac', JSON.stringify(potrosac), this.httpOptions);
+  }
+
 }
