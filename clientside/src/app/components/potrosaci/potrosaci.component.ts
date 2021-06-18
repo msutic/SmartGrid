@@ -16,10 +16,7 @@ export class PotrosaciComponent implements AfterViewInit {
   selectedRow:Potrosac;
   selectedRowIndex=-1;
   constructor() { 
-    var potrosac1=new Potrosac("Pera","Petrovic",new Lokacija("Vojvodjanska","Novi Sad",21000),"0605148585",1,"Rezidentalni");
-    var potrosac2=new Potrosac("Sima","Simic",new Lokacija("Krajiska","Mladenovo",21000),"0212066406",2,"Komercijalni");
-    this.potrosaci.push(potrosac1);
-    this.potrosaci.push(potrosac2);
+    
   }
 
   displayedColumns: string[] = ['id', 'ime', 'prezime', 'ulica', 'grad','broj','tip'];

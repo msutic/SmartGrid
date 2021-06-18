@@ -30,6 +30,6 @@ namespace SmartGrid.Models
         public string Tip { get; set; }
         public int Prioritet { get; set; }
         
-        public string Postanski_broj { get; set; }
+        public int Postanski_broj { get; set; }
     }
 }

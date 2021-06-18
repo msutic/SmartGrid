@@ -22,6 +22,6 @@ namespace SmartGrid.Data
 
         public DbSet<Potrosac> Potrosaci { get; set; }
 
-        public DbSet<LokacijaPrioritet> PrioritetiLokacija { get; set; }
+        public DbSet<PrioritetLok> PrioritetiLokacija { get; set; }
     }
 }

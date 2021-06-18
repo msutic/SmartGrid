@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmartGrid.Migrations
 {
-    public partial class migracija : Migration
+    public partial class help : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,6 +74,42 @@ namespace SmartGrid.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Potrosaci",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ulica = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Grad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Broj = table.Column<int>(type: "int", nullable: false),
+                    Broj_telefona = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tip = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prioritet = table.Column<int>(type: "int", nullable: false),
+                    Postanski_broj = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Potrosaci", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PrioritetiLokacija",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ulica = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Grad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prioritet = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrioritetiLokacija", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Safetydocs",
                 columns: table => new
                 {
@@ -110,6 +146,12 @@ namespace SmartGrid.Migrations
 
             migrationBuilder.DropTable(
                 name: "Notifications");
+
+            migrationBuilder.DropTable(
+                name: "Potrosaci");
+
+            migrationBuilder.DropTable(
+                name: "PrioritetiLokacija");
 
             migrationBuilder.DropTable(
                 name: "Safetydocs");

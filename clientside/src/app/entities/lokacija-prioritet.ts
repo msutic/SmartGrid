@@ -1,12 +1,12 @@
-export class LokacijaPrioritet {
-    id:number;
-    ulica:String;
-    grad:String;
-    prioritet:number;
-    constructor(ulica:String,grad:String,prioritet:number)
+export class PrioritetLok {
+    Id:number;
+    Ulica:String;
+    Grad:String;
+    Prioritet:number;
+    constructor(Ulica:String,Grad:String,Prioritet:number)
     {
-        this.ulica=ulica;
-        this.grad=grad;
-        this.prioritet=prioritet;
+        this.Ulica=Ulica;
+        this.Grad=Grad;
+        this.Prioritet=Prioritet;
     }
 }

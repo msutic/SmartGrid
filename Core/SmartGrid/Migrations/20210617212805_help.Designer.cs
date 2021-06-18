@@ -10,8 +10,8 @@ using SmartGrid.Data;
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    [Migration("20210617182949_potrosaci_added1")]
-    partial class potrosaci_added1
+    [Migration("20210617212805_help")]
+    partial class help
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -177,8 +177,8 @@ namespace SmartGrid.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Postanski_broj")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Postanski_broj")
+                        .HasColumnType("int");
 
                     b.Property<string>("Prezime")
                         .IsRequired()
@@ -198,6 +198,30 @@ namespace SmartGrid.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Potrosaci");
+                });
+
+            modelBuilder.Entity("SmartGrid.Models.PrioritetLok", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Grad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prioritet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ulica")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PrioritetiLokacija");
                 });
 
             modelBuilder.Entity("SmartGrid.Models.Safetydoc", b =>

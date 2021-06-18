@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartGrid.Models
 {
-    public class LokacijaPrioritet
+    public class PrioritetLok
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,8 +15,10 @@ namespace SmartGrid.Models
 
         [Required]
         public string Ulica { get; set; }
+
         [Required]
         public string Grad { get; set; }
+
         [Required]
         public int Prioritet { get; set; }
     }

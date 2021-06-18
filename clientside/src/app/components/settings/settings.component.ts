@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder,FormControl, Validators} from '@angular/forms';
+import { validate } from 'json-schema';
+import { PrioritetLok } from 'src/app/entities/lokacija-prioritet';
+import { PriorityService } from 'src/app/services/priority.service';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 
 @Component({
@@ -12,13 +16,21 @@ export class SettingsComponent implements OnInit {
   infovisible:boolean=true;
   warningvisible:boolean=true;
   sucessvisible:boolean=true;
-  constructor(private sss:SettingsServiceService) { 
+  priorityform:FormGroup;
+
+  streetvalue:String="";
+  cityvalue:String="";
+  priorityvalue:number;
+
+  priorlokacija:PrioritetLok;
+
+  constructor(public sss:SettingsServiceService,private fb: FormBuilder, public ps:PriorityService) { 
     
 
   }
 
   ngOnInit(): void {
-    
+    this.initializeForm();
    
   }
   SaveSettings():void{
@@ -29,6 +41,17 @@ export class SettingsComponent implements OnInit {
     this.sss.successesvisible=this.sucessvisible;
 
   }
+  initializeForm():void
+  {
+    this.priorityform=this.fb.group({
+      street:new FormControl('',Validators.required),
+      city:new FormControl('',Validators.required),
+      priority:new FormControl('',Validators.compose([Validators.required,Validators.min(0),Validators.max(3)]))
+      
+    });
+  }
+
+
   toggleError(event)
   {
     if(event.target.checked)
@@ -70,5 +93,20 @@ export class SettingsComponent implements OnInit {
       this.sucessvisible=false;
     }
   }
+
+  onSubmit()
+  {
+    this.priorlokacija=new PrioritetLok(this.streetvalue,this.cityvalue,this.priorityvalue);
+    alert(this.priorlokacija.Ulica+" "+this.priorlokacija.Grad+" "+this.priorlokacija.Prioritet);
+    this.ps.addPriority(this.priorlokacija).subscribe(
+      (res)=>{
+        window.location.reload();
+      }
+    )
+  }
+
+  get priorityControls(): any {
+    return this.priorityform['controls'];
+ }
 
 }
