@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SmartGrid.Data;
 using SmartGrid.Models;
 
@@ -32,6 +33,31 @@ namespace SmartGrid.Controllers
 
             return NoContent();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Potrosac>>> getPotrosaci()
+        {
+            List<Potrosac> potrosaci = await _context.Potrosaci.ToListAsync();
+            return potrosaci;
+        }
+
+        [HttpDelete]
+        [Route("/api/Potrosaci/deletePotrosac/{id}")]
+        public async Task<ActionResult<Potrosac>> DeletePotrosac(int id)
+        {
+            var potrosac = await _context.Potrosaci.FindAsync(id);
+            if (potrosac == null) return NotFound();
+
+            _context.Potrosaci.Remove(potrosac);
+            await _context.SaveChangesAsync();
+            return potrosac;
+        }
+
+
+
+
+
+
         public int getPriority(Lokacija lok)
         {
             var prioritet = _context.PrioritetiLokacija.Where(e => e.Ulica.Equals(lok.Ulica) && e.Grad.Equals(lok.Grad)).ToList();

@@ -20,4 +20,14 @@ export class PotrosacService {
     return this.http.post<any>(this.api_url+'Potrosaci/addPotrosac',JSON.stringify(potrosac),this.httpOptions);
   }
 
+  loadPotrosaci() {
+    console.log('Getting potrosaci...');
+    return this.http.get<any>(this.api_url+'Potrosaci', this.httpOptions);
+  }
+
+  deletePotrosac(potrosac: Potrosac){
+    console.log('deleting consumer with id ' + potrosac.id);
+    return this.http.delete(this.api_url+'Potrosaci/deletePotrosac/'+potrosac.id);
+  }
+
 }
