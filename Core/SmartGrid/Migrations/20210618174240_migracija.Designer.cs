@@ -10,8 +10,8 @@ using SmartGrid.Data;
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    [Migration("20210617212851_helpq")]
-    partial class helpq
+    [Migration("20210618174240_migracija")]
+    partial class migracija
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,9 +163,6 @@ namespace SmartGrid.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Broj")
-                        .HasColumnType("int");
-
                     b.Property<string>("Broj_telefona")
                         .HasColumnType("nvarchar(max)");
 
@@ -177,8 +174,8 @@ namespace SmartGrid.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Postanski_broj")
-                        .HasColumnType("int");
+                    b.Property<string>("Postanski_broj")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Prezime")
                         .IsRequired()

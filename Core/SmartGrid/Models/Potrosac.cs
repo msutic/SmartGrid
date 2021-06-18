@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,16 +20,16 @@ namespace SmartGrid.Models
         public string Ulica { get; set; }
         [Required]
         public string Grad { get; set; }
-        [Required]
-        public int Broj { get; set; }
-
 
         public string Broj_telefona { get; set; }
 
         [Required]
         public string Tip { get; set; }
+
+        [Required]
         public int Prioritet { get; set; }
         
-        public int Postanski_broj { get; set; }
+        
+        public string Postanski_broj { get; set; }
     }
 }

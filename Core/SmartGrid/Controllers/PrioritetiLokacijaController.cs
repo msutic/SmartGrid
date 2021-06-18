@@ -57,6 +57,10 @@ namespace SmartGrid.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/PrioritetiLokacija/getPriority")]
+        
+
 
         public IActionResult Index()
         {

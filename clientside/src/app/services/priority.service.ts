@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import { PrioritetLok } from '../entities/lokacija-prioritet';
+import { Lokacija } from '../entities/lokacija';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,10 @@ export class PriorityService {
     var x=JSON.stringify(lp);
     return this.http.post<any>(this.api_url+'PrioritetiLokacija/addPriority', JSON.stringify(lp), this.httpOptions);
   }
+  /*
+  getPriority(lok:Lokacija):number{
+    return this.http.get(this.getPriority,JSON.stringify(lok),this.httpOptions);
+
+  }
+  */
 }
