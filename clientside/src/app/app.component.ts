@@ -23,9 +23,8 @@ export class AppComponent {
   
   logout()
   {
-    alert("Logout pressed");
     this.authenticationService.logout();
-    this.router.navigate(['/home']);
+    
   }
 
   /*
