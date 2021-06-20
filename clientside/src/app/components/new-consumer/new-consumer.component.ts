@@ -4,6 +4,7 @@ import { Potrosac } from 'src/app/entities/potrosac';
 import { PotrosacService } from 'src/app/services/potrosac.service';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Podesavanja } from 'src/app/entities/podesavanja';
 @Component({
   selector: 'app-new-consumer',
   templateUrl: './new-consumer.component.html',
@@ -23,7 +24,15 @@ export class NewConsumerComponent implements OnInit {
   valueType:String="";
   consumerForm:FormGroup;
   selected="";
-  constructor(private router:Router,private fb: FormBuilder,public sss:SettingsServiceService, public ps:PotrosacService,private route: ActivatedRoute) { }
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
+  constructor(private router:Router,private fb: FormBuilder,public sss:SettingsServiceService, public ps:PotrosacService,private route: ActivatedRoute) 
+  { 
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.podesavanja=res;
+      }
+    )
+  }
 
   ngOnInit(): void {
     /*
