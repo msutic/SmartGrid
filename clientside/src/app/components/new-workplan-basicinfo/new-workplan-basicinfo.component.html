@@ -26,7 +26,7 @@
             <label>Incident:</label>
             <mat-form-field appearance="legacy" >
                 <mat-select [(value)]="selected_incident" placeholder="Select Incident" formControlName='incident' >
-                    <mat-option *ngFor="let p of incidenti_za_rad" [value]="p">{{p}}</mat-option>
+                    <mat-option *ngFor="let p of incidents" [value]="p">{{p.id}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -157,7 +157,7 @@
             <label>Phone Number:</label>
             <label>[123-123-1234]</label>
             <mat-form-field appearance="legacy" >
-                <input matInput type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="phone" placeholder="Enter Phone Number" formControlName='phoneNumber'>
+                <input matInput type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="phone" placeholder="Format:123-123-1234" formControlName='phoneNumber'>
                 <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
                     <mat-icon>close</mat-icon>
                 </button>
@@ -169,7 +169,7 @@
             </div>
         </div>
         <div class="mt-3">
-            <label>Create On:</label>
+            <label>Created On:</label>
             <label> {{created_on | date:'HH:mm dd.MM.yyyy' }}</label>
         </div>
         <div class="mt-3">

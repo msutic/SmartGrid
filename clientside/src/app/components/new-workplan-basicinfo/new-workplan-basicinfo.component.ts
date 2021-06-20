@@ -9,6 +9,8 @@ import { SettingsServiceService } from 'src/app/services/settings-service.servic
 import { BasicInfoWorkplan } from 'src/app/entities/basic-info-workplan';
 import { WorkplanService } from 'src/app/services/workplan.service';
 import { Router } from '@angular/router';
+import { Incident } from 'src/app/entities/incident';
+import { IncidentService } from 'src/app/services/incident/incident.service';
 @Component({
   selector: 'app-new-workplan-basicinfo',
   templateUrl: './new-workplan-basicinfo.component.html',
@@ -16,6 +18,7 @@ import { Router } from '@angular/router';
   providers:[DatePipe]
 })
 export class NewWorkplanBasicinfoComponent implements OnInit {
+  incidents:Array<Incident>
   myControl = new FormControl();
   value = 'WR 5';
   valueDesc = '';
@@ -40,10 +43,15 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
   newBasicInfoWorkplan:BasicInfoWorkplan;
   
-  constructor(public sss:SettingsServiceService,public ws:WorkplanService,public router:Router) {
+  constructor(public sss:SettingsServiceService,public ws:WorkplanService,public router:Router,public is:IncidentService) {
     this.sss.getSettings().subscribe(
       res=>{
         this.podesavanja=res;
+        this.is.loadIncidents().subscribe(
+          res=>{
+            this.incidents=res;
+          }
+        )
       }
     )
   }

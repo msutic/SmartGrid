@@ -137,9 +137,11 @@ export class WorkplanInstructionsComponent implements OnInit {
       this.dialog.closeAll();
     }
     onSave(){
+      /*
       this.instructionList = new Array<Instrukcija>();
       this.instructionList = this.binded_instructions;
-      this.ws.instructionsEmitChange(this.instructionList);
+      */
+      this.ws.instructionsEmitChange(this.binded_instructions);
       this.router.navigate(['/new-workplan/new-workplan-instructions']);
     }
 

@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Device } from 'src/app/entities/device';
 import { DeviceService } from 'src/app/services/device.service';
 import { IncidentService } from 'src/app/services/incident/incident.service';
+import { WorkplanService } from 'src/app/services/workplan.service';
 
 
 export interface EquipmentData {
@@ -42,7 +43,7 @@ export class WorkplanEquipmentComponent implements OnInit {
 
   allDevicesDataSource = new MatTableDataSource(this.allDevices);
   selectedDevicesDataSource = new MatTableDataSource(this.selectedDevices);
-  constructor(private router: Router, private modalService: NgbModal, private incidentService: IncidentService, private deviceService: DeviceService)
+  constructor(private router: Router, private modalService: NgbModal, private incidentService: IncidentService, private deviceService: DeviceService,private ws:WorkplanService)
   { 
     
 
@@ -91,7 +92,7 @@ export class WorkplanEquipmentComponent implements OnInit {
   onSave(){
     this.devicesList = new Array<Device>();
     this.devicesList = this.selectedDevices;
-    this.incidentService.devicesEmitChange(this.devicesList);
+    this.ws.devicesEmitChange(this.devicesList);
     this.router.navigate(['/new-workplan/new-workplan-instructions']);
   }
 

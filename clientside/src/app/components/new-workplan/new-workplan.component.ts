@@ -20,7 +20,7 @@ import { WorkplanService } from 'src/app/services/workplan.service';
 })
 export class NewWorkplanComponent implements OnInit {
   newWorkplan: Workplan;
-  workplanBasicInfo: BasicInfoWorkplan;
+  workplanBasicInfo: BasicInfoWorkplan=new BasicInfoWorkplan("a","a",new Date(Date.now()),new Date(Date.now()),1,"a","a","a",1,"a","a");
   workplanMultimedia: Array<string>;
   workplanInstructions: Array<Instrukcija>;
   workplanDevices:Array<Device>
@@ -38,6 +38,7 @@ export class NewWorkplanComponent implements OnInit {
         this.workplanDevices = res;
       }
     )
+    
 
     this.ws.changeEmittedInstructions$.subscribe(
       res => {
@@ -51,28 +52,31 @@ export class NewWorkplanComponent implements OnInit {
       }
     )
   }
-    onSubmit()
-    {
-      if(this.workplanBasicInfo == null || this.workplanInstructions == null
-        || this.workplanMultimedia == null || this.workplanDevices == null){
-     } else {
-       this.newWorkplan=new Workplan(
-         this.workplanBasicInfo.type,
-         this.workplanBasicInfo.status,
-         this.workplanBasicInfo.startDate,
-         this.workplanBasicInfo.endDate,
-         this.workplanBasicInfo.crewId,
-         this.workplanBasicInfo.purpuse,
-         this.workplanBasicInfo.company,
-         this.workplanBasicInfo.order,
-         this.workplanBasicInfo.incidentId,
-         this.workplanBasicInfo.notes,
-         this.workplanBasicInfo.phoneNumber,
-         JSON.stringify(this.workplanMultimedia),
-         JSON.stringify(this.workplanInstructions),
-         JSON.stringify(this.workplanDevices)
-       );
-    }
-  }
+    onSubmit(){
+      this.newWorkplan=new Workplan(
+        this.workplanBasicInfo.type,
+        this.workplanBasicInfo.status,
+        this.workplanBasicInfo.startDate,
+        this.workplanBasicInfo.endDate,
+        this.workplanBasicInfo.crewId,
+        this.workplanBasicInfo.purpuse,
+        this.workplanBasicInfo.company,
+        this.workplanBasicInfo.order,
+        this.workplanBasicInfo.incidentId,
+        this.workplanBasicInfo.notes,
+        this.workplanBasicInfo.phoneNumber,
+        JSON.stringify(this.workplanMultimedia),
+        JSON.stringify(this.workplanInstructions),
+        JSON.stringify(this.workplanDevices)
+      );
 
-}
+      this.ws.addNewWorkplan(this.newWorkplan).subscribe(
+        res=>{
+
+        }
+      )
+    }
+       
+    }
+
+
