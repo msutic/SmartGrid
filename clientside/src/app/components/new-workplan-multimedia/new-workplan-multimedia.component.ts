@@ -6,6 +6,9 @@ import {FileUploadService } from  '../../services/file-upload.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTableModule} from '@angular/material/table';
+import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
+import { WorkplanService } from 'src/app/services/workplan.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-workplan-multimedia',
@@ -16,8 +19,8 @@ export class NewWorkplanMultimediaComponent implements OnInit {
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
   files  = []; 
   urls = new Array<string>();
-  
-  constructor(private uploadService: FileUploadService) { }
+  newWorkplanMultimedia:MultimediaWorkplan;
+  constructor(private uploadService: FileUploadService,public ws:WorkplanService, public router:Router) { }
 
   ngOnInit()
   {
@@ -84,6 +87,13 @@ detectFiles(event: any) {
       reader.readAsDataURL(file);
     }
   }
+}
+
+onSaveClick(){
+  this.newWorkplanMultimedia = new MultimediaWorkplan(this.urls);
+
+  this.ws.multimediaEmitChange(this.newWorkplanMultimedia); 
+  this.router.navigate(['/new-workplan/workplan-devices']);
 }
   
   

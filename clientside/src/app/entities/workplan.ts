@@ -18,9 +18,10 @@ export class Workplan {
     phoneNumber:String;
     createdOn:Date;
     devices: Array<Device>;
-    instructions:Array<Instrukcija>
+    instructions:Array<Instrukcija>;
+    multimedia:Array<string>;
 
-    constructor(type:String,status:String,startDate:Date,endDate:Date,crewId:number,purpuse:String,company:String,devices:Array<Device>,instructions:Array<Instrukcija>,order?:String,incidentId?:number,notes?:String,phoneNumber?:String){
+    constructor(type:String,status:String,startDate:Date,endDate:Date,crewId:number,purpuse:String,company:String,devices:Array<Device>,instructions:Array<Instrukcija>,order?:String,incidentId?:number,notes?:String,phoneNumber?:String,multimedia?:Array<string>){
         this.type=type;
         this.order=order;
         this.incidentId=incidentId;
@@ -36,5 +37,6 @@ export class Workplan {
         this.createdOn=new Date(Date.now());
         this.devices=devices;
         this.instructions=instructions;
+        this.multimedia=multimedia;
     }
 }
