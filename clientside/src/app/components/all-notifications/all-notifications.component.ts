@@ -6,6 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 import {Router} from '@angular/router'
+import { Podesavanja } from 'src/app/entities/podesavanja';
 @Component({
   selector: 'app-all-notifications',
   templateUrl: './all-notifications.component.html',
@@ -13,10 +14,15 @@ import {Router} from '@angular/router'
 })
 export class AllNotificationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
-
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
 
   constructor(public sss:SettingsServiceService, public ns:NotifikacijaserviceService, public router:Router) {
-  
+    
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.podesavanja=res;
+      }
+    )
 
    }
 

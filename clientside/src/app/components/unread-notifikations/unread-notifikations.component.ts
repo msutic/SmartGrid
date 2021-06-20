@@ -5,6 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
+import { Podesavanja } from 'src/app/entities/podesavanja';
 
 @Component({
   selector: 'app-unread-notifikations',
@@ -13,8 +14,13 @@ import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice
 })
 export class UnreadNotifikationsComponent implements AfterViewInit {
   neprocitane:Notifikacija[]=[];
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
   constructor(public sss:SettingsServiceService,public ns:NotifikacijaserviceService) {
-
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.podesavanja=res;
+      }
+    )
 
 }
 displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];

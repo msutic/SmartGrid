@@ -6,7 +6,7 @@
         <table>
             <tbody *ngFor="let notifikacija of allNotifications" (click)="clickedRow(notifikacija)" >
                 
-                <tr *ngIf="(notifikacija.tip=='error' && sss.errorsvisible) || (notifikacija.tip=='info' && sss.infosvisible) || (notifikacija.tip=='warning' && sss.warrningsvisible) || (notifikacija.tip=='success' && sss.successesvisible)"
+                <tr *ngIf="(notifikacija.tip=='error' && podesavanja.errorvidljive) || (notifikacija.tip=='info' && podesavanja.infovidljive) || (notifikacija.tip=='warning' && podesavanja.warningvidljive) || (notifikacija.tip=='success' && podesavanja.successvidljive)"
                 [class.colorError]='notifikacija.tip=="error"'
                 [class.colorInfo]='notifikacija.tip=="info"'
                 [class.colorSuccess]='notifikacija.tip=="success"'
