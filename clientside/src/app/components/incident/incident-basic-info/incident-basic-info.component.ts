@@ -2,7 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BasicInfo } from 'src/app/entities/incidents/basic-info';
+import { Podesavanja } from 'src/app/entities/podesavanja';
 import { IncidentService } from 'src/app/services/incident/incident.service';
+import { SettingsServiceService } from 'src/app/services/settings-service.service';
 
 @Component({
   selector: 'app-incident-basic-info',
@@ -13,12 +15,23 @@ export class IncidentBasicInfoComponent implements OnInit {
   incidentId: string = '';
   basicInfoForm: FormGroup;
   newBasicInfo: BasicInfo;
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
 
   selected = 'Planned Work';
 
-  constructor(private router: Router, private incidentService: IncidentService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private incidentService: IncidentService, private route: ActivatedRoute,private sss:SettingsServiceService) { }
 
   ngOnInit(): void {
+
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.podesavanja=res;
+      }
+    )
+
+
+
+
     this.incidentId = this.route.snapshot.paramMap.get('id');
     if(this.incidentId == null){
       this.initForm();

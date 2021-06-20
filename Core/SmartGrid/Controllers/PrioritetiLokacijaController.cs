@@ -32,12 +32,31 @@ namespace SmartGrid.Controllers
             if(!CheckIfExists(lokacijaprioritet))
             {
                 _context.PrioritetiLokacija.Add(lokacijaprioritet);
+
+                var potrosaci = _context.Potrosaci.Where(e => e.Ulica.Equals(lokacijaprioritet.Ulica) && e.Grad.Equals(lokacijaprioritet.Grad)).ToList();
+                foreach(Potrosac p in potrosaci)
+                {
+                    p.Prioritet = lokacijaprioritet.Prioritet;
+                    _context.Entry(p).State = EntityState.Modified;
+                }
+
+
                 await _context.SaveChangesAsync();
             }else
             {
                 var value = _context.PrioritetiLokacija.Where(e => e.Ulica.ToLower().Trim().Equals(lokacijaprioritet.Ulica.ToLower().Trim()) && e.Grad.ToLower().Trim().Equals(lokacijaprioritet.Grad.ToLower().Trim())).FirstOrDefault();
                 value.Prioritet = lokacijaprioritet.Prioritet;
                 _context.Entry(value).State = EntityState.Modified;
+
+                var potrosaci = _context.Potrosaci.Where(e => e.Ulica.Equals(lokacijaprioritet.Ulica) && e.Grad.Equals(lokacijaprioritet.Grad)).ToList();
+                foreach (Potrosac p in potrosaci)
+                {
+                    p.Prioritet = lokacijaprioritet.Prioritet;
+                    _context.Entry(p).State = EntityState.Modified;
+                }
+
+
+
                 await _context.SaveChangesAsync();
             }
             return NoContent();

@@ -32,7 +32,7 @@
                 <input id='confirmed' name='confirmed' class="form-control checkbox-field" formControlName='confirmed' type="checkbox">
             
         </div>
-        <div class="mt-4">
+        <div class="mt-4" *ngIf="podesavanja.obavezna">
             <label>Status:</label>
             <mat-form-field appearance="legacy">
                 <mat-select id='status' name='status' class="form-control" placeholder="Select Status" formControlName='status'>
@@ -44,7 +44,7 @@
                 </mat-select>            
             </mat-form-field>
         </div>
-        <div class="mt-3">
+        <div class="mt-3" *ngIf="podesavanja.obavezna">
             <label>Description:</label>
             <mat-form-field appearance="legacy">
                 <textarea id='description' name='description' class="form-control" formControlName='description' matInput type="text"></textarea>
