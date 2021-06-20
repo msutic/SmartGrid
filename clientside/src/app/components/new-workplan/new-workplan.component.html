@@ -13,5 +13,14 @@
             <router-outlet></router-outlet>
         </div>
     </div>
+
+    <div class="footer">
+        <button routerLink="/incidents" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+        <button (click)="onSubmit()" class="ml-2" mat-icon-button>
+            <mat-icon>save</mat-icon>
+        </button>
+    </div>
     
 </div>

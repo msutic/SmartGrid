@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { Instrukcija } from '../entities/instrukcija';
+import { Workplan } from '../entities/workplan';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,22 @@ export class WorkplanService {
 
   api_url = environment.path;
 
+  loadWorkplans():Observable<any>{
+    return this.http.get<any>(this.api_url+'Workplans', this.httpOptions);
+  }
+
+  addNewWorkplan(newWorkplan: Workplan):Observable<any>{
+    console.log('Adding new Workplan...')
+    return this.http.post<any>(this.api_url+'Workplans/addWorkplan', JSON.stringify(newWorkplan), this.httpOptions);
+  }
+
+  deleteWorkplan(workplan: Workplan){
+    console.log('Deleting Workplan with id: ' + workplan.id);
+    return this.http.delete(this.api_url+'Workplans/deleteWorkplan/'+workplan.id);
+  }
+
+
+
 
   emitChange(change: any){
     this.emitChangeSource.next(change);
@@ -48,4 +65,6 @@ export class WorkplanService {
   instructionsEmitChange(change: any){
     this.emitChangeInstructions.next(change);
   }
+
+
 }

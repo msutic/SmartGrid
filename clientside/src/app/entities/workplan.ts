@@ -1,4 +1,4 @@
-import { create } from "node:domain";
+
 import {Device} from "src/app/entities/device";
 import { Instrukcija } from "./instrukcija";
 
@@ -17,11 +17,11 @@ export class Workplan {
     company:String;
     phoneNumber:String;
     createdOn:Date;
-    devices: Array<Device>;
-    instructions:Array<Instrukcija>;
-    multimedia:Array<string>;
+    devices: String;
+    instructions:String;
+    multimedia:String;
 
-    constructor(type:String,status:String,startDate:Date,endDate:Date,crewId:number,purpuse:String,company:String,devices:Array<Device>,instructions:Array<Instrukcija>,order?:String,incidentId?:number,notes?:String,phoneNumber?:String,multimedia?:Array<string>){
+    constructor(type:String,status:String,startDate:Date,endDate:Date,crewId:number,purpuse:String,company:String,order?:String,incidentId?:number,notes?:String,phoneNumber?:String,multimedia?:String,instructions?:String,devices?:String){
         this.type=type;
         this.order=order;
         this.incidentId=incidentId;

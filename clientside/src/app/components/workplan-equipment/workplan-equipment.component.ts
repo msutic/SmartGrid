@@ -1,8 +1,13 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 import { ConfigurableFocusTrapConfig } from '@angular/cdk/a11y/focus-trap/configurable-focus-trap-config';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Device } from 'src/app/entities/device';
+import { DeviceService } from 'src/app/services/device.service';
+import { IncidentService } from 'src/app/services/incident/incident.service';
 
 
 export interface EquipmentData {
@@ -25,55 +30,69 @@ const ELEMENT_DATA: EquipmentData[] = [
   templateUrl: './workplan-equipment.component.html',
   styleUrls: ['./workplan-equipment.component.css']
 })
-export class WorkplanEquipmentComponent implements AfterViewInit {
-  existing_equipment:EquipmentData[]=ELEMENT_DATA;
-  selected_equipment:EquipmentData=this.existing_equipment[0];
-  binded_equipment:EquipmentData[]=[];
-  constructor()
+export class WorkplanEquipmentComponent implements OnInit {
+  devicesList: Array<Device>;
+
+  displayedColumns: string[] = ['id', 'name', 'type', 'x_coordinate', 'y_coordinate', 'address', 'action'];
+  
+  closeResult = '';
+  @Input() allDevices = new Array<Device>();
+  @Input() selectedDevices = new Array<Device>();
+  @Input() allDevicesFilter = new Array<Device>();
+
+  allDevicesDataSource = new MatTableDataSource(this.allDevices);
+  selectedDevicesDataSource = new MatTableDataSource(this.selectedDevices);
+  constructor(private router: Router, private modalService: NgbModal, private incidentService: IncidentService, private deviceService: DeviceService)
   { 
     
 
 
   }
-  displayedColumns: string[] = ['id', 'type', 'name', 'address', 'coordinates', 'actions'];
-  dataSource = new MatTableDataSource(this.binded_equipment);
-
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  ngOnInit(): void {
+    this.deviceService.loadDevices().subscribe(
+      res => {
+        this.allDevices = res;
+        this.allDevicesDataSource = new MatTableDataSource(this.allDevices);
+      }
+    )
   }
-  clickMethod(equipment: EquipmentData) {
-    if(this.binded_equipment.includes(equipment))
-    {
-      alert("Izabrana oprema se vec nalazi u planu rada");
-    }else
-    {
-      this.binded_equipment.push(equipment);
-      this.dataSource._updateChangeSubscription();
-    }
-    
-
-
-  }
-  remove(equipment: EquipmentData) {
-    if(confirm("Are you sure to "+equipment.type+" this document")) {
-      console.log("Document state changed");
-    }
+  open(content: any) {
+    this.modalService.open(content, {windowClass: "myCustomModalClass"});
   }
 
-  delete(equipment: EquipmentData)
-  {
-    if(confirm("Are you sure you want to remove "+equipment.name+" from workplan?"))
-    {
-      this.binded_equipment.forEach((element,index)=>{
-        if(element==equipment)  this.binded_equipment.splice(index,1);
-     });
-     this.dataSource._updateChangeSubscription();
+  RemoveDevice(i: any){
+    let dev = this.allDevices.find(e => e.id == i)
+    for(var j = 0; j< this.selectedDevices.length; j++ ){
+      if(this.selectedDevices[j].id == i){
+        this.selectedDevices.splice(j, 1);
+      }
     }
-    
+    this.selectedDevicesDataSource = new MatTableDataSource(this.selectedDevices);
+    this.selectedDevicesDataSource.sort = this.sort;
+      this.selectedDevicesDataSource.paginator = this.paginator;
+  }
+
+  SelectDevice(i: any){
+    let dev = this.allDevices.find(e=> e.id == i);
+    if(this.selectedDevices.includes(dev)){
+      alert('This device has already been added');
+    } else {
+      this.selectedDevices.push(dev);
+      this.selectedDevicesDataSource = new MatTableDataSource(this.selectedDevices);
+      this.selectedDevicesDataSource.sort = this.sort;
+      this.selectedDevicesDataSource.paginator = this.paginator;
+    }
+   
+  }
+
+  onSave(){
+    this.devicesList = new Array<Device>();
+    this.devicesList = this.selectedDevices;
+    this.incidentService.devicesEmitChange(this.devicesList);
+    this.router.navigate(['/new-workplan/new-workplan-instructions']);
   }
 
 }
