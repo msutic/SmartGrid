@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,FormControl, Validators} from '@angular/forms';
 import { validate } from 'json-schema';
 import { PrioritetLok } from 'src/app/entities/lokacija-prioritet';
+import { Podesavanja } from 'src/app/entities/podesavanja';
 import { PriorityService } from 'src/app/services/priority.service';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 
@@ -11,34 +12,43 @@ import { SettingsServiceService } from 'src/app/services/settings-service.servic
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  vidljiva:boolean=true;
-  errorvisible:boolean=true;
-  infovisible:boolean=true;
-  warningvisible:boolean=true;
-  sucessvisible:boolean=true;
+  
+  currentpodesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
+  
+  
   priorityform:FormGroup;
 
   streetvalue:String="";
   cityvalue:String="";
   priorityvalue:number;
+  isDataLoaded:boolean=false;
 
   priorlokacija:PrioritetLok;
 
   constructor(public sss:SettingsServiceService,private fb: FormBuilder, public ps:PriorityService) { 
     
-
+    
   }
 
   ngOnInit(): void {
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.currentpodesavanja=res;
+      }
+    )
     this.initializeForm();
+    this.isDataLoaded=true;
+    
+    
    
   }
   SaveSettings():void{
-    this.sss.nonrequiredvisible=this.vidljiva;
-    this.sss.errorsvisible=this.errorvisible;
-    this.sss.infosvisible=this.infovisible;
-    this.sss.warrningsvisible=this.warningvisible;
-    this.sss.successesvisible=this.sucessvisible;
+    this.sss.updateSettings(this.currentpodesavanja).subscribe(
+      res=>{
+          
+          window.location.reload();
+      }
+    )
 
   }
   initializeForm():void
@@ -56,30 +66,54 @@ export class SettingsComponent implements OnInit {
   {
     if(event.target.checked)
     {
-      this.errorvisible=true;
+      this.currentpodesavanja.errorvidljive=true;
     }else
     {
-      this.errorvisible=false;
+      this.currentpodesavanja.errorvidljive=false;
     }
   }
   toggleInfo(event)
   {
     if(event.target.checked)
     {
-      this.infovisible=true;
+      this.currentpodesavanja.infovidljive=true;
     }else
     {
-      this.infovisible=false;
+      this.currentpodesavanja.infovidljive=false;
     }
   }
+  toggleNevidljiva(event)
+  {
+    if(event.target.checked)
+    {
+      this.currentpodesavanja.obavezna=false;
+    }else
+    {
+      this.currentpodesavanja.obavezna=true;
+    }
+  }
+
+  toggleVidljiva(event)
+  {
+    if(event.target.checked)
+    {
+      this.currentpodesavanja.obavezna=true;
+    }else
+    {
+      this.currentpodesavanja.obavezna=false;
+    }
+  }
+
+
+
   toggleWarning(event)
   {
     if(event.target.checked)
     {
-      this.warningvisible=true;
+      this.currentpodesavanja.warningvidljive=true;
     }else
     {
-      this.warningvisible=false;
+      this.currentpodesavanja.warningvidljive=false;
     }
   }
   
@@ -87,10 +121,10 @@ export class SettingsComponent implements OnInit {
   {
     if(event.target.checked)
     {
-      this.sucessvisible=true;
+      this.currentpodesavanja.successvidljive=true;
     }else
     {
-      this.sucessvisible=false;
+      this.currentpodesavanja.successvidljive=false;
     }
   }
 

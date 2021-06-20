@@ -1,3 +1,7 @@
+<div *ngIf="isDataLoaded">
+
+
+
 <p>settings works!</p>
 
 
@@ -6,22 +10,22 @@
         <ng-container>
             <p>Neobavezna polja vidljiva:</p>
         <div>
-          <input type="radio" id="Vidljiva" checked
-           name="neobaveznapolja" [(ngModel)]="vidljiva" [value]="true">
+          <input type="radio" id="Vidljiva" 
+           name="neobaveznapolja"  (change)="toggleVidljiva($event)" [checked]="currentpodesavanja.obavezna == true ? true : false" >
           <label for="Vidljiva">Vidljiva</label>
       
           <input type="radio" id="Nevidljiva"
-           name="neobaveznapolja" [(ngModel)]="vidljiva" [value]="false">
+           name="neobaveznapolja"  (change)="toggleNevidljiva($event)" [checked]="currentpodesavanja.obavezna == false ? true : false" >
           <label for="Nevidljiva">Nevidljiva</label>
         </div>
     </ng-container>
     <ng-container>
         <p>Vidljiva obavestenja:</p>
         <div>
-            <input type="checkbox" name="vidljiva_obavestenja" value="error" checked (change)="toggleError($event)">Errors<br>
-            <input type="checkbox" name="vidljiva_obavestenja" value="info" checked (change)="toggleInfo($event)">Infos<br>
-            <input type="checkbox" name="vidljiva_obavestenja" value="warnings" checked (change)="toggleWarning($event)">Warnings<br>
-            <input type="checkbox" name="vidljiva_obavestenja" value="sucesses" checked (change)="toggleSucess($event)">Sucesses<br>
+            <input type="checkbox" name="vidljiva_obavestenja"  [checked]="currentpodesavanja.errorvidljive == true ? true : false" (change)="toggleError($event)">Errors<br>
+            <input type="checkbox" name="vidljiva_obavestenja"  [checked]="currentpodesavanja.infovidljive == true ? true : false" (change)="toggleInfo($event)">Infos<br>
+            <input type="checkbox" name="vidljiva_obavestenja"  [checked]="currentpodesavanja.warningvidljive == true ? true : false" (change)="toggleWarning($event)">Warnings<br>
+            <input type="checkbox" name="vidljiva_obavestenja"  [checked]="currentpodesavanja.successvidljive == true ? true : false" (change)="toggleSucess($event)">Sucesses<br>
 
         </div>
     </ng-container>
@@ -83,3 +87,6 @@
     <button class="primary" (click)="SaveSettings()">
         SAVE
     </button>
+
+
+</div>

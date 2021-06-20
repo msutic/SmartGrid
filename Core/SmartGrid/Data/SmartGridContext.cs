@@ -25,5 +25,7 @@ namespace SmartGrid.Data
         public DbSet<PrioritetLok> PrioritetiLokacija { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Podesavanja> Settings { get; set; }
     }
 }
