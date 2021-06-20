@@ -33,6 +33,7 @@ logout() {
     localStorage.removeItem('sessionUsername');
     localStorage.removeItem('sessionUserLastname');
     localStorage.removeItem('sessionUserRole');
+    localStorage.removeItem('sessionUserId');
     this.currentUserSubject.next(null);
     this.router.navigate(['/home']);
 }

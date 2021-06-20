@@ -27,9 +27,10 @@ export class HomeComponent implements OnInit {
           if(element.email===form.value.email && element.password===form.value.password){
             localStorage.setItem('currentUser', JSON.stringify(element));
             localStorage.setItem('sessionUser', JSON.stringify(element.userRole));
-            localStorage.setItem('sessionUsername', JSON.stringify(element.name));
+            localStorage.setItem('sessionUsername', JSON.stringify(element.username));
             localStorage.setItem('sessionUserLastname', JSON.stringify(element.lastName));
             localStorage.setItem('sessionUserRole', JSON.stringify(element.userRole));
+            localStorage.setItem('sessionUserId',JSON.stringify(element.id));
             this.tass.currentUserSubject.next(element);
             
             alert("Successful login");
