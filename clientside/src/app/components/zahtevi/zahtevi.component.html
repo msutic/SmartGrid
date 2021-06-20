@@ -20,7 +20,7 @@
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
                 <td mat-cell *matCellDef="let element" >
-                  <button mat-button (click)=onApprove(element.id)>Approve</button>
+                  <button mat-button (click)=onApprove(element.id,element.novauloga)>Approve</button>
                   <button mat-button (click)=onDeny(element.id)>Deny</button>
                 </td>
               </ng-container>

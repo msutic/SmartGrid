@@ -10,7 +10,7 @@ export class NonregisteredGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if(JSON.parse(localStorage.getItem("sessionUser")) == null){
+    if((localStorage.getItem("sessionUser")) == null){
       alert('Not authorized. Please log in.');
       return false
     } else {

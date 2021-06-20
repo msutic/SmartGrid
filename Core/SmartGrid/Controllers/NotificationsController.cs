@@ -19,7 +19,7 @@ namespace SmartGrid.Controllers
         {
             _context = context;
         }
-
+        [HttpDelete]
         [Route("/api/Notifications/readNotification/{id}")]
         public async Task<IActionResult> ReadNotification(Notifikacija notifikacija)
         {

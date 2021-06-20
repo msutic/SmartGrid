@@ -35,9 +35,13 @@ export class ZahteviComponent implements OnInit {
       }
     )
   }
-  onApprove(id:number){
+  onApprove(id:number,newRole:string){
+    localStorage.setItem('sessionUser',JSON.stringify(newRole));
+    localStorage.setItem('sessionUserRole',JSON.stringify(newRole));
+
     this.zs.approveZahtev(id).subscribe(
       res=>{
+
         window.location.reload();
       }
     )
