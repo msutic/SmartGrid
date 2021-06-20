@@ -90,19 +90,19 @@
 
 
           <br/>
-          <tr>
+          <tr *ngIf="podesavanja.obavezna">
             <td >Date Of Birth:</td>
             
             <td><input type="date"   name="date" id="date" [readonly]="!isDivVisible" [style.background]="color" formControlName="date"/></td>
             
            </tr>
-           <br/>
-           <tr>
+           <br *ngIf="podesavanja.obavezna"/>
+           <tr *ngIf="podesavanja.obavezna">
             <td >Address:</td>
             <td ><input type="text" name="adresa"  [readonly]="!isDivVisible" [style.background]="color" formControlName="address" /></td>
             
           </tr>
-          <br/>
+          <br *ngIf="podesavanja.obavezna"/>
           <tr>
             <td>Password:</td>
             <td><input type="password" name="lozinka"  [readonly]="!isDivVisible" [style.background]="color" formControlName="password" /></td>

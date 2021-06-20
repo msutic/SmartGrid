@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import {User} from 'src/app/entities/user';
 import { FormGroup, FormBuilder,Validators, FormControl } from '@angular/forms';
+import { Podesavanja } from 'src/app/entities/podesavanja';
+import { SettingsServiceService } from 'src/app/services/settings-service.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -23,36 +25,36 @@ export class EditProfileComponent implements OnInit {
   Datum:Date;
   DatumString:string;
   newUser:User;
-    
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
   editUserFormGroup:FormGroup;
 
   //Date: Date;
   
-  constructor(public us:UserService) {
+  constructor(public us:UserService,public ss:SettingsServiceService) {
     this.us.getUser(this.userid).subscribe(
       (res: any) => {
         this.user = res;
-        
         this.createForm();
+        this.ss.getSettings().subscribe(
+          res=>{
+                this.podesavanja=res;
+          }
+        )
       }
     )
+
+  
+
    }
 
   ngOnInit(): void {
     
     this.color="transparent";
     this.isDivVisible = false;
+    
 
-    //this.Date= new Date("Jan 01 2021");
-
-
-
-   
-
-
-
-
-
+    
+    
   }
 
   createForm(){
