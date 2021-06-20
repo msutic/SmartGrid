@@ -68,6 +68,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IncidentService } from './services/incident/incident.service';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
+import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.
     DevicesComponent,
     NewDeviceComponent,
     SafetydocDevicesComponent,
-    EditConsumerComponent
+    EditConsumerComponent,
+    ZahteviComponent
   ],
   exports:[
     NewConsumerComponent

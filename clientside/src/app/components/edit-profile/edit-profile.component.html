@@ -108,6 +108,16 @@
             <td><input type="password" name="lozinka"  [readonly]="!isDivVisible" [style.background]="color" formControlName="password" /></td>
           </tr>
 
+          <tr>
+            <td>Uloga:</td>
+            <td>  <select id="uloge" name="uloge" formControlName="role" [style.background]="color" [attr.disabled]="!isDivVisible ? '' : null">
+              <option value="admin">admin</option>
+              <option value="dispatcher">dispatcher</option>
+              <option value="worker">worker</option>
+              <option value="crewMember">crewMember</option>
+            </select>        </td>
+          </tr>
+
 
           <tr>
             <td colspan="3" style="text-align: center;">

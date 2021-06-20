@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartGrid.Data;
 
 namespace SmartGrid.Migrations
 {
     [DbContext(typeof(SmartGridContext))]
-    partial class SmartGridContextModelSnapshot : ModelSnapshot
+    [Migration("20210620034519_zahtevi_za_promene_uloga")]
+    partial class zahtevi_za_promene_uloga
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,10 +256,6 @@ namespace SmartGrid.Migrations
 
                     b.Property<int>("Idkorisnika")
                         .HasColumnType("int");
-
-                    b.Property<string>("Korisnickoime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Novauloga")
                         .IsRequired()

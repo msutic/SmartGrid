@@ -39,6 +39,7 @@ import { AdminsGuard } from './guards/admins.guard';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 import { NonregisteredGuard } from './guards/nonregistered.guard';
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
+import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
     path: "dashboard",
     component: DashboardComponent,
     canActivate: [NonregisteredGuard]
+  },
+  {
+    path: "zahtevi",
+    component: ZahteviComponent,
   },
   {
     path: "profile",

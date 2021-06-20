@@ -197,7 +197,7 @@ html {
   }
   .container {
     width: 700px;
-    font-size: 24px;
+    font-size: 22px;
     clear: both;
   }
   
@@ -235,7 +235,7 @@ html {
     opacity: 0.3;
   }
   
-  input[type=text], [type=email], [type=password], [type=date], label {
+  input[type=text], [type=email], [type=password], [type=date], label, select {
     align-self: center;
     
     justify-content: center;

@@ -27,5 +27,7 @@ namespace SmartGrid.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<Podesavanja> Settings { get; set; }
+
+        public DbSet<Promenauloge> Zahtevi { get; set; }
     }
 }

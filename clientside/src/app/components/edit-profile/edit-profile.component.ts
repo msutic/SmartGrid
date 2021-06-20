@@ -5,6 +5,8 @@ import {User} from 'src/app/entities/user';
 import { FormGroup, FormBuilder,Validators, FormControl } from '@angular/forms';
 import { Podesavanja } from 'src/app/entities/podesavanja';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
+import { ZahteviService } from 'src/app/services/zahtevi.service';
+import { Promenauloge } from 'src/app/entities/promenauloge';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -26,11 +28,12 @@ export class EditProfileComponent implements OnInit {
   DatumString:string;
   newUser:User;
   podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
+  zahtev:Promenauloge=new Promenauloge(1,"a","a","b");
   editUserFormGroup:FormGroup;
 
   //Date: Date;
   
-  constructor(public us:UserService,public ss:SettingsServiceService) {
+  constructor(public us:UserService,public ss:SettingsServiceService,public zs:ZahteviService) {
     this.us.getUser(this.userid).subscribe(
       (res: any) => {
         this.user = res;
@@ -66,8 +69,8 @@ export class EditProfileComponent implements OnInit {
       "address":new FormControl(this.user.address),
       "email":new FormControl(this.user.email,Validators.required),
       "password":new FormControl(this.user.password,Validators.required),
-      "date":new FormControl(this.user.birthDate)
-      
+      "date":new FormControl(this.user.birthDate),
+      "role":new FormControl(this.user.userRole)
       
     });
   }
@@ -97,7 +100,25 @@ export class EditProfileComponent implements OnInit {
         localStorage.setItem('sessionUserLastname', JSON.stringify(this.newUser.lastName));
         localStorage.setItem('sessionUserRole', JSON.stringify(this.newUser.userRole));
         localStorage.setItem('sessionUserId',JSON.stringify(this.newUser.id));
+
+        if(this.editUserFormGroup.value.role !== this.newUser.userRole)
+        {
+          
+        this.zahtev.idkorisnika=this.newUser.id;
+        this.zahtev.korisnickoime=this.newUser.username;
+        this.zahtev.novauloga=this.editUserFormGroup.value.role;
+        this.zahtev.starauloga=this.newUser.userRole;
+
+
+        this.zs.addZahtev(this.zahtev).subscribe(
+          res=>{
+            
+          }
+        )
+        }
         window.location.reload();
+
+        
       }
     )
     
@@ -112,6 +133,7 @@ export class EditProfileComponent implements OnInit {
     this.editUserFormGroup.get("email").setValue(this.user.email);
     this.editUserFormGroup.get("password").setValue(this.user.password);
     this.editUserFormGroup.get("date").setValue(this.user.birthDate);
+    this.editUserFormGroup.get("role").setValue(this.user.userRole);
     this.isDivVisible=false;
     this.color="transparent";
   }
