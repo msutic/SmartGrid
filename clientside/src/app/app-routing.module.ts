@@ -141,6 +141,7 @@ const routes: Routes = [
   {
     path:'notifikacije',
     component: NotifikacijaComponent,
+    canActivate:[NonregisteredGuard],
     children: [
       {
         path: '',
