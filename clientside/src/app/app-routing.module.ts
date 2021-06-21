@@ -73,7 +73,8 @@ const routes: Routes = [
   },
   {
     path:'settings',
-    component:SettingsComponent
+    component:SettingsComponent,
+    canActivate:[AdminsGuard]
   },
   {
     path:'new-consumer',
