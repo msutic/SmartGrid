@@ -30,3 +30,8 @@
   .paginator {
       background-color: whitesmoke;
   }
+  .column {
+    float: left;
+    width: 35%;
+    padding: 10px;
+  }

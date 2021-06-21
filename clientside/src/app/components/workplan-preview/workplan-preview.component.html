@@ -1,4 +1,51 @@
 <p>workplan-preview works!</p>
+<div class="row">
+
+<div class="column">
+
+
 <div>
     <img *ngFor="let url of wm.multimedia" [src]="url" class="rounded mb-3" width="180">
+</div>
+    <label> Workplan Created By: {{workplan.createdBy}} </label>
+    <br/>
+    <label> Workplan Type: {{workplan.type}} </label>
+    <br/>
+    <label> Workplan Status: {{workplan.status}} </label>
+    <br/>
+    <label> Workplan Reason: {{workplan.purpuse}} </label>
+    <br/>
+    <label> Workplan Start Date: {{workplan.startDate | date:"dd/MM/yyyy"}} </label>
+    <br/>
+    <label> Workplan End Date: {{workplan.endDate | date:"dd/MM/yyyy"}} </label>
+    <br/>
+    <label> Workplan Creted On: {{workplan.createdOn | date:"dd/MM/yyyy HH:mm:ss"}} </label>
+    <br/>
+    <label> Workplan For Order: {{workplan.order }} </label>
+    <br/>
+    <label> Workplan For Crew: {{workplan.crewId }} </label>
+    <br/>
+    <label> Workplan Done By: {{workplan.company }} </label>
+    <br/>
+    <label *ngIf="workplan.phoneNumber"> Workplan Contact: {{workplan.phoneNumber }} </label>
+    <br/>
+
+</div>
+
+
+
+<div class="column">
+<label>Some text</label>
+
+
+
+
+
+
+
+
+
+
+</div>
+
 </div>
