@@ -10,6 +10,7 @@ import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
 import { Instrukcija } from 'src/app/entities/instrukcija';
 import { User } from 'src/app/entities/user';
 import { Notifikacija } from 'src/app/entities/notifikacija';
+import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 
 @Component({
   selector: 'app-workplan-preview',
@@ -33,7 +34,7 @@ export class WorkplanPreviewComponent implements OnInit {
   successNotifikacija:Notifikacija;
   infoNotifikacija:Notifikacija;
   dataSource = new MatTableDataSource(this.instructions);
-  constructor(private ws:WorkplanService,private route:ActivatedRoute) { }
+  constructor(private ws:WorkplanService,private route:ActivatedRoute,private ns:NotifikacijaserviceService) { }
 
   displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
   
@@ -84,10 +85,22 @@ export class WorkplanPreviewComponent implements OnInit {
           {
             if(!(this.workplan.status==="Approved"))
             {
-              this.erorNotifikacija=new Notifikacija("error","Error when approving workplan",new Date(Date.now()));
-              alert("You can't execute instructions of unapproved workplans");
+              this.erorNotifikacija=new Notifikacija("error","Error when executing instruction",new Date(Date.now()));
+              this.ns.addNewNotification(this.erorNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
+              alert("You can't execute instructions of unapproved workplans!");
             }else
             {
+              this.successNotifikacija=new Notifikacija("success","Instruction successfully executed!",new Date(Date.now()));
+              this.ns.addNewNotification(this.successNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
+              
               this.instructions[index].executed=true;
               this.workplan.instructions=JSON.stringify(this.instructions);
               this.ws.updateWorkplanInstruktions(this.workplan).subscribe(
@@ -102,7 +115,13 @@ export class WorkplanPreviewComponent implements OnInit {
           }
           else
           {
-            alert("Izabrana instrukcija vec izvrsena");
+            this.erorNotifikacija=new Notifikacija("error","Error when executing instruction",new Date(Date.now()));
+              this.ns.addNewNotification(this.erorNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
+            alert("Izabrana instrukcija vec izvrsena!");
           }
         }
       });
@@ -121,15 +140,35 @@ export class WorkplanPreviewComponent implements OnInit {
       this.currentUsername=JSON.parse(localStorage.getItem("sessionUsername").toString());
     if(this.currentRole !== 'dispatcher' )
     {
+      this.erorNotifikacija=new Notifikacija("error","Error when approving workplan!",new Date(Date.now()));
+              this.ns.addNewNotification(this.erorNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
       alert("Only dispatchers can approve workplans!");
     }else
     {
       if(this.currentUsername === this.workplan.createdBy)
       {
+        this.erorNotifikacija=new Notifikacija("error","Error when approving workplan!",new Date(Date.now()));
+              this.ns.addNewNotification(this.erorNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
         alert("You can't approve your own workplans!");
       }
       else
       {
+        this.successNotifikacija=new Notifikacija("success","Workplan successfully approved!",new Date(Date.now()));
+              this.ns.addNewNotification(this.successNotifikacija).subscribe(
+                res=>{
+
+                }
+              )
+
+
         this.workplan.status="Approved";
         this.ws.approveWorkplan(this.workplan).subscribe(
           res=>{

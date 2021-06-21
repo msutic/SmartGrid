@@ -20,6 +20,7 @@ export class NewDeviceComponent implements OnInit {
 
   newDevice : Device;
   newNotificationsuccess:Notifikacija;
+  newNotificationinfo:Notifikacija;
 
   datum:Date;
   constructor(private router: Router, private deviceService: DeviceService, private route: ActivatedRoute, private formBuilder: FormBuilder, public ns:NotifikacijaserviceService) {}
@@ -82,7 +83,7 @@ export class NewDeviceComponent implements OnInit {
           this.datum=new Date(Date.now());
           this.datum.setHours(this.datum.getHours()+2);
           this.newNotificationsuccess=new Notifikacija("success","Uredjaj uspesno dodat",this.datum);
-          
+          this.newNotificationinfo=new Notifikacija("info","Devide added",new Date(Date.now()));
           this.deviceService.addNewDevice(this.newDevice).subscribe(
             (res) => {
               this.router.navigate(['devices']);
@@ -94,6 +95,11 @@ export class NewDeviceComponent implements OnInit {
           res=>{
             
           }
+      )
+      this.ns.addNewNotification(this.newNotificationinfo).subscribe(
+        res=>{
+
+        }
       )
 
         }
