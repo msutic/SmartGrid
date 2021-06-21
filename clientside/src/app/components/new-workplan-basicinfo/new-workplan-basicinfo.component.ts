@@ -11,6 +11,7 @@ import { WorkplanService } from 'src/app/services/workplan.service';
 import { Router } from '@angular/router';
 import { Incident } from 'src/app/entities/incident';
 import { IncidentService } from 'src/app/services/incident/incident.service';
+import { Workplan } from 'src/app/entities/workplan';
 @Component({
   selector: 'app-new-workplan-basicinfo',
   templateUrl: './new-workplan-basicinfo.component.html',
@@ -29,7 +30,7 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   nalozi_za_rad=["1","2","3","4"];
   incidenti_za_rad=["Incident1","Incident2","Incident3","Incident4"];
   crews_za_rad=["1","2","3","4"];
-  options: string[] = ['Equipment Malfunction', 'Equipment Upgrade', 'Equipment Replace'];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
   created_by=JSON.parse(localStorage.getItem("sessionUsername"));
   company='';
@@ -37,6 +38,7 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   phone='';
   possible_status=["Draft","Approved", "Denyed"];
   selected_status=this.possible_status[0];
+  workplans:Array<Workplan>=[];
 
   basicInfoForm:FormGroup;
   created_on = new Date(Date.now());
@@ -50,6 +52,16 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
         this.is.loadIncidents().subscribe(
           res=>{
             this.incidents=res;
+            this.ws.loadWorkplans().subscribe(
+              res=>{
+                this.workplans=res;
+                for(var i=0;i<this.workplans.length;i++)
+                {
+                  this.options.push(this.workplans[i].purpuse.toString());
+                }
+              }
+            )
+            
           }
         )
       }

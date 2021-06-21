@@ -79,7 +79,7 @@
               <ng-container matColumnDef="actions" sticky>
                 <th class="stickyCell" mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
                 <td class="stickyCell" mat-cell *matCellDef="let element">
-                  <button mat-button routerLink="{{element.id}}/edit">Edit</button>
+                  <button mat-button routerLink="{{element.id}}/edit">Preview</button>
                   <button mat-button (click)=onDelete(element.id)>Delete</button>
                 </td>
               </ng-container>
