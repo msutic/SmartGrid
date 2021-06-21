@@ -35,6 +35,7 @@ export class Workplan {
         this.company=company;
         this.phoneNumber=phoneNumber;
         this.createdOn=new Date(Date.now());
+        this.createdOn.setHours(this.createdOn.getHours()+2);
         this.devices=devices;
         this.instructions=instructions;
         this.multimedia=multimedia;

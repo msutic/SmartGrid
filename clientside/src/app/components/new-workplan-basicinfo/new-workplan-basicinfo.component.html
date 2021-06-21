@@ -7,8 +7,8 @@
             <label>Type: </label>
             <mat-form-field appearance="legacy" >
                 <mat-select placeholder="Select Type" formControlName='type' >
-                    <mat-option value="option 1">Planned Work</mat-option>
-                    <mat-option value="option 2">Unplanned Work</mat-option>
+                    <mat-option value="Planned Work">Planned Work</mat-option>
+                    <mat-option value="Unplanned Work">Unplanned Work</mat-option>
                 </mat-select>
                 
             </mat-form-field>
@@ -26,7 +26,7 @@
             <label>Incident:</label>
             <mat-form-field appearance="legacy" >
                 <mat-select [(value)]="selected_incident" placeholder="Select Incident" formControlName='incident' >
-                    <mat-option *ngFor="let p of incidents" [value]="p">{{p.id}}</mat-option>
+                    <mat-option *ngFor="let p of incidents" [value]="p.id">{{p.id}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

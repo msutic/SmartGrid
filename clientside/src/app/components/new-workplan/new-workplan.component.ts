@@ -21,6 +21,7 @@ import { WorkplanService } from 'src/app/services/workplan.service';
 export class NewWorkplanComponent implements OnInit {
   newWorkplan: Workplan;
   workplanBasicInfo: BasicInfoWorkplan=new BasicInfoWorkplan("a","a",new Date(Date.now()),new Date(Date.now()),1,"a","a","a",1,"a","a");
+  workplanBasicInfo1:BasicInfoWorkplan;
   workplanMultimedia: Array<string>;
   workplanInstructions: Array<Instrukcija>;
   workplanDevices:Array<Device>
@@ -29,7 +30,7 @@ export class NewWorkplanComponent implements OnInit {
   ngOnInit(): void {
     this.ws.changeEmitted$.subscribe(
       res => {
-        this.newWorkplan = res;
+        this.workplanBasicInfo1 = res;
       }
     )
 
@@ -53,22 +54,24 @@ export class NewWorkplanComponent implements OnInit {
     )
   }
     onSubmit(){
+      var crewIDnumber:number=+this.workplanBasicInfo1.crewId;
       this.newWorkplan=new Workplan(
-        this.workplanBasicInfo.type,
-        this.workplanBasicInfo.status,
-        this.workplanBasicInfo.startDate,
-        this.workplanBasicInfo.endDate,
-        this.workplanBasicInfo.crewId,
-        this.workplanBasicInfo.purpuse,
-        this.workplanBasicInfo.company,
-        this.workplanBasicInfo.order,
-        this.workplanBasicInfo.incidentId,
-        this.workplanBasicInfo.notes,
-        this.workplanBasicInfo.phoneNumber,
+        this.workplanBasicInfo1.type,
+        this.workplanBasicInfo1.status,
+        this.workplanBasicInfo1.startDate,
+        this.workplanBasicInfo1.endDate,
+        crewIDnumber,
+        this.workplanBasicInfo1.purpuse,
+        this.workplanBasicInfo1.company,
+        this.workplanBasicInfo1.order,
+        this.workplanBasicInfo1.incidentId,
+        this.workplanBasicInfo1.notes,
+        this.workplanBasicInfo1.phoneNumber,
         JSON.stringify(this.workplanMultimedia),
         JSON.stringify(this.workplanInstructions),
         JSON.stringify(this.workplanDevices)
       );
+      
 
       this.ws.addNewWorkplan(this.newWorkplan).subscribe(
         res=>{

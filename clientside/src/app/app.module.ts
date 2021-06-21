@@ -69,6 +69,7 @@ import { IncidentService } from './services/incident/incident.service';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
 import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
+import { TestImagesComponent } from './components/test-images/test-images.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +110,8 @@ import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
     NewDeviceComponent,
     SafetydocDevicesComponent,
     EditConsumerComponent,
-    ZahteviComponent
+    ZahteviComponent,
+    TestImagesComponent
   ],
   exports:[
     NewConsumerComponent

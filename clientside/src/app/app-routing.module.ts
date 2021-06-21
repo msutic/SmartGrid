@@ -40,6 +40,7 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
 import { NonregisteredGuard } from './guards/nonregistered.guard';
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
 import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
+import { TestImagesComponent } from './components/test-images/test-images.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: TestImagesComponent
   },
   {
     path:'potrosaci',

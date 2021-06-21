@@ -28,7 +28,7 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   selected_crew='';
   nalozi_za_rad=["1","2","3","4"];
   incidenti_za_rad=["Incident1","Incident2","Incident3","Incident4"];
-  crews_za_rad=["Crew1","Crew2","Crew3","Crew4"];
+  crews_za_rad=["1","2","3","4"];
   options: string[] = ['Equipment Malfunction', 'Equipment Upgrade', 'Equipment Replace'];
   filteredOptions: Observable<string[]>;
   created_by=JSON.parse(localStorage.getItem("sessionUsername"));
