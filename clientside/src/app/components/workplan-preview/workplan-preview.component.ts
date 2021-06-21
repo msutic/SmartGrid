@@ -7,6 +7,7 @@ import { WorkplanService } from 'src/app/services/workplan.service';
 import { ActivatedRoute } from '@angular/router';
 import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
 import { Instrukcija } from 'src/app/entities/instrukcija';
+import { User } from 'src/app/entities/user';
 
 @Component({
   selector: 'app-workplan-preview',
@@ -23,6 +24,9 @@ export class WorkplanPreviewComponent implements OnInit {
   dataSource;
   selectedRowIndex = -1;
   selectedRow:Instrukcija=null;
+  currentRole:String='';
+  currentUsername:String='';
+  currentUser:User;
   constructor(private ws:WorkplanService,private route:ActivatedRoute) { }
 
   displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
@@ -91,6 +95,39 @@ export class WorkplanPreviewComponent implements OnInit {
     {
       alert("Nije selektovana instrukcija za izvrsavanje");
     }
+  }
+
+  approveWorkplan()
+  {
+    if(this.workplan.status !== "Approved")
+    {
+      this.currentRole=JSON.parse(localStorage.getItem("sessionUser").toString());
+      this.currentUsername=JSON.parse(localStorage.getItem("sessionUsername").toString());
+    if(this.currentRole !== 'dispatcher' )
+    {
+      alert("Only dispatchers can approve workplans!");
+    }else
+    {
+      if(this.currentUsername === this.workplan.createdBy)
+      {
+        alert("You can't approve your own workplans!");
+      }
+      else
+      {
+        this.workplan.status="Approved";
+        this.ws.approveWorkplan(this.workplan).subscribe(
+          res=>{
+            window.location.reload();
+          }
+        )
+      }
+    }
+    }else
+    {
+      alert("Workplan already approved!");
+    }
+    
+
   }
 
 }

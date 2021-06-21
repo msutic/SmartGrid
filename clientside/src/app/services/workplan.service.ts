@@ -53,6 +53,11 @@ export class WorkplanService {
     return this.http.put(this.api_url+"Workplans/updateWorkplanInstructions",JSON.stringify(workplan),this.httpOptions);
   }
 
+  approveWorkplan(workplan:Workplan):Observable<any>{
+    console.log("Approving workplan...");
+    return this.http.put(this.api_url+"Workplans/approveWorkplan",JSON.stringify(workplan),this.httpOptions);
+  }
+
 
 
 

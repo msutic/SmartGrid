@@ -51,6 +51,17 @@ namespace SmartGrid.Controllers
         }
 
 
+        [HttpPut]
+        [Route("/api/Workplans/approveWorkplan")]
+        public async Task<ActionResult<Workplan>> approveWorkplan(Workplan workplan)
+        {
+            var old = _context.Workplans.Where(e => e.Id == workplan.Id).FirstOrDefault();
+            old.Status = workplan.Status;
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+
 
 
         [HttpDelete]

@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: TestImagesComponent
+    component: HomeComponent
   },
   {
     path:'potrosaci',
