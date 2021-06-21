@@ -9,9 +9,9 @@ export class AdminsGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      //let admin = JSON.parse(localStorage.getItem("sessionUser"));
+      let admin = JSON.parse(localStorage.getItem("sessionUser").toString());
 
-      if((localStorage.getItem("sessionUser")) === 'admin') {
+      if(admin === 'admin') {
         return true; 
       } else {
         alert('Not authorized'); 

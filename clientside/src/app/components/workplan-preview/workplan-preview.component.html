@@ -55,7 +55,7 @@
 
 
 
-
+        <div class="main_content mt-2">
 
         <table [dataSource]="dataSource" rowSelection='single' mat-table matSort class="mat-elevation-z8">
             
@@ -84,8 +84,11 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [ngClass]="{ 'selected': row === selectedRow }" >
             </tr>   
+           
         </table>
-        <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    <mat-paginator #paginator class="paginator" [pageSizeOptions]="[3, 10, 20]" showFirstLastButtons></mat-paginator>
+        
     </div>
 
 

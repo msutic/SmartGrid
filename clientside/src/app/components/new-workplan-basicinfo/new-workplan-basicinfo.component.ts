@@ -37,7 +37,7 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
   option='';
   phone='';
   possible_status=["Draft","Approved", "Denyed"];
-  selected_status=this.possible_status[0];
+  selected_status:String='';
   workplans:Array<Workplan>=[];
 
   basicInfoForm:FormGroup;
@@ -59,6 +59,8 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
                 {
                   this.options.push(this.workplans[i].purpuse.toString());
                 }
+                this.selected_status="Draft";
+                this.selected_incident="1";
               }
             )
             
@@ -87,7 +89,6 @@ export class NewWorkplanBasicinfoComponent implements OnInit {
       'type': new FormControl('',Validators.required),
       'order': new FormControl(''),
       'incident': new FormControl('',Validators.required),
-      'status': new FormControl('',Validators.required),
       'street': new FormControl('',Validators.required),
       'startDate': new FormControl('',Validators.required),
       'endDate': new FormControl('',Validators.required),

@@ -25,7 +25,7 @@ export class Workplan {
         this.type=type;
         this.order=order;
         this.incidentId=incidentId;
-        this.status=status;
+        this.status="Draft";
         this.startDate=startDate;
         this.endDate=endDate;
         this.crewId=crewId;
