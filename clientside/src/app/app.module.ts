@@ -70,6 +70,7 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
 import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
 import { TestImagesComponent } from './components/test-images/test-images.component';
+import { WorkplanPreviewComponent } from './components/workplan-preview/workplan-preview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +112,8 @@ import { TestImagesComponent } from './components/test-images/test-images.compon
     SafetydocDevicesComponent,
     EditConsumerComponent,
     ZahteviComponent,
-    TestImagesComponent
+    TestImagesComponent,
+    WorkplanPreviewComponent
   ],
   exports:[
     NewConsumerComponent

@@ -41,6 +41,7 @@ import { NonregisteredGuard } from './guards/nonregistered.guard';
 import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
 import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
 import { TestImagesComponent } from './components/test-images/test-images.component';
+import { WorkplanPreviewComponent } from './components/workplan-preview/workplan-preview.component';
 
 const routes: Routes = [
   {
@@ -93,7 +94,16 @@ const routes: Routes = [
   },
   {
     path: "workplans",
-    component:WorkplanTableComponent
+    children:[
+      {
+        path:'',
+        component:WorkplanTableComponent
+      },
+      {
+        path:':id/edit',
+        component:WorkplanPreviewComponent
+      }
+    ]
   },
   {
     path: 'new-workplan',
