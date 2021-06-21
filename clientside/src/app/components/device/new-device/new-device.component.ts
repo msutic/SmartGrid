@@ -82,8 +82,8 @@ export class NewDeviceComponent implements OnInit {
           this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseFloat(this.newDeviceFormGroup.value.x_coordinate), parseFloat(this.newDeviceFormGroup.value.y_coordinate));
           this.datum=new Date(Date.now());
           this.datum.setHours(this.datum.getHours()+2);
-          this.newNotificationsuccess=new Notifikacija("success","Uredjaj uspesno dodat",this.datum);
-          this.newNotificationinfo=new Notifikacija("info","Devide added",new Date(Date.now()));
+          this.newNotificationsuccess=new Notifikacija("success","Uredjaj uspesno dodat!",this.datum);
+          this.newNotificationinfo=new Notifikacija("info","Device added!",new Date(Date.now()));
           this.deviceService.addNewDevice(this.newDevice).subscribe(
             (res) => {
               this.router.navigate(['devices']);

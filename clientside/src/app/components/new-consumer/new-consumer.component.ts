@@ -5,6 +5,8 @@ import { PotrosacService } from 'src/app/services/potrosac.service';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Podesavanja } from 'src/app/entities/podesavanja';
+import { Notifikacija } from 'src/app/entities/notifikacija';
+import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 @Component({
   selector: 'app-new-consumer',
   templateUrl: './new-consumer.component.html',
@@ -25,7 +27,12 @@ export class NewConsumerComponent implements OnInit {
   consumerForm:FormGroup;
   selected="";
   podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
-  constructor(private router:Router,private fb: FormBuilder,public sss:SettingsServiceService, public ps:PotrosacService,private route: ActivatedRoute) 
+
+  newNotificationInfo:Notifikacija;
+  newNotificationSuccess:Notifikacija;
+
+
+  constructor(private router:Router,private fb: FormBuilder,public sss:SettingsServiceService, public ps:PotrosacService,private route: ActivatedRoute,private ns:NotifikacijaserviceService) 
   { 
     this.sss.getSettings().subscribe(
       res=>{
@@ -93,19 +100,34 @@ export class NewConsumerComponent implements OnInit {
 
         }
       )
+      this.newNotificationInfo=new Notifikacija("info","Consumer updated!",new Date(Date.now()));
+      this.ns.addNewNotification(this.newNotificationInfo).subscribe(
+        res=>{
+
+        }
+      )
     }else
     {
       console.log(this.consumerForm.value);
     this.potrosac=new Potrosac(this.consumerForm.value.name,this.consumerForm.value.lastName,this.consumerForm.value.street,this.consumerForm.value.city,this.consumerForm.value.type,this.consumerForm.value.phonenumber,this.consumerForm.value.postalcode);
     //alert(this.consumerForm.value.type);
    
-    alert(this.potrosac.ime+" "+this.potrosac.prezime+" "+this.potrosac.ulica+" "+this.potrosac.grad+" "+this.potrosac.tip+" "+this.potrosac.broj_telefona+" "+this.potrosac.postanski_broj);
+    //alert(this.potrosac.ime+" "+this.potrosac.prezime+" "+this.potrosac.ulica+" "+this.potrosac.grad+" "+this.potrosac.tip+" "+this.potrosac.broj_telefona+" "+this.potrosac.postanski_broj);
     this.ps.AddPotrosac(this.potrosac).subscribe(
       (res)=>{
         this.router.navigate(['potrosaci']);
         
       }
     )
+
+    this.newNotificationSuccess=new Notifikacija("success","Consumer successfuly added!",new Date(Date.now()));
+    this.ns.addNewNotification(this.newNotificationSuccess).subscribe(
+      res=>{
+
+      }
+    )
+
+
     }
 
     
