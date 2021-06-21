@@ -41,7 +41,7 @@ namespace SmartGrid.Controllers
         }
 
         [HttpDelete]
-        [Route("/api/Incidents/deleteWorkplan/{id}")]
+        [Route("/api/Workplans/deleteWorkplan/{id}")]
         public async Task<ActionResult<Workplan>> DeleteWorkplan(int id)
         {
             var workplan = await _context.Workplans.FindAsync(id);

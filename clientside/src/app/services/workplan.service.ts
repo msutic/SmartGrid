@@ -42,9 +42,9 @@ export class WorkplanService {
     return this.http.post<any>(this.api_url+'Workplans/addWorkplan', JSON.stringify(newWorkplan), this.httpOptions);
   }
 
-  deleteWorkplan(workplan: Workplan){
-    console.log('Deleting Workplan with id: ' + workplan.id);
-    return this.http.delete(this.api_url+'Workplans/deleteWorkplan/'+workplan.id);
+  deleteWorkplan(id:number){
+    console.log('Deleting Workplan with id: ' + id);
+    return this.http.delete(this.api_url+'Workplans/deleteWorkplan/'+id,this.httpOptions);
   }
 
 

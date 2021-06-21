@@ -20,7 +20,7 @@ export class WorkplanTableComponent implements AfterViewInit {
  
 
   
-  displayedColumns: string[] = ['id','type', 'order', 'incidentId', 'status', 'startDate','endDate','crewId','createdBy','purpuse','notes','company','phoneNumber','createdOn'];
+  displayedColumns: string[] = ['id','type', 'order', 'incidentId', 'status', 'startDate','endDate','crewId','createdBy','purpuse','notes','company','phoneNumber','createdOn','actions'];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -33,6 +33,13 @@ export class WorkplanTableComponent implements AfterViewInit {
     )
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  onDelete(id:number){
+    this.ws.deleteWorkplan(id).subscribe(
+      res=>{
+        window.location.reload();
+      }
+    )
   }
 
 }
