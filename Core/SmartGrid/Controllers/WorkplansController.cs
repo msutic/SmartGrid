@@ -39,6 +39,19 @@ namespace SmartGrid.Controllers
             return NoContent();
 
         }
+        [HttpPut]
+        [Route("/api/Workplans/updateWorkplanInstructions")]
+        public async Task<ActionResult<Workplan>> updateWorkplanInstructions(Workplan workplan)
+        {
+            var old = _context.Workplans.Where(e => e.Id == workplan.Id).FirstOrDefault();
+            old.Instructions = workplan.Instructions;
+            await _context.SaveChangesAsync();
+            return NoContent();
+
+        }
+
+
+
 
         [HttpDelete]
         [Route("/api/Workplans/deleteWorkplan/{id}")]

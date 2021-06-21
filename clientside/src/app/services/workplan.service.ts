@@ -47,6 +47,12 @@ export class WorkplanService {
     return this.http.delete(this.api_url+'Workplans/deleteWorkplan/'+id,this.httpOptions);
   }
 
+  updateWorkplanInstruktions(workplan:Workplan):Observable<any>
+  {
+    console.log("Executing instructions...");
+    return this.http.put(this.api_url+"Workplans/updateWorkplanInstructions",JSON.stringify(workplan),this.httpOptions);
+  }
+
 
 
 

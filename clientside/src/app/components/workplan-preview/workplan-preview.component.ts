@@ -63,7 +63,22 @@ export class WorkplanPreviewComponent implements OnInit {
         {
           if(this.instructions[index].executed==false)
           {
-            this.instructions[index].executed=true;
+            if(!(this.workplan.status==="Approved"))
+            {
+              alert("You can't execute instructions of unapproved workplans");
+            }else
+            {
+              this.instructions[index].executed=true;
+              this.workplan.instructions=JSON.stringify(this.instructions);
+              this.ws.updateWorkplanInstruktions(this.workplan).subscribe(
+              res=>{
+                window.location.reload();
+              }
+            )
+
+            }
+            
+
           }
           else
           {
