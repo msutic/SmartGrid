@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
 import { Instrukcija } from 'src/app/entities/instrukcija';
 import { User } from 'src/app/entities/user';
+import { Notifikacija } from 'src/app/entities/notifikacija';
 
 @Component({
   selector: 'app-workplan-preview',
@@ -27,6 +28,9 @@ export class WorkplanPreviewComponent implements OnInit {
   currentRole:String='';
   currentUsername:String='';
   currentUser:User;
+  erorNotifikacija:Notifikacija;
+  successNotifikacija:Notifikacija;
+  infoNotifikacija:Notifikacija;
   constructor(private ws:WorkplanService,private route:ActivatedRoute) { }
 
   displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
@@ -49,13 +53,14 @@ export class WorkplanPreviewComponent implements OnInit {
             this.workplan=this.workplans[i];
             this.wm=JSON.parse(this.workplan.multimedia.toString());
             this.instructions=JSON.parse(this.workplan.instructions.toString());
+            this.dataSource = new MatTableDataSource(this.instructions);
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
             
             
           }
         }
-        this.dataSource = new MatTableDataSource(this.instructions);
-            this.dataSource.sort = this.sort;
-            this.dataSource.paginator = this.paginator;
+        
 
       }
     )
@@ -77,6 +82,7 @@ export class WorkplanPreviewComponent implements OnInit {
           {
             if(!(this.workplan.status==="Approved"))
             {
+              this.erorNotifikacija=new Notifikacija("error","Error when approving workplan",new Date(Date.now()));
               alert("You can't execute instructions of unapproved workplans");
             }else
             {

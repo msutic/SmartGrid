@@ -91,7 +91,8 @@ const routes: Routes = [
   },
   {
     path: "profile",
-    component: EditProfileComponent
+    component: EditProfileComponent,
+    canActivate: [NonregisteredGuard]
   },
   {
     path: "workplans",
