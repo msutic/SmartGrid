@@ -4,7 +4,7 @@
     <hr/>
     <div class="main_content">
         <table>
-            <tbody *ngFor="let notifikacija of neprocitane" (click)="clickedRow(notifikacija)">
+            <tbody *ngFor="let notifikacija of neprocitane let i=index" (click)="clickedRow(notifikacija)">
                 
                 <tr *ngIf="(notifikacija.tip=='error' && podesavanja.errorvidljive) || (notifikacija.tip=='info' && podesavanja.infovidljive) || (notifikacija.tip=='warning' && podesavanja.warningvidljive) || (notifikacija.tip=='success' && podesavanja.successvidljive)"
                 [class.colorError]='notifikacija.tip=="error"'
@@ -15,6 +15,7 @@
                     <td style="width: 30px;"></td>
                     <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
                     <td>{{notifikacija.tekst}}</td>
+                    <td><a (click)="Open(i)"><button *ngIf="links[i]">OTVORI</button></a></td>
                     <td style="width: 100px;">{{notifikacija.vreme | date:"dd MM yyyy HH:mm:ss" }}</td>
                     <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
                    
