@@ -6,6 +6,7 @@ import { Workplan } from 'src/app/entities/workplan';
 import { WorkplanService } from 'src/app/services/workplan.service';
 import { ActivatedRoute } from '@angular/router';
 import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
+import { Instrukcija } from 'src/app/entities/instrukcija';
 
 @Component({
   selector: 'app-workplan-preview',
@@ -14,12 +15,17 @@ import { MultimediaWorkplan } from 'src/app/entities/multimedia-workplan';
 })
 export class WorkplanPreviewComponent implements OnInit {
   workplans:Array<Workplan>=[];
+  instructions:Array<Instrukcija>=[];
   workplan:Workplan;
   workplanId:string='';
   workplanIdnumber:number;
   wm:MultimediaWorkplan;
+  dataSource;
+  selectedRowIndex = -1;
+  selectedRow:Instrukcija=null;
   constructor(private ws:WorkplanService,private route:ActivatedRoute) { }
 
+  displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
 
 
   ngOnInit(): void {
@@ -34,14 +40,42 @@ export class WorkplanPreviewComponent implements OnInit {
           {
             this.workplan=this.workplans[i];
             this.wm=JSON.parse(this.workplan.multimedia.toString());
+            this.instructions=JSON.parse(this.workplan.instructions.toString());
+            this.dataSource = new MatTableDataSource(this.instructions);
           }
         }
+
       }
     )
+  }
+  selectRow(row:Instrukcija)
+  {
+      this.selectedRow=row;
+      this.selectedRowIndex=row.id;
+  }
 
-
-
-
+  ExecuteRow()
+  {
+    if(this.selectedRowIndex!=-1)
+    {
+      this.instructions.forEach((element,index)=>{
+        if(element==this.selectedRow) 
+        {
+          if(this.instructions[index].executed==false)
+          {
+            this.instructions[index].executed=true;
+          }
+          else
+          {
+            alert("Izabrana instrukcija vec izvrsena");
+          }
+        }
+      });
+      this.dataSource._updateChangeSubscription();
+    }else
+    {
+      alert("Nije selektovana instrukcija za izvrsavanje");
+    }
   }
 
 }
