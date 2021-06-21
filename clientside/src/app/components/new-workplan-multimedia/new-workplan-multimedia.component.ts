@@ -91,6 +91,7 @@ detectFiles(event: any) {
 
 onSaveClick(){
   this.newWorkplanMultimedia = new MultimediaWorkplan(this.urls);
+  
 
   this.ws.multimediaEmitChange(this.newWorkplanMultimedia); 
   this.router.navigate(['/new-workplan/workplan-devices']);
