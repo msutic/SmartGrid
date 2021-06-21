@@ -55,19 +55,23 @@ const routes: Routes = [
   },
   {
     path:'potrosaci',
+    
   
     children:[
       {
         path:'',
-        component:PotrosaciComponent
+        component:PotrosaciComponent,
+        canActivate:[AdminsGuard]
       },
       {
         path: ':id/edit',
         component: NewConsumerComponent
+        
       },
       {
         path: 'new',
         component: NewConsumerComponent
+    
       }
     ]
   },

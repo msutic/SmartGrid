@@ -19,10 +19,11 @@ import { Notifikacija } from 'src/app/entities/notifikacija';
 export class WorkplanPreviewComponent implements OnInit {
   workplans:Array<Workplan>=[];
   instructions:Array<Instrukcija>=[];
-  workplan:Workplan;
+  workplan:Workplan=new Workplan("a","a",new Date(Date.now()),new Date(Date.now()),1,"a","a");
   workplanId:string='';
   workplanIdnumber:number;
-  wm:MultimediaWorkplan;
+  listastringova:Array<string>=[];
+  wm:MultimediaWorkplan=new MultimediaWorkplan(this.listastringova);
   selectedRowIndex = -1;
   selectedRow:Instrukcija=null;
   currentRole:String='';
@@ -31,10 +32,11 @@ export class WorkplanPreviewComponent implements OnInit {
   erorNotifikacija:Notifikacija;
   successNotifikacija:Notifikacija;
   infoNotifikacija:Notifikacija;
+  dataSource = new MatTableDataSource(this.instructions);
   constructor(private ws:WorkplanService,private route:ActivatedRoute) { }
 
   displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
-  dataSource = new MatTableDataSource(this.instructions);
+  
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
