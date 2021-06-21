@@ -29,7 +29,7 @@ export class Workplan {
         this.startDate=startDate;
         this.endDate=endDate;
         this.crewId=crewId;
-        this.createdBy=localStorage.getItem("sessionUsername");
+        this.createdBy=JSON.parse(localStorage.getItem("sessionUsername"));
         this.purpuse=purpuse;
         this.notes=notes;
         this.company=company;
