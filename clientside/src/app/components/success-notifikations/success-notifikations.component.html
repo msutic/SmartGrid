@@ -6,10 +6,11 @@
         <table>
             <tbody>
                 
-                <tr *ngFor="let notifikacija of success" (click)="clickedRow(notifikacija)">
+                <tr *ngFor="let notifikacija of success let i=index" (click)="clickedRow(notifikacija)">
                     <td style="width: 30px;"></td>
                     <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
                     <td>{{notifikacija.tekst}}</td>
+                    <td><a (click)="Open(i)"><button *ngIf="links[i]">OTVORI</button></a></td>
                     <td style="width: 100px;">{{notifikacija.vreme | date:"dd MM yyyy HH:mm:ss" }}</td>
                     <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
                    

@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-success-notifikations',
@@ -13,8 +14,9 @@ import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice
 export class SuccessNotifikationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
   success:Notifikacija[]=[];
+  links:Array<String>=[];
 
-  constructor(public ns:NotifikacijaserviceService) {
+  constructor(public ns:NotifikacijaserviceService,private router:Router) {
    }
    displayedColumns: string[] = ['ikona','tip', 'tekst', 'vreme', 'procitana'];
   dataSource = new MatTableDataSource(this.success);
@@ -34,7 +36,10 @@ export class SuccessNotifikationsComponent implements AfterViewInit {
     this.ns.loadSuccessNotifikations().subscribe(
       data => {
         this.success = data;
-       
+        for(var i=0;i<this.success.length;i++)
+        {
+          this.links.push(this.success[i].link);
+        }
        
 
         
@@ -43,6 +48,10 @@ export class SuccessNotifikationsComponent implements AfterViewInit {
         this.dataSource.paginator = this.paginator;
       }
     );
+  }
+  Open(i:number)
+  {
+    this.router.navigate([this.links[i]]);
   }
   ReadAll()
   {

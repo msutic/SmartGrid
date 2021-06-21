@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,8 +14,8 @@ import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice
 })
 export class InfoNotifikationsComponent implements AfterViewInit {
   info:Notifikacija[]=[];
-
-  constructor(public ns:NotifikacijaserviceService) { 
+  links:Array<String>=[];
+  constructor(public ns:NotifikacijaserviceService, private router:Router) { 
     
   
   }
@@ -37,7 +38,10 @@ export class InfoNotifikationsComponent implements AfterViewInit {
       data => {
         this.info = data;
         //this.convertDate();
-       
+        for(var i=0;i<this.info.length;i++)
+        {
+          this.links.push(this.info[i].link);
+        }
 
         
         this.dataSource = new MatTableDataSource(this.info);
@@ -57,6 +61,11 @@ export class InfoNotifikationsComponent implements AfterViewInit {
       )
     }
     
+  }
+
+  Open(i:number)
+  {
+    this.router.navigate([this.links[i]]);
   }
 ClearAll()
   {
