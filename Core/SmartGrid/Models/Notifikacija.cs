@@ -22,5 +22,7 @@ namespace SmartGrid.Models
         public bool Procitana { get; set; }
         [Required]
         public string Ikona { get; set; }
+
+        public string Link { get; set; }
     }
 }

@@ -30,6 +30,13 @@
         </div>
     </ng-container>
 </div>
+<button class="btn-primary" (click)="SaveSettings()">
+    SAVE SETTINGS
+</button>
+
+<button class="btn-secondary" style="margin-left: 250px;" (click)="ResetSettings()">
+    RESET TO DEFAULT
+</button>
 
 <form   [formGroup]="priorityform" (ngSubmit)="onSubmit()">
   <div class="nodes">
@@ -84,9 +91,7 @@
 <button class="button" [disabled]="!priorityform.valid" input="submit">Dodaj</button>
 </form>
 
-    <button class="primary" (click)="SaveSettings()">
-        SAVE
-    </button>
+    
 
 
 </div>

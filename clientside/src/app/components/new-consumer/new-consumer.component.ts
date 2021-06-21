@@ -100,7 +100,7 @@ export class NewConsumerComponent implements OnInit {
 
         }
       )
-      this.newNotificationInfo=new Notifikacija("info","Consumer updated!",new Date(Date.now()));
+      this.newNotificationInfo=new Notifikacija("info","Consumer updated!",new Date(Date.now()),"potrosaci");
       this.ns.addNewNotification(this.newNotificationInfo).subscribe(
         res=>{
 
@@ -120,7 +120,7 @@ export class NewConsumerComponent implements OnInit {
       }
     )
 
-    this.newNotificationSuccess=new Notifikacija("success","Consumer successfuly added!",new Date(Date.now()));
+    this.newNotificationSuccess=new Notifikacija("success","Consumer successfuly added!",new Date(Date.now()),"potrosaci");
     this.ns.addNewNotification(this.newNotificationSuccess).subscribe(
       res=>{
 

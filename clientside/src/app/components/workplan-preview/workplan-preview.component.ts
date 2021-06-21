@@ -94,7 +94,7 @@ export class WorkplanPreviewComponent implements OnInit {
               alert("You can't execute instructions of unapproved workplans!");
             }else
             {
-              this.successNotifikacija=new Notifikacija("success","Instruction successfully executed!",new Date(Date.now()));
+              this.successNotifikacija=new Notifikacija("success","Instruction successfully!",new Date(Date.now()));
               this.ns.addNewNotification(this.successNotifikacija).subscribe(
                 res=>{
 
@@ -161,7 +161,7 @@ export class WorkplanPreviewComponent implements OnInit {
       }
       else
       {
-        this.successNotifikacija=new Notifikacija("success","Workplan successfully approved!",new Date(Date.now()));
+        this.successNotifikacija=new Notifikacija("success","Workplan successfully approved!",new Date(Date.now()),"workplans");
               this.ns.addNewNotification(this.successNotifikacija).subscribe(
                 res=>{
 

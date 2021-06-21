@@ -15,6 +15,7 @@ export class SettingsComponent implements OnInit {
   
   currentpodesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
   
+  defaultpodesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
   
   priorityform:FormGroup;
 
@@ -50,6 +51,14 @@ export class SettingsComponent implements OnInit {
       }
     )
 
+  }
+  ResetSettings():void{
+   
+    this.sss.updateSettings(this.defaultpodesavanja).subscribe(
+      res=>{
+        window.location.reload();
+      }
+    )
   }
   initializeForm():void
   {

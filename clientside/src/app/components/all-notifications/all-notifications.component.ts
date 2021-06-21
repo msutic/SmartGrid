@@ -14,6 +14,7 @@ import { Podesavanja } from 'src/app/entities/podesavanja';
 })
 export class AllNotificationsComponent implements AfterViewInit {
   allNotifications:Notifikacija[]=[];
+  links:Array<String>=[];
   podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
 
   constructor(public sss:SettingsServiceService, public ns:NotifikacijaserviceService, public router:Router) {
@@ -44,6 +45,11 @@ export class AllNotificationsComponent implements AfterViewInit {
     this.ns.loadNotifikations().subscribe(
       data => {
         this.allNotifications = data;
+
+        for(var i=0;i<this.allNotifications.length;i++)
+        {
+          this.links.push(this.allNotifications[i].link);
+        }
         //this.convertDate();
        
 
@@ -55,7 +61,10 @@ export class AllNotificationsComponent implements AfterViewInit {
     );
   }
   
-
+  Open(i:number)
+  {
+    this.router.navigate([this.links[i]]);
+  }
 
 
   ReadAll()
