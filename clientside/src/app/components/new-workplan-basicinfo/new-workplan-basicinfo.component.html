@@ -1,84 +1,88 @@
+<form [formGroup]="basicInfoForm" (ngSubmit)="onSaveClick()">
+
 
 <div class="nodes">
     <div class="container mt-3 ml-1 mb-3">
         <div class="mt-3">
-            <label>Workplan ID:</label>
-            <mat-form-field appearance="legacy">
-                <input matInput type="text" [(ngModel)]="value">
-                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </mat-form-field>
-        </div>
-        <div class="mt-3">
             <label>Type: </label>
-            <mat-form-field appearance="legacy">
-                <mat-select placeholder="Select Type">
-                    <mat-option value="option 1">Planned Work</mat-option>
-                    <mat-option value="option 2">Unplanned Work</mat-option>
+            <mat-form-field appearance="legacy" >
+                <mat-select placeholder="Select Type" formControlName='type' >
+                    <mat-option value="Planned Work">Planned Work</mat-option>
+                    <mat-option value="Unplanned Work">Unplanned Work</mat-option>
                 </mat-select>
+                
             </mat-form-field>
         </div>
-        <div class="mt-3">
+        <div class="mt-3" *ngIf="podesavanja.obavezna">
             <label>Order:</label>
-            <mat-form-field appearance="legacy">
-                <mat-select [(value)]="selected_nalog" placeholder="Select Order" >
+            <mat-form-field appearance="legacy" >
+                <mat-select [(value)]="selected_nalog" placeholder="Select Order" formControlName='order' >
                     <mat-option *ngFor="let p of nalozi_za_rad" [value]="p">{{p}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3" *ngIf="podesavanja.obavezna">
             <label>Incident:</label>
-            <mat-form-field appearance="legacy">
-                <mat-select [(value)]="selected_nalog" placeholder="Select Incident" >
-                    <mat-option *ngFor="let p of incidenti_za_rad" [value]="p">{{p}}</mat-option>
+            <mat-form-field appearance="legacy" >
+                <mat-select [(value)]="selected_incident" placeholder="Select Incident" formControlName='incident' >
+                    <mat-option *ngFor="let p of incidents" [value]="p.id">{{p.id}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
       
-        <div class="mt-3">
-            <label>Status:</label>
-            <mat-form-field appearance="legacy">
-                <mat-select [(value)]="selected_status" placeholder="" >
-                    <mat-option *ngFor="let p of possible_status" [value]="p">{{p}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+       
         <div class="mt-3">
             <label>Street:</label>
-            <mat-form-field appearance="legacy">
-                <textarea matInput type="text" [(ngModel)]="valueStreet" placeholder="Select street"></textarea>
-                <button mat-button *ngIf="valueStreet" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
+            <mat-form-field appearance="legacy" >
+                <textarea matInput type="text" [(ngModel)]="valueStreet" placeholder="Select street" formControlName='street'></textarea>
+                <button mat-button *ngIf="valueStreet" matSuffix mat-icon-button aria-label="Clear" (click)="valueStreet=''">
                     <mat-icon>close</mat-icon>
                 </button>
+                
+                
             </mat-form-field>
+            <div *ngIf="formControls.street.invalid && (formControls.street.dirty || formControls.street.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="formControls.street.errors.required">
+                    Morate uneti ulicu!
+                </div>
+            </div>
         </div>
         <div class="mt-3">
             <label>Start Date:</label>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" >
                 <mat-label>Choose a start date</mat-label>
-                <input matInput [matDatepicker]="picker2">
+                <input matInput [matDatepicker]="picker2" formControlName='startDate'>
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
+              <div *ngIf="formControls.startDate.invalid && (formControls.startDate.dirty || formControls.startDate.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="formControls.startDate.errors.required">
+                    Morate uneti datum pocetka!
+                </div>
+            </div>
         </div>
 
         <div class="mt-3">
             <label>End Date:</label>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" >
                 <mat-label>Choose a end date</mat-label>
-                <input matInput [matDatepicker]="picker3">
+                <input matInput [matDatepicker]="picker3" formControlName='endDate'>
                 <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                 <mat-datepicker #picker3></mat-datepicker>
               </mat-form-field>
+              <div *ngIf="formControls.endDate.invalid && (formControls.endDate.dirty || formControls.endDate.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="formControls.endDate.errors.required">
+                    Morate uneti datum kraja!
+                </div>
+            </div>
         </div>
     </div>
     <div class="container mt-3 ml-5 mb-3">
         <div class="mt-3">
             <label>Crew:</label>
-            <mat-form-field appearance="legacy">
-                <mat-select [(value)]="selected_crew" placeholder="Select Crew" >
+            <mat-form-field appearance="legacy" >
+                <mat-select [(value)]="selected_crew" placeholder="Select Crew" formControlName='crew' >
                     <mat-option *ngFor="let p of crews_za_rad" [value]="p">{{p}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -90,7 +94,7 @@
         
         <div class="mt-3">
             <Label>Purpuse</Label>
-                <mat-form-field apperance="legacy">
+                <mat-form-field apperance="legacy" >
                   <mat-label>Select purpuse</mat-label>
                   <input type="text"
                          
@@ -98,7 +102,9 @@
                          matInput
                          [formControl]="myControl"
                          [matAutocomplete]="auto"
-                         [(ngModel)]="option">
+                         [(ngModel)]="option"
+                         formControlName='purpuse'
+                         >
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option}}
@@ -108,14 +114,18 @@
                     <mat-icon>close</mat-icon>
                 </button>
                 </mat-form-field>
-                
+                <div *ngIf="formControls.purpuse.invalid && (formControls.purpuse.dirty || formControls.purpuse.touched)" class="alert alert-danger form-danger" role="alert">
+                    <div *ngIf="formControls.purpuse.errors.required">
+                        Morate uneti svrhu!
+                    </div>
+                </div>
                 
               
         </div>
-        <div class="mt-3">
+        <div class="mt-3" *ngIf="podesavanja.obavezna">
             <label>Notes:</label>
-            <mat-form-field appearance="legacy" >
-                <textarea matInput type="text" [(ngModel)]="valueDesc" placeholder="Additional Notes"></textarea>
+            <mat-form-field appearance="legacy"  >
+                <textarea matInput type="text" [(ngModel)]="valueDesc" placeholder="Additional Notes" formControlName='notes'></textarea>
                 <button mat-button *ngIf="valueDesc" matSuffix mat-icon-button aria-label="Clear" (click)="valueDesc=''">
                     <mat-icon>close</mat-icon>
                 </button>
@@ -123,30 +133,48 @@
         </div>
         <div class="mt-3">
             <label>Company:</label>
-            <mat-form-field appearance="legacy">
-                <input matInput type="text" [(ngModel)]="company" placeholder="Select Company">
-                <button mat-button *ngIf="company" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-form-field appearance="legacy" >
+                <input matInput type="text" [(ngModel)]="company" placeholder="Select Company" formControlName='company'>
+                <button mat-button *ngIf="company" matSuffix mat-icon-button aria-label="Clear" (click)="company=''">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
+            <div *ngIf="formControls.company.invalid && (formControls.company.dirty || formControls.company.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="formControls.company.errors.required">
+                    Morate uneti firmu!
+                </div>
+            </div>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3" *ngIf="podesavanja.obavezna">
             <label>Phone Number:</label>
-            <mat-form-field appearance="legacy">
-                <input matInput type="text" [(ngModel)]="phone" placeholder="Enter Phone Number">
+
+            <mat-form-field appearance="legacy" >
+                <input matInput type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="phone" placeholder="Format:123-123-1234" formControlName='phoneNumber'>
                 <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
+            <div *ngIf="formControls.phoneNumber.invalid && (formControls.phoneNumber.dirty || formControls.phoneNumber.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="formControls.phoneNumber.errors.pattern">
+                    Morate uneti ispavan format broja!
+                </div>
+            </div>
         </div>
         <div class="mt-3">
-            <label>Create On:</label>
+            <label>Created On:</label>
             <label> {{created_on | date:'HH:mm dd.MM.yyyy' }}</label>
+        </div>
+        <div class="mt-3">
+            <button class=" ml-5 btn btn-lg btn-primary" [disabled]="!basicInfoForm.valid"  type="submit">Save Changes</button>
         </div>
         
     </div>
+    
 </div>
+
+</form>
+
 
 
 

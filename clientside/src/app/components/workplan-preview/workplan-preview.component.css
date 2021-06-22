@@ -1,0 +1,47 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+
+  .tooblar_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main_content {
+    overflow: auto;
+  }
+
+  table {
+    width: 100%;
+    background-color: white;
+  }
+
+  th {
+      font-size: 16pt;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .paginator {
+      background-color: whitesmoke;
+  }
+  .column {
+    float: left;
+    width: 35%;
+    padding: 10px;
+  }
+  .left {
+    width: 25%;
+  }
+  
+  .right {
+    width: 75%;
+  }
+  .selected {
+    background-color: #87CEEB;
+  }

@@ -2,19 +2,10 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-export interface WorkplanData {
-  id: string;
-  startDate: Date;
-  phoneNum: string;
-  status: string;
-  address: string;
-}
-const ELEMENT_DATA: WorkplanData[] = [
-  {id: 'WR 1', startDate: new Date(2018, 8, 13), phoneNum: '351-661-3252', status: 'Draft', address: 'Vladike Ćirića 10'},
-  {id: 'WR 2', startDate: new Date(2018, 8, 13), phoneNum: '251-677-5362', status: 'Draft', address: 'Subotička 10'},
-  {id: 'WR 3', startDate: new Date(2018, 8, 13), phoneNum: '351-661-3252', status: 'Submitted', address: 'Mileve Marića 14'},
-  {id: 'WR 4', startDate: new Date(2018, 8, 13), phoneNum: '251-661-5362', status: 'Submitted', address: 'Masarikova 2'},
-];
+import { Workplan } from 'src/app/entities/workplan';
+import { WorkplanService } from 'src/app/services/workplan.service';
+
+
 @Component({
   selector: 'app-workplan-table',
   templateUrl: './workplan-table.component.html',
@@ -22,20 +13,33 @@ const ELEMENT_DATA: WorkplanData[] = [
   
 })
 export class WorkplanTableComponent implements AfterViewInit {
+  workplans:Array<Workplan>=[];
+  dataSource;
+  constructor(private ws:WorkplanService) { }
+  
+ 
 
-  constructor() { }
   
-  
-
-  
-  displayedColumns: string[] = ['id', 'startDate', 'phoneNum', 'status', 'address'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['id','type', 'order', 'incidentId', 'status', 'startDate','endDate','crewId','createdBy','purpuse','notes','company','phoneNumber','createdOn','actions'];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngAfterViewInit(): void {
+    this.ws.loadWorkplans().subscribe(
+      res=>{
+        this.workplans=res;
+        this.dataSource=new MatTableDataSource(this.workplans);
+      }
+    )
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  onDelete(id:number){
+    this.ws.deleteWorkplan(id).subscribe(
+      res=>{
+        window.location.reload();
+      }
+    )
   }
 
 }

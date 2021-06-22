@@ -1,53 +1,140 @@
 
-<p class=par>PERSONAL INFORMATION</p>
 <div class="container">
 
 
-    <form>
+    <form [formGroup]="editUserFormGroup">
         <table>
         
             <tr>
-                <td align="right">Username:</td>
-                <td align="left"><input type="text" name="username" [(ngModel)]="UserName" [readonly]="!isDivVisible" [style.background]="color" /></td>
+                <td >Username:</td>
+                <td ><input type="text" name="username"  [readonly]="!isDivVisible" [style.background]="color" formControlName="username" /></td>
                 
             </tr>
+            <tr >
+              <td colspan="3" style="text-align: center;">
+                <div *ngIf="profileControls.username.invalid && (profileControls.username.dirty || profileControls.username.touched)" class="alert alert-danger form-danger" role="alert">
+                  <div *ngIf="profileControls.username.errors.required">
+                      Morate uneti korisnicko ime!
+                  </div>
+              </div>
+              </td>
+              
+            </tr>
+            
+
+
             <br/>
             <tr>
               
           
-            <td align="right">First Name:</td>
-            <td align="left"><input type="text" name="first" [(ngModel)]="FirstName" [readonly]="!isDivVisible" [style.background]="color"/></td>
+            <td>First Name:</td>
+            <td ><input type="text" name="first" [readonly]="!isDivVisible" [style.background]="color" formControlName="name"/></td>
             
             </tr>
+
+            <tr >
+              <td colspan="3" style="text-align: center;">
+                <div *ngIf="profileControls.name.invalid && (profileControls.name.dirty || profileControls.name.touched)" class="alert alert-danger form-danger" role="alert">
+                  <div *ngIf="profileControls.name.errors.required">
+                      Morate uneti ime!
+                  </div>
+              </div>
+              </td>
+              
+            </tr>
+
+
+
             <br/>
             <tr>
          
           
-            <td align="right">Last Name:</td>
-            <td align="left"><input type="text" name="last" [(ngModel)]="LastName" [readonly]="!isDivVisible" [style.background]="color" /></td>
+            <td >Last Name:</td>
+            <td ><input type="text" name="last"  [readonly]="!isDivVisible" [style.background]="color" formControlName="lastname" /></td>
            
           </tr>
-          <br/>
-          <tr>
-            <td align="right">Email:</td>
-            <td align="left"><input type="email" name="email" [(ngModel)]="Email" [readonly]="!isDivVisible" [style.background]="color" /></td>
+
+          <tr >
+            <td colspan="3" style="text-align: center;">
+              <div *ngIf="profileControls.lastname.invalid && (profileControls.lastname.dirty || profileControls.lastname.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="profileControls.lastname.errors.required">
+                    Morate uneti prezime!
+                </div>
+            </div>
+            </td>
             
           </tr>
+
+
+
+
+
+
           <br/>
           <tr>
-            <td align="right">Date Of Birth:</td>
-            <td align="left"><input type="date"  name="date" id="date" [readonly]="!isDivVisible" [style.background]="color"/></td>
+            <td >Email:</td>
+            <td ><input type="email" name="email"  [readonly]="!isDivVisible" [style.background]="color" formControlName="email" /></td>
+            
+          </tr>
+          <tr >
+            <td colspan="3" style="text-align: center;">
+              <div *ngIf="profileControls.email.invalid && (profileControls.email.dirty || profileControls.email.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="profileControls.email.errors.required">
+                    Morate uneti email!
+                </div>
+            </div>
+            </td>
+            
+          </tr>
+
+
+
+          <br/>
+          <tr *ngIf="podesavanja.obavezna">
+            <td >Date Of Birth:</td>
+            
+            <td><input type="date"   name="date" id="date" [readonly]="!isDivVisible" [style.background]="color" formControlName="date"/></td>
             
            </tr>
-           <br/>
-           <tr>
-            <td align="right">Address:</td>
-            <td align="left"><input type="text" name="adresa" [(ngModel)]="Address" [readonly]="!isDivVisible" [style.background]="color" /></td>
+           <br *ngIf="podesavanja.obavezna"/>
+           <tr *ngIf="podesavanja.obavezna">
+            <td >Address:</td>
+            <td ><input type="text" name="adresa"  [readonly]="!isDivVisible" [style.background]="color" formControlName="address" /></td>
             
           </tr>
+          <br *ngIf="podesavanja.obavezna"/>
+          <tr>
+            <td>Password:</td>
+            <td><input type="password" name="lozinka"  [readonly]="!isDivVisible" [style.background]="color" formControlName="password" /></td>
+          </tr>
+
+          <tr>
+            <td>Uloga:</td>
+            <td>  <select id="uloge" name="uloge" formControlName="role" [style.background]="color" [attr.disabled]="!isDivVisible ? '' : null">
+              <option value="admin">admin</option>
+              <option value="dispatcher">dispatcher</option>
+              <option value="worker">worker</option>
+              <option value="crewMember">crewMember</option>
+            </select>        </td>
+          </tr>
+
+
+          <tr>
+            <td colspan="3" style="text-align: center;">
+              <div *ngIf="profileControls.password.invalid && (profileControls.password.dirty || profileControls.password.touched)" class="alert alert-danger form-danger" role="alert">
+                <div *ngIf="profileControls.password.errors.required">
+                    Morate uneti lozinku!
+                </div>
+            </div>
+            </td>
+            
+          </tr>
+          
+
+
           <tr>
             <td colspan="2">
-                <button [style.visibility]="isDivVisible ? 'visible' : 'hidden'" (click)="confirm()" class="Confirm" type="button" name="confirm">Confirm</button>
+                <button [disabled]="!editUserFormGroup.valid" class="Confirm"   [style.visibility]="isDivVisible ? 'visible' : 'hidden'" (click)="confirm()"   type="button" name="confirm">Confirm</button>
               </td>
             </tr>
                   <tr>

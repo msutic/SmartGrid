@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Podesavanja } from 'src/app/entities/podesavanja';
 import { SettingsServiceService } from 'src/app/services/settings-service.service';
 import {Notifikacija} from '../../entities/notifikacija';
 
@@ -10,16 +11,18 @@ import {Notifikacija} from '../../entities/notifikacija';
 export class NotifikacijaComponent implements OnInit {
   sve:Notifikacija[]=[];
   neprocitane:Notifikacija[]=[];
+  podesavanja:Podesavanja=new Podesavanja(true,true,true,true,true);
 
   constructor(public sss:SettingsServiceService) { 
-    var neprocitana=new Notifikacija("warning","warning jbg",new Date());
-    var procitana=new Notifikacija("error","error jbg",new Date());
-    procitana.procitana=true;
-    this.sve.push(neprocitana);
-    this.sve.push(neprocitana);
+    this.sss.getSettings().subscribe(
+      res=>{
+        this.podesavanja=res;
+      }
+    )
   }
 
   ngOnInit(): void {
+    
   }
 
 }

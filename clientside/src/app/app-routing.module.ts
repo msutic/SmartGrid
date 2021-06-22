@@ -38,6 +38,10 @@ import { SafetydocChecklistComponent } from './components/safety-doc/safetydoc-c
 import { AdminsGuard } from './guards/admins.guard';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
 import { NonregisteredGuard } from './guards/nonregistered.guard';
+import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
+import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
+import { TestImagesComponent } from './components/test-images/test-images.component';
+import { WorkplanPreviewComponent } from './components/workplan-preview/workplan-preview.component';
 
 const routes: Routes = [
   {
@@ -51,11 +55,30 @@ const routes: Routes = [
   },
   {
     path:'potrosaci',
-    component:PotrosaciComponent
+    
+  
+    children:[
+      {
+        path:'',
+        component:PotrosaciComponent,
+        canActivate:[AdminsGuard]
+      },
+      {
+        path: ':id/edit',
+        component: NewConsumerComponent
+        
+      },
+      {
+        path: 'new',
+        component: NewConsumerComponent
+    
+      }
+    ]
   },
   {
     path:'settings',
-    component:SettingsComponent
+    component:SettingsComponent,
+    canActivate:[AdminsGuard]
   },
   {
     path:'new-consumer',
@@ -67,12 +90,26 @@ const routes: Routes = [
     canActivate: [NonregisteredGuard]
   },
   {
+    path: "zahtevi",
+    component: ZahteviComponent,
+  },
+  {
     path: "profile",
-    component: EditProfileComponent
+    component: EditProfileComponent,
+    canActivate: [NonregisteredGuard]
   },
   {
     path: "workplans",
-    component:WorkplanTableComponent
+    children:[
+      {
+        path:'',
+        component:WorkplanTableComponent
+      },
+      {
+        path:':id/edit',
+        component:WorkplanPreviewComponent
+      }
+    ]
   },
   {
     path: 'new-workplan',
@@ -108,6 +145,7 @@ const routes: Routes = [
   {
     path:'notifikacije',
     component: NotifikacijaComponent,
+    canActivate:[NonregisteredGuard],
     children: [
       {
         path: '',

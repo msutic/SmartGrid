@@ -1,10 +1,12 @@
 export class Notifikacija {
+    id:number;
     tip:String;
     tekst:String;
     vreme:Date;
     procitana:boolean;
     ikona:String;
-    constructor(tip:String,tekst:String,vreme:Date)
+    link:String;
+    constructor(tip:String,tekst:String,vreme:Date,link?:String)
     {
         this.tip=tip;
         this.tekst=tekst;
@@ -26,5 +28,6 @@ export class Notifikacija {
             default:
                 break;
         }
+        this.link=link;
     }
 }

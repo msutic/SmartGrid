@@ -67,7 +67,10 @@ import { DeviceService } from './services/device.service';
 import { HttpClientModule } from '@angular/common/http';
 import { IncidentService } from './services/incident/incident.service';
 import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-devices/safetydoc-devices.component';
-
+import { EditConsumerComponent } from './components/edit-consumer/edit-consumer.component';
+import { ZahteviComponent } from './components/zahtevi/zahtevi.component';
+import { TestImagesComponent } from './components/test-images/test-images.component';
+import { WorkplanPreviewComponent } from './components/workplan-preview/workplan-preview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +110,13 @@ import { SafetydocDevicesComponent } from './components/safety-doc/safetydoc-dev
     DevicesComponent,
     NewDeviceComponent,
     SafetydocDevicesComponent,
+    EditConsumerComponent,
+    ZahteviComponent,
+    TestImagesComponent,
+    WorkplanPreviewComponent
+  ],
+  exports:[
+    NewConsumerComponent
   ],
   imports: [
     BrowserModule,

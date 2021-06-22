@@ -7,6 +7,10 @@ import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import {MatDialog,MatDialogModule,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {FormControl, NgForm,Validators,FormBuilder,FormGroup} from '@angular/forms';
+import { Device } from 'src/app/entities/device';
+import { DeviceService } from 'src/app/services/device.service';
+import { WorkplanService } from 'src/app/services/workplan.service';
+import { Router } from '@angular/router';
 
 export interface EquipmentData {
   id: string;
@@ -15,12 +19,7 @@ export interface EquipmentData {
   address: string;
   coordinates:number[];
 }
-const ELEMENT_DATA: EquipmentData[] = [
-  {id: 'EQ 1', type: "Prekidac" ,  address: 'Vladike Ćirića 10',name:"Prekidac1", coordinates:[10,20]},
-  {id: 'EQ 2', type: "Osigurac",  address: 'Subotička 10',name:"Osigurac1", coordinates:[10,30]},
-  {id: 'EQ 3', type: "Transformator",   address: 'Mileve Marića 14',name:"Transformator1", coordinates:[10,40]},
-  {id: 'EQ 4', type: "Diskonektor",  address: 'Masarikova 2',name:"Diskonektor1", coordinates:[10,50]},
-];
+
 
 
 @Component({
@@ -28,25 +27,31 @@ const ELEMENT_DATA: EquipmentData[] = [
   templateUrl: './workplan-instructions.component.html',
   styleUrls: ['./workplan-instructions.component.css']
 })
-export class WorkplanInstructionsComponent implements AfterViewInit {
+export class WorkplanInstructionsComponent implements OnInit {
   @ViewChild('callAPIDialog') callAPIDialog: TemplateRef<any>;
   binded_instructions:Instrukcija[]=[];
   
   selectedRowIndex = -1;
   selectedRow:Instrukcija=null;
   selectedElement:EquipmentData=null;
-  element:EquipmentData=null;
-  elements:EquipmentData[]=ELEMENT_DATA;
+  equipment:Array<Device>;
+  element:Device;
 
 
-  constructor(public dialog:MatDialog,private ngZone: NgZone) { }
+  constructor(public dialog:MatDialog,private ngZone: NgZone,private es:DeviceService,private ws:WorkplanService,public router:Router) { }
+  instructionList:Array<Instrukcija>
 
   
 
-  displayedColumns: string[] = ['id', 'description', 'executed', 'element'];
+  displayedColumns: string[] = ['id', 'description', 'executed', 'element','element_type'];
   dataSource = new MatTableDataSource(this.binded_instructions);
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
+    this.es.loadDevices().subscribe(
+      res=>{
+        this.equipment=res;
+      }
+    )
   }
 
   selectRow(row:Instrukcija)
@@ -121,7 +126,7 @@ export class WorkplanInstructionsComponent implements AfterViewInit {
       }else{
          
           this.dialog.closeAll(); 
-          let instrukcija=new Instrukcija(this.binded_instructions.length+1,form.value.description, form.value.izabranielement.name);
+          let instrukcija=new Instrukcija(this.binded_instructions.length+1,form.value.description,this.element.id.toString(),this.element.type);
           this.binded_instructions.push(instrukcija);
           this.dataSource._updateChangeSubscription();
       }
@@ -130,6 +135,14 @@ export class WorkplanInstructionsComponent implements AfterViewInit {
     close()
     {
       this.dialog.closeAll();
+    }
+    onSave(){
+      /*
+      this.instructionList = new Array<Instrukcija>();
+      this.instructionList = this.binded_instructions;
+      */
+      this.ws.instructionsEmitChange(this.binded_instructions);
+      this.router.navigate(['/new-workplan/new-workplan-instructions']);
     }
 
 

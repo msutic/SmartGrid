@@ -197,35 +197,45 @@ html {
   }
   .container {
     width: 700px;
-    font-size: 24px;
+    font-size: 22px;
     clear: both;
   }
   
   input[type=date]{
-    align-self: center;
+    font: size 20px;
+  }
+  .Confirm-visible{
+    background-color: green;
+    color: white;
+    font-size: 24px;
+    height: auto;
+    margin-left: 115px;
+    display: block;
+    width: 110px;
+  }
+  [type=button][disabled]{
+    background-color: green;
+    color: white;
+    font-size: 24px;
+    height: auto;
+    margin-left: 115px;
     
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    color: #0d0d0d;
+    width: 110px;
+    opacity: 0.3;
+  }
+
+  .diabled-class{
+    background-color: green;
+    color: white;
+    font-size: 24px;
+    height: auto;
+    margin-left: 115px;
     
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin: 5px;
-    width: 70%;
-    border: 2px solid transparent;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
+    width: 110px;
+    opacity: 0.3;
   }
   
-  input[type=text], [type=email], [type=password] {
+  input[type=text], [type=email], [type=password], [type=date], label, select {
     align-self: center;
     
     justify-content: center;
@@ -238,7 +248,7 @@ html {
     display: inline-block;
     font-size: 24px;
     margin: 5px;
-    width: 70%;
+    width: 100%;
     border: 2px solid transparent;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;

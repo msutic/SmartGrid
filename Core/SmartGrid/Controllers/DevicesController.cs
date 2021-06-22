@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace SmartGrid.Controllers
 {
     [Route("api/[controller]")]
@@ -29,6 +30,8 @@ namespace SmartGrid.Controllers
 
             return devices;
         }
+
+
 
         // GET: api/Devices/1
         [HttpGet("{id}")]
@@ -89,6 +92,8 @@ namespace SmartGrid.Controllers
             await _context.SaveChangesAsync();
             return device;
         }
+
+        
 
         [Route("/api/Devices/updateDevice/{id}")]
         public async Task<IActionResult> UpdateDevice(Device device)

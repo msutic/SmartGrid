@@ -1,0 +1,105 @@
+<p>workplan-preview works!</p>
+<div class="row">
+
+<div class="column  left">
+
+
+<div>
+    <img *ngFor="let url of wm.multimedia" [src]="url" class="rounded mb-3" width="180">
+</div>
+    <label> Workplan Created By: {{workplan.createdBy}} </label>
+    <br/>
+    <label> Workplan Type: {{workplan.type}} </label>
+    <br/>
+    <label> Workplan Status: {{workplan.status}} </label>
+    <br/>
+    <label> Workplan Reason: {{workplan.purpuse}} </label>
+    <br/>
+    <label> Workplan Start Date: {{workplan.startDate | date:"dd/MM/yyyy"}} </label>
+    <br/>
+    <label> Workplan End Date: {{workplan.endDate | date:"dd/MM/yyyy"}} </label>
+    <br/>
+    <label> Workplan Creted On: {{workplan.createdOn | date:"dd/MM/yyyy HH:mm:ss"}} </label>
+    <br/>
+    <label> Workplan For Order: {{workplan.order }} </label>
+    <br/>
+    <label> Workplan For Crew: {{workplan.crewId }} </label>
+    <br/>
+    <label> Workplan Done By: {{workplan.company }} </label>
+    <br/>
+    <label *ngIf="workplan.phoneNumber"> Workplan Contact: {{workplan.phoneNumber }} </label>
+    <br/>
+
+    <button class="btn-primary" (click)="approveWorkplan()">
+        APPROVE WORKPLAN
+    </button>
+
+</div>
+
+
+
+<div class="column right">
+    <div class="main_content">
+        <div class="toolbar_right">
+            
+            <button (click)="ExecuteRow()" mat-raised-button color="secondary">
+                <mat-icon aria-hidden="false">check_circle_outline</mat-icon>
+    
+            </button>
+            <br/>
+            <br/>
+    
+        </div>
+
+
+
+
+
+        <div class="main_content mt-2">
+
+        <table [dataSource]="dataSource" rowSelection='single' mat-table matSort class="mat-elevation-z8">
+            
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descritpion </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="executed">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Executed </th>
+                <td mat-cell *matCellDef="let element"> {{element.executed ? 'EXECUTED' : 'UNEXECUTED'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="element">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Device ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.deviceId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="element_type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Device Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.deviceType}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [ngClass]="{ 'selected': row === selectedRow }" >
+            </tr>   
+           
+        </table>
+    </div>
+    <mat-paginator #paginator class="paginator" [pageSizeOptions]="[3, 10, 20]" showFirstLastButtons></mat-paginator>
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>

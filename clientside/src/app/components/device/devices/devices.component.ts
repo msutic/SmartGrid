@@ -31,6 +31,7 @@ export class DevicesComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.allDevices);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        
       }
     )
   }

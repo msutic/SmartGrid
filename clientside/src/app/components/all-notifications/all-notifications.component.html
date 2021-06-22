@@ -4,9 +4,9 @@
     <hr/>
     <div class="main_content">
         <table>
-            <tbody *ngFor="let notifikacija of allNotifications" (click)="clickedRow(notifikacija)" >
+            <tbody *ngFor="let notifikacija of allNotifications let i=index" (click)="clickedRow(notifikacija)" >
                 
-                <tr *ngIf="(notifikacija.tip=='error' && sss.errorsvisible) || (notifikacija.tip=='info' && sss.infosvisible) || (notifikacija.tip=='warning' && sss.warrningsvisible) || (notifikacija.tip=='success' && sss.successesvisible)"
+                <tr *ngIf="(notifikacija.tip=='error' && podesavanja.errorvidljive) || (notifikacija.tip=='info' && podesavanja.infovidljive) || (notifikacija.tip=='warning' && podesavanja.warningvidljive) || (notifikacija.tip=='success' && podesavanja.successvidljive)"
                 [class.colorError]='notifikacija.tip=="error"'
                 [class.colorInfo]='notifikacija.tip=="info"'
                 [class.colorSuccess]='notifikacija.tip=="success"'
@@ -14,9 +14,10 @@
                 
                 >
                     <td style="width: 30px;"></td>
-                    <td style="width: 40px;"style="width: 40px;"><mat-icon style="width: 40px;">{{notifikacija.ikona}}</mat-icon></td>
+                    <td style="width: 40px;"><mat-icon>{{notifikacija.ikona}}</mat-icon></td>
                     <td>{{notifikacija.tekst}}</td>
-                    <td style="width: 100px;">{{notifikacija.vreme.getDay()}}.{{notifikacija.vreme.getMonth()}}.{{notifikacija.vreme.getFullYear()}}</td>
+                    <td><a (click)="Open(i)"><button *ngIf="links[i]">OTVORI</button></a></td>
+                    <td style="width: 100px;">{{notifikacija.vreme | date:"dd MM yyyy HH:mm:ss" }}</td>
                     <td style="text-align:left;width:100px">{{notifikacija.procitana?"Read":"Unread"}}</td>
                    
                     

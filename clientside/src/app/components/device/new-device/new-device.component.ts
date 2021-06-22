@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/entities/device';
 import { DeviceService } from 'src/app/services/device.service';
+import {Notifikacija} from 'src/app/entities/notifikacija';
+import { NotifikacijaserviceService } from 'src/app/services/notifikacijaservice.service';
 
 @Component({
   selector: 'app-new-device',
@@ -17,7 +19,11 @@ export class NewDeviceComponent implements OnInit {
   newDeviceFormGroup:FormGroup;
 
   newDevice : Device;
-  constructor(private router: Router, private deviceService: DeviceService, private route: ActivatedRoute, private formBuilder: FormBuilder) {}
+  newNotificationsuccess:Notifikacija;
+  newNotificationinfo:Notifikacija;
+
+  datum:Date;
+  constructor(private router: Router, private deviceService: DeviceService, private route: ActivatedRoute, private formBuilder: FormBuilder, public ns:NotifikacijaserviceService) {}
 
   ngOnInit(): void {
     this.deviceId = this.route.snapshot.paramMap.get("id");
@@ -74,12 +80,28 @@ export class NewDeviceComponent implements OnInit {
           alert("Denied! Some fields are left empty.")
         } else {
           this.newDevice = new Device(this.newDeviceFormGroup.value.type, this.newDeviceFormGroup.value.address, parseFloat(this.newDeviceFormGroup.value.x_coordinate), parseFloat(this.newDeviceFormGroup.value.y_coordinate));
-    
+          this.datum=new Date(Date.now());
+          this.datum.setHours(this.datum.getHours()+2);
+          this.newNotificationsuccess=new Notifikacija("success","Uredjaj uspesno dodat!",this.datum,"/devices");
+          this.newNotificationinfo=new Notifikacija("info","Device added!",new Date(Date.now()),"/devices");
           this.deviceService.addNewDevice(this.newDevice).subscribe(
             (res) => {
               this.router.navigate(['devices']);
             }
           )
+
+          
+        this.ns.addNewNotification(this.newNotificationsuccess).subscribe(
+          res=>{
+            
+          }
+      )
+      this.ns.addNewNotification(this.newNotificationinfo).subscribe(
+        res=>{
+
+        }
+      )
+
         }
       
     }

@@ -1,11 +1,10 @@
 export class Lokacija {
+    id:number;
     ulica:String;
     grad:String;
-    postanski_broj:number;
-    constructor(ulica:String,grad:String,postanski_broj:number)
+    constructor(ulica:String,grad:String)
     {
         this.ulica=ulica;
         this.grad=grad;
-        this.postanski_broj=postanski_broj;
     }
 }
